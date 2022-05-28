@@ -1,0 +1,33 @@
+.banner-image{
+    background-image: url('./assets_home/cover.jpg');
+    background-size: cover;
+}
+
+.home-logo{
+    border-radius: 50%;
+}
+.banner-text{
+    font-size: 70px;
+}
+.btn{
+  background-color: rgb(240, 240, 240,.3); /* Green */
+  border: none;
+  color: rgb(240, 240, 240,.3);
+  padding: 35px 55px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+#cardcontainer{
+    margin-top: 8%;
+    margin-left: 8%;
+   
+}
+
+.card:hover{
+    -webkit-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
+    box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
+
+}
