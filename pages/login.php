@@ -19,32 +19,32 @@
                 <div class="login_form">
                     <center><img src="assets/home-logo.png" alt="Kosai Limited Logo" style="width:70;height:70px;" class="logo img-fluid mb-2">
                     <h1 class="mb-3">Kosai Limited</h1></center>
-            <form>
-                <div class="mb-3">
-                    <label class="label_txt">Username or Email</label>
-                    <input type="email" class="form-control" >
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" >
-                </div>
-                <button type="submit" class="form-btn btn btn-primary">Login</button>
-            </form>
+                    <form>
+                        <div class="mb-3">
+                            <label class="label_txt">Username or Email</label>
+                            <input type="email" class="form-control" >
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" >
+                        </div>
+                        <button type="submit" class="form-btn btn btn-primary">Login</button>
+                    </form>
 
-            <br>
-            <p style="font-size: 12px ; text-align: center; marign-top: 10px;">
-            <a href="forgot_password.php" style="color: #00376b;">Forgot Password?</a>
-            </p>
-            <br>
-            <p>Don't have an account? <a href="sign_up.php">Sign up</a>
-            </p>
+                    <br>
+                    <p style="font-size: 12px ; text-align: center; marign-top: 10px;">
+                    <a href="forgot_password.php" style="color: #00376b;">Forgot Password?</a>
+                    </p>
+                    <br>
+                    <p>Don't have an account? <a href="sign_up.php">Sign up</a>
+                    </p>
 
-        </div>
-    </div>
+                </div>
+            </div>
         <!--form ends here-->
-        <div class="col-sm-4">   
-        </div>
+            <div class="col-sm-4">   
+            </div>
 
     </div>
     </div>
