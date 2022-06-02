@@ -1,3 +1,14 @@
+<?php 
+try {
+  //code...
+
+  require_once 'pages/config.php';
+} catch (\Throwable $e) {
+  //throw $th;
+  die($e->getMessage());
+  exit();
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,6 +55,23 @@
                 <li class="nav-item"><a href="#" class="nav-link text-white">About site</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white">All blog categories</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white">Contatct us</a></li>
+                <?php 
+                  if(isset($_SESSION['id']))
+                  {
+                ?>
+                <li class="nav-item"><a href="pages/edit_profile.php" class="nav-link text-white">Profile</a></li>
+                <form action="logout.php" method="post">
+                  <li class="nav-item">
+                    <input type="submit" value="Logout" class="btn btn-light">
+                  </li>
+                </form>
+                <?php 
+                  } else {
+                ?>
+                <li class="nav-item"><a href="pages/login.php" class="nav-link text-white">Login/Signup</a></li>
+              <?php 
+                  }
+              ?>
               </ul>
             </div>
         </div>
@@ -65,123 +93,49 @@
     <!--Row 1-->
     <div class="container "id="cardcontainer">
       <div class="row">
-        <div class="col-lg-4 ">
+        <?php
+        $posts = [
+          [
+            'title' => 'Post #1',
+            'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
+          ],
+          [
+            'title' => 'Post #2',
+            'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
+          ],
+          [
+            'title' => 'Post #3',
+            'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
+          ],
+          [
+            'title' => 'Post #4',
+            'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
+          ],
+          [
+            'title' => 'Post #5',
+            'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
+          ],
+          [
+            'title' => 'Post #6',
+            'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
+          ],
+        ];
+        for($i=0; $i<count($posts); $i++) {
+          ?>
+        <div class="col-lg-4 mb-5">
           <!--Bootstrap cards1-->
           <div class="card" style="width: 21rem;">
           <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
           <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
+            <h5 class="card-title"><?php echo $posts[$i]['title'] ?></h5>
             <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
             <a href="#" class="btn btn-primary">Read...</a>
           </div>
           </div>
         </div>
-
-         <!--Bootstrap cards2-->
-        <div class="col-lg-4">
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
-
-         <!--Bootstrap cards3-->
-        <div class="col-lg-4">
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--Row 2-->
-    <div class="container "id="cardcontainer">
-      <div class="row">
-        <div class="col-lg-4 ">
-          <!--Bootstrap cards 4-->
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
-
-         <!--Bootstrap cards 5-->
-        <div class="col-lg-4">
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
-
-         <!--Bootstrap cards 6-->
-        <div class="col-lg-4">
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--Row 3-->
-    <div class="container "id="cardcontainer">
-      <div class="row">
-        <div class="col-lg-4 ">
-          <!--Bootstrap cards 7-->
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
-
-         <!--Bootstrap cards 8-->
-        <div class="col-lg-4">
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
-
-         <!--Bootstrap cards 9-->
-        <div class="col-lg-4">
-          <div class="card" style="width: 21rem;">
-          <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Post 1 sample</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
-            <a href="#" class="btn btn-primary">Read...</a>
-          </div>
-          </div>
-        </div>
+        <?php
+        }
+        ?>
       </div>
     </div>
 
@@ -292,3 +246,5 @@
     -->
   </body>
 </html>
+<?php
+?>

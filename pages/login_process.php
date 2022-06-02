@@ -15,11 +15,10 @@ if(isset($_POST['sublogin']))
         {
             // die(json_encode(['row' => $row]));
             
-            $_SESSION["login_sess"]="1";
             $_SESSION["login_email"]=$row['email'];
             $_SESSION["f_name"]=$row['fname'];
             $_SESSION["id"]=$row['id'];
-            header("location:edit_profile.php");
+            header("location: ../");
             exit();
         }
         else
