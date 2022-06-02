@@ -34,18 +34,35 @@
                             <!--email section-->
                             <div class=" mb-3 form-group">
                                 <label class="label_txt">Username or Email</label>
-                                <input type="text" name="login_var" class="form-control value=" <?php
-                                                                                            if (!empty($loginerror))
-                                                                                                echo $loginerror;
-                                                                                            ?> " >
+                                <input type="text" name="login_var" class="form-control " value="<?php
+                                                                                                    if (!empty($loginerror))
+                                                                                                        echo $loginerror;
+                                                                                                    else {
+                                                                                                        if ((isset($_COOKIE['emailcookie']))) {
+                                                                                                            echo $_COOKIE['emailcookie'];
+                                                                                                        }
+                                                                                                    }
+                                                                                                    ?> ">
 
                             </div>
 
                             <!--password section-->
-                            <div class="mb-3 form-group">
+                            <div class=" mb-3 form-group">
                                 <label for="label_txt">Password</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" class="form-control" value="<?php
+                                                                                                    if (isset($_COOKIE['passwordcookie']))
+                                                                                                        echo $_COOKIE['passwordcookie'];
+                                                                                                    ?>">
                             </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="dropdownCheck" name="rememberme">
+                                <label class="form-check-label" for="dropdownCheck">
+                                    Remember me
+                                </label>
+                            </div>
+                            <br>
+
                             <input type="submit" name="sublogin" class="form-btn btn btn-primary" value="Login">
                         </form>
 

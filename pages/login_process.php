@@ -18,8 +18,21 @@ if(isset($_POST['sublogin']))
             $_SESSION["login_email"]=$row['email'];
             $_SESSION["f_name"]=$row['fname'];
             $_SESSION["id"]=$row['id'];
-            header("location: ../");
-            exit();
+
+            if(isset($_POST['rememberme']))
+            {
+                setcookie('emailcookie',$login,time()+604800); // 7 days cookie
+                setcookie('passwordcookie',$password,time()+604800);// 7 days cookie
+                header("location: ../index.php");
+                exit();
+            }
+            else
+            {
+                header("location: ../index.php");
+                exit();
+            }
+
+            
         }
         else
         {
