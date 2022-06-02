@@ -52,7 +52,7 @@ try {
           if (isset($_SESSION['id'])) {
           ?>
             <li class="nav-item">
-              <div class="dropdown">
+              <div class="dropdown ">
                 <a class=" dropdown-toggle text-white nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Profile
                 </a>

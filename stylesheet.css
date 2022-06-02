@@ -31,3 +31,8 @@
     box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
 
 }
+
+ul.dropdown-menu{
+   
+    background: #0096FF !important;
+}

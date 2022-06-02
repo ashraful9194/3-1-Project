@@ -49,10 +49,7 @@
                             <!--password section-->
                             <div class=" mb-3 form-group">
                                 <label for="label_txt">Password</label>
-                                <input type="password" name="password" class="form-control" value="<?php
-                                                                                                    if (isset($_COOKIE['passwordcookie']))
-                                                                                                        echo $_COOKIE['passwordcookie'];
-                                                                                                    ?>">
+                                <input type="password" name="password" class="form-control" >
                             </div>
 
                             <div class="form-check">

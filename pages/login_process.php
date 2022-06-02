@@ -21,8 +21,8 @@ if(isset($_POST['sublogin']))
 
             if(isset($_POST['rememberme']))
             {
+               
                 setcookie('emailcookie',$login,time()+604800); // 7 days cookie
-                setcookie('passwordcookie',$password,time()+604800);// 7 days cookie
                 header("location: ../index.php");
                 exit();
             }
