@@ -17,7 +17,9 @@ if(isset($_POST['sublogin']))
             
             $_SESSION["login_email"]=$row['email'];
             $_SESSION["f_name"]=$row['fname'];
+            $_SESSION["l_name"]=$row['lname'];
             $_SESSION["id"]=$row['id'];
+            $_SESSION["old_password"]=$row['password'];
 
             if(isset($_POST['rememberme']))
             {

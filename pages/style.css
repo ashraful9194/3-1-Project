@@ -1,37 +1,3 @@
-.banner-image{
-    background-image: url('assets/cover.jpg');
-    background-size: cover;
-}
-
-.home-logo{
-    border-radius: 50%;
-}
-.banner-text{
-    font-size: 70px;
-}
-.exploreButton{
-  background-color: rgb(240, 240, 240,.3); /* Green */
-  border: none;
-  color: rgb(240, 240, 240,.3);
-  padding: 35px 55px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 25px;
-}
-#cardcontainer{
-    margin-top: 8%;
-    margin-left: 8%;
-   
-}
-
-.card:hover{
-    -webkit-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
-    -moz-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
-    box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
-
-}
-
 body .login_body{
     background: #EAE9E5;
 
@@ -51,6 +17,14 @@ body .login_body{
     border: none;
     color: #fff;
     width: 100%;
+}
+
+.form-btn2{
+    background: #fb641b;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+    border: none;
+    color: #fff;
+    width: 20%;
 }
 
 .lable_txt{
@@ -97,3 +71,18 @@ body .login_body{
     padding: 10px;
 }
 
+
+img{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    
+}
+
+.pt-5{
+    padding-top: 125px !important;
+}
+
+hr{
+    width: 400px;
+}
