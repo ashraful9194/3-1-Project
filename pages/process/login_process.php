@@ -1,6 +1,6 @@
 <?php
 try{
-require_once("config.php");
+require_once("../config.php");
 if(isset($_POST['sublogin']))
 {
     $login=$_POST['login_var'];
@@ -19,18 +19,21 @@ if(isset($_POST['sublogin']))
             $_SESSION["f_name"]=$row['fname'];
             $_SESSION["l_name"]=$row['lname'];
             $_SESSION["id"]=$row['id'];
-            $_SESSION["old_password"]=$row['password'];
+            
+            $_SESSION["username"]=$row['username'];
+            
+            
 
             if(isset($_POST['rememberme']))
             {
                
                 setcookie('emailcookie',$login,time()+604800); // 7 days cookie
-                header("location: ../index.php");
+                header("location: ../../index.php");
                 exit();
             }
             else
             {
-                header("location: ../index.php");
+                header("location: ../../index.php");
                 exit();
             }
 
@@ -38,7 +41,7 @@ if(isset($_POST['sublogin']))
         }
         else
         {
-            header("location:login.php?loginerror=".$login);
+            header("location:../login.php?loginerror=".$login);
             exit();
         }
         
@@ -46,7 +49,7 @@ if(isset($_POST['sublogin']))
 
     else
     {
-        header("location:login.php?loginerror=".$login);
+        header("location:../login.php?loginerror=".$login);
         exit();
     }
 }

@@ -59,8 +59,8 @@ try {
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href="#">Dashboard</a></li>
                   <li><a class="dropdown-item" href="#">Create Post</a></li>
-                  <li><a class="dropdown-item" href="./pages/edit_profile.php">Edit Profile</a></li>
-                  <form action="pages/logout.php" method="post">
+                  <li><a class="dropdown-item" href="pages/edit_profile.php">Edit Profile</a></li>
+                  <form action="pages/process/logout.php" method="post">
                     <li class="nav-item">
                       <input type="submit" value="Logout" class="btn btn-light">
                     </li>

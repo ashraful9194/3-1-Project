@@ -17,7 +17,7 @@
         <div class="row">
 
             <?php
-            require_once 'Error.php';
+            require_once 'errors/Error_signup.php';
             $errors = new FormError();
             try {
                 if (isset($_POST['signup'])) {

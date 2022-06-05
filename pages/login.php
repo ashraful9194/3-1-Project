@@ -30,7 +30,7 @@
                         }
                         ?>
 
-                        <form action="login_process.php" method="POST">
+                        <form action="process/login_process.php" method="POST">
                             <!--email section-->
                             <div class=" mb-3 form-group">
                                 <label class="label_txt">Username or Email</label>
