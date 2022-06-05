@@ -53,7 +53,27 @@ try {
                         if (!(strlen($newpassword) > 20)) {
                             if ($newpassword == $c_newpassword) {
 
-                                echo "Ready to upload in database";
+                                //echo "Ready to upload in database";
+                                //hased the password
+                                $options = array("cost" => 4);
+                                $updatedpassword = password_hash($newpassword, PASSWORD_DEFAULT, $options);
+                                // updating the password
+                                $result = mysqli_query($dbc, "UPDATE users SET password='$updatedpassword' 
+                                                                               WHERE id='$session_id'; ");
+                                if($result)
+                                {
+                                    $_SESSION['updatedone']="success";
+                                    header("Location: ../edit_profile.php");
+                                }
+                                else
+                                {
+                                    $_SESSION['updatedone']="failed";
+                                    header("Location: ../edit_profile.php");
+                                    exit();
+                                }
+
+
+
 
                             } else {
                                 $errors->newpassword[] = 'Password do not match';

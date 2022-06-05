@@ -1,5 +1,5 @@
 <?php
-class EditProfileLnameFname
+class EditProfileFnameLname
 {
     public  $fname,
             $lname;

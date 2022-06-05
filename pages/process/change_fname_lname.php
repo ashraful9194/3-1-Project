@@ -19,9 +19,9 @@ try {
             $fname = validation($_POST['fname']);
             $lname = validation($_POST['lname']);
             
-
-            require_once '../errors/Error_edit_profile_lname_fname.php';
-            $errors = new EditProfilePasswordChange();
+            
+            require_once '../errors/Error_edit_profile_fname_lname.php';
+            $errors = new EditProfileFnameLname();
 
 
             if (strlen($fname) < 3) //min fname
@@ -53,19 +53,32 @@ try {
             without any digit or special symbol like (1,2,3#,$,%,%,^,&,*,!,~,-)';
             }
            
-
+            $_SESSION['errors'] = json_encode($errors);
             $session_id = $_SESSION['id'];
 
             $query = "select * from users where (id='$session_id')";
+            
             $res = mysqli_query($dbc, $query);
+            $_SESSION["f_name"]=$row['fname'];
+            $_SESSION["l_name"]=$row['lname'];
             $numRows = mysqli_num_rows($res);
 
             //$_SESSION["old_password_db"]=$row['password'];
             if (!$errors->haserror()) 
             {
 
-                
-                echo "ready to upload";
+                $options = array("cost" => 4);
+                $result = mysqli_query($dbc,"UPDATE users SET fname='$fname' , lname ='$lname' WHERE id='$session_id';");
+
+                if($result)
+                {
+                    $updatedone="success";
+                }
+                else
+                {
+                    $updatedone="failed";
+                }
+                //echo "ready to upload";
                       
             } 
         }
