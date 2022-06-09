@@ -32,30 +32,79 @@ include '/process/change_fname_lname.php';
     ?>
 
 
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light p-md-4">
+        <div class="container-fluid">
+        <a href="../index.php" class="navbar-brand">
+        <h2><img class="home-logo" src="../assets_home/home-logo.png" alt="kosai limited logo" height="35" width="35">
+          <b>Kosai Limited
+        </h2>
+      </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.php">Dashboard</a>
+                    </li>
+                    
+                    <?php
+                    if (isset($_SESSION['id'])) {
+                    ?>
+                        <form action="./process/logout.php" method="post">
+                            <li class="nav-item">
+                                <input type="submit" value="Logout" class="btn btn-primary">
+                            </li>
+                        </form>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Logout</a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
 
+                        <!-- main body -->
     <div class="container">
         <div class="row">
-            <div class="row align-item-start">
-                <div class="col-sm-4 mt-5 ms-5 mb-5">
+            <div class="row align-item-start ">
+                <div class="col-sm-4 mt-5 ms-5 mb-5 ">
                     <!-- col1 -->
-                    <img src="../assets_home/card sample.jpg" alt="">
+                    <img class="profile-pic" src="../assets_home/card sample.jpg" alt="">
+                    <br>
                     <!-- showing users fname, lname -->
-                    
+
                     <h1 class="ms-4">
-                        <p><?php 
-                        $session_id = $_SESSION['id'];
-                        $query = "select * from users where (id='$session_id')";
-                        $res = mysqli_query($dbc, $query);
-                        $row = mysqli_fetch_assoc($res);
-                        $_SESSION["f_name"]=$row['fname'];
-                        $_SESSION["l_name"]=$row['lname'];
-                        echo $_SESSION["f_name"] . " " . $_SESSION["l_name"]; ?></p>
-                        
+                        <p><?php
+                            $session_id = $_SESSION['id'];
+                            $query = "select * from users where (id='$session_id')";
+                            $res = mysqli_query($dbc, $query);
+                            $row = mysqli_fetch_assoc($res);
+                            $_SESSION["f_name"] = $row['fname'];
+                            $_SESSION["l_name"] = $row['lname'];
+                            echo $_SESSION["f_name"] . " " . $_SESSION["l_name"]; ?></p>
+
                     </h1>
-                    <h4 class="ms-4"><p><?php echo $row['username'] ; ?></p></h4>
-                    <h4 class="ms-4"><p><?php //role ?></p></h4>
+
+                    <h4 class="ms-4">
+                        <p><?php echo $row['username']; ?></p>
+                    </h4>
+
+                    <h4 class="ms-4">
+                        <p><?php //role 
+                            ?></p>
+                    </h4>
                 </div>
 
                 <div class="col-sm-4 editProfile ">
@@ -187,6 +236,81 @@ include '/process/change_fname_lname.php';
 
 
 
+    <!-- footer -->
+
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+    <div class="container text-center text-md-left">
+      <div class="row text-center text-md-left">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Kosai Limited</h5>
+          <p>It's a personal blog website.The blogs are mainly focused on programming world.</p>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Find me</h5>
+          <p> md3rahat2cse93@gmail.com</p>
+        </div>
+
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact site</h5>
+
+          <p><i class="fas fa-envelop mr-3"></i>kosailimited@gmail.com
+          </p>
+
+          <p><i class="fas fa-home mr-3"></i>Rajshahi, Bangladesh
+          </p>
+        </div>
+
+        <hr class="mb-4">
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-8">
+            <p>Copyright ©2022 All rights reserved by :
+              <a href="#" style="text-decoration: none;">
+                <strong class="text-warning">Kosai Limited</strong>
+              </a>
+            </p>
+          </div>
+
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+              <ul class="list-unstyleed list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                    <i class="fab fa-facebook"></i></a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                    <i class="fab fa-facebook"></i></a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                    <i class="fab fa-facebook"></i></a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                    <i class="fab fa-facebook"></i></a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                    <i class="fab fa-facebook"></i></a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </footer>
 
 
 
@@ -219,7 +343,11 @@ include '/process/change_fname_lname.php';
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" i ntegrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 
 </body>
 

@@ -30,7 +30,7 @@ try {
   <!--Navbar-->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
     <div class="container">
-      <a href="#" class="navbar-brand">
+      <a href="index.php" class="navbar-brand">
         <h2><img class="home-logo" src="./assets_home/home-logo.png" alt="kosai limited logo" height="35" width="35">
           <b>Kosai Limited
         </h2>
