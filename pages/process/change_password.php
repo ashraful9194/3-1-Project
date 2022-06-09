@@ -64,6 +64,7 @@ try {
                                 {
                                     $_SESSION['updatedone']="success";
                                     header("Location: ../edit_profile.php");
+                                    exit();
                                 }
                                 else
                                 {

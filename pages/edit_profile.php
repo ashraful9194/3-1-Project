@@ -1,7 +1,10 @@
 <?php
+
 require_once 'config.php';
-error_reporting(E_ALL);
-ini_set('display_errors',1);
+include '/process/change_fname_lname.php';
+
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +22,14 @@ ini_set('display_errors',1);
 <body>
 
 
+    <?php
+
+    extract($_POST);
+    $errors = json_decode($_SESSION['errors']);
+    $errors2 = json_decode($_SESSION['errors_names']);
+    unset($_SESSION['errors']);
+    unset($_SESSION['errors_names']);
+    ?>
 
 
 
@@ -30,61 +41,83 @@ ini_set('display_errors',1);
                 <div class="col-sm-4 mt-5 ms-5 mb-5">
                     <!-- col1 -->
                     <img src="../assets_home/card sample.jpg" alt="">
+                    <!-- showing users fname, lname -->
+                    
+                    <h1 class="ms-4">
+                        <p><?php 
+                        $session_id = $_SESSION['id'];
+                        $query = "select * from users where (id='$session_id')";
+                        $res = mysqli_query($dbc, $query);
+                        $row = mysqli_fetch_assoc($res);
+                        $_SESSION["f_name"]=$row['fname'];
+                        $_SESSION["l_name"]=$row['lname'];
+                        echo $_SESSION["f_name"] . " " . $_SESSION["l_name"]; ?></p>
+                        
+                    </h1>
+                    <h4 class="ms-4"><p><?php echo $row['username'] ; ?></p></h4>
+                    <h4 class="ms-4"><p><?php //role ?></p></h4>
                 </div>
+
                 <div class="col-sm-4 editProfile ">
                     <!-- col2 -->
-                    <!-- update alert start -->
+                    <!-- update alert start not working-->
                     <?php
-                    if ($_SESSION['updatedone'] = "success") { ?>
+
+                    if ($updateStatus == "success") { ?>
                         <div class="alert alert-success mt-4" role="alert">
                             <center>Update successfull... <br>
                         </div>
+                    <?php }
+                    if ($updateStatus == "failed") { ?>
+
+
+                        <div class="alert alert-danger mt-4" role="alert">
+                            <center>Update failed... <br>
+                        </div>
+
+                    <?php }
+                    if ($updateStatus != "success" && $updateStatus != "failed") { ?>
+
                     <?php } ?>
 
                     <!-- update alert ends -->
 
-                    <?php
-                    
-                    extract($_POST);
-                    $errors = json_decode($_SESSION['errors']);
-                    unset($_SESSION['errors']);
-                    ?>
 
                     <h1 class="pt-5">Edit Profile</h1>
                     <hr>
                     <h3 class="mt-4 mb-4">Basic Information</h3>
 
+
+                    <!-- name section -->
                     <form action="process/change_fname_lname.php" method="POST">
                         <div class="form-group">
                             <label class="label_txt">First Name</label>
-                            <input type="text" class="form-control" name="fname" value="<?php if ($errors->haserror()) {
-                                                                                            echo $fname;
-                                                                                        } else {
-                                                                                        
-                                                                                            if (isset($_POST['save_changes1'])) {
-                                                                                                echo $fname;
-                                                                                            } else {
-                                                                                                echo $_SESSION["f_name"];
-                                                                                            }
-                                                                                        }
-                                                                                        ?>">
-
+                            <input type="text" class="form-control" name="fname" value="">
                             <?php
-                            foreach ($errors->fname as $error) {
+                            foreach ($errors2->fname as $error) {
                                 echo '<p class="text-danger">' . $error . '</p>';
                             }
                             ?>
+
                         </div>
 
                         <div class="form-group mt-3">
                             <label class="label_txt">Last Name</label>
                             <input type="text" class="form-control" name="lname" value="">
 
+                            <?php
+                            foreach ($errors2->lname as $error) {
+                                echo '<p class="text-danger">' . $error . '</p>';
+                            }
+                            ?>
+
                         </div>
                         <button type="submit" class="form-btn2 btn btn-primary mt-3" name="save_changes1">Save</button>
 
                     </form>
 
+
+                    <!-- role section -->
                     <form>
                         <h3 class="mt-5 mb-4">
                             Change Role
@@ -104,7 +137,7 @@ ini_set('display_errors',1);
 
 
 
-
+                    <!-- password section -->
                     <form action="process/change_password.php" method="POST">
                         <h3 class="mt-5 mb-4">
                             Change Password
