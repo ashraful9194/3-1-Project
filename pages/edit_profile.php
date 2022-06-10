@@ -29,6 +29,14 @@ include '/process/change_fname_lname.php';
     $errors2 = json_decode($_SESSION['errors_names']);
     unset($_SESSION['errors']);
     unset($_SESSION['errors_names']);
+
+    $session_id = $_SESSION['id'];
+    $query = "select * from users where (id='$session_id')";
+    $res = mysqli_query($dbc, $query);
+    $row = mysqli_fetch_assoc($res);
+    $_SESSION["f_name"] = $row['fname'];
+    $_SESSION["l_name"] = $row['lname'];
+    $_SESSION["role"] = $row['role'];
     ?>
 
 
@@ -50,10 +58,18 @@ include '/process/change_fname_lname.php';
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.php">Dashboard</a>
-                    </li>
 
+                    <!-- if admin then show admin panel in navbar -->
+                    <?php if ($_SESSION['role'] == "admin") { ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="adminpanel.php">AdminPanel</a>
+                        </li><?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.php">Dashboard</a>
+                        </li>
+                    <?php } ?>
+
+                            <!-- if loged in then show log out option in navbar -->
                     <?php
                     if (isset($_SESSION['id'])) {
                     ?>
@@ -86,13 +102,7 @@ include '/process/change_fname_lname.php';
 
                     <h1 class="ms-4">
                         <p><?php
-                            $session_id = $_SESSION['id'];
-                            $query = "select * from users where (id='$session_id')";
-                            $res = mysqli_query($dbc, $query);
-                            $row = mysqli_fetch_assoc($res);
-                            $_SESSION["f_name"] = $row['fname'];
-                            $_SESSION["l_name"] = $row['lname'];
-                             $_SESSION["role"]=$row['role'];
+
                             echo $_SESSION["f_name"] . " " . $_SESSION["l_name"]; ?></p>
 
                     </h1>
@@ -170,7 +180,7 @@ include '/process/change_fname_lname.php';
                     <form action="./process/change_role.php" method="POST">
                         <h3 class="mt-5 mb-4">
                             Change Role
-                            
+
                         </h3>
                         <input class="form-check-input" type="radio" name="role" id="learner" value="learner" <?php
                                                                                                                 if ($_SESSION["role"] == "learner") {

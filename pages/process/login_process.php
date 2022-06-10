@@ -28,14 +28,29 @@ if(isset($_POST['sublogin']))
             if(isset($_POST['rememberme']))
             {
                
-                setcookie('emailcookie',$login,time()+604800); // 7 days cookie
+                if($_SESSION['role']=="admin")
+                {
+                    setcookie('emailcookie',$login,time()+604800); // 7 days cookie
+                    header("location: ../adminpanel.php");
+                    exit();
+                }
+
+                else {setcookie('emailcookie',$login,time()+604800); // 7 days cookie
                 header("location: ../../index.php");
-                exit();
+                exit();}
+
+                
             }
             else
             {
+                if($_SESSION['role']=="admin")
+                {
+                    header("location: ../adminpanel.php");
+                    exit(); 
+                }
+                else{
                 header("location: ../../index.php");
-                exit();
+                exit();}
             }
 
             
@@ -60,5 +75,3 @@ catch(Exception $e)
 {
     echo $e->getMessage() ;
 }
-
-?>
