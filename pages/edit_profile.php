@@ -36,13 +36,12 @@ include '/process/change_fname_lname.php';
 
     <nav class="navbar navbar-expand-lg navbar-light p-md-4">
         <div class="container-fluid">
-        <a href="../index.php" class="navbar-brand">
-        <h2><img class="home-logo" src="../assets_home/home-logo.png" alt="kosai limited logo" height="35" width="35">
-          <b>Kosai Limited
-        </h2>
-      </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a href="../index.php" class="navbar-brand">
+                <h2><img class="home-logo" src="../assets_home/home-logo.png" alt="kosai limited logo" height="35" width="35">
+                    <b>Kosai Limited
+                </h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -54,7 +53,7 @@ include '/process/change_fname_lname.php';
                     <li class="nav-item">
                         <a class="nav-link active" href="dashboard.php">Dashboard</a>
                     </li>
-                    
+
                     <?php
                     if (isset($_SESSION['id'])) {
                     ?>
@@ -75,7 +74,7 @@ include '/process/change_fname_lname.php';
 
 
 
-                        <!-- main body -->
+    <!-- main body -->
     <div class="container">
         <div class="row">
             <div class="row align-item-start ">
@@ -93,6 +92,7 @@ include '/process/change_fname_lname.php';
                             $row = mysqli_fetch_assoc($res);
                             $_SESSION["f_name"] = $row['fname'];
                             $_SESSION["l_name"] = $row['lname'];
+                             $_SESSION["role"]=$row['role'];
                             echo $_SESSION["f_name"] . " " . $_SESSION["l_name"]; ?></p>
 
                     </h1>
@@ -102,7 +102,7 @@ include '/process/change_fname_lname.php';
                     </h4>
 
                     <h4 class="ms-4">
-                        <p><?php //role 
+                        <p><?php echo $_SESSION['role'];
                             ?></p>
                     </h4>
                 </div>
@@ -167,15 +167,20 @@ include '/process/change_fname_lname.php';
 
 
                     <!-- role section -->
-                    <form>
+                    <form action="./process/change_role.php" method="POST">
                         <h3 class="mt-5 mb-4">
                             Change Role
+                            
                         </h3>
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="role" id="learner" value="learner" <?php
+                                                                                                                if ($_SESSION["role"] == "learner") {
+                                                                                                                ?> checked <?php } ?>>
                         <label class="form-check-label me-5" for="flexRadioDefault1">
                             Learner
                         </label>
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <input class="form-check-input" type="radio" name="role" id="contributor" value="contributor" <?php
+                                                                                                                        if ($_SESSION["role"] == "contributor") {
+                                                                                                                        ?> checked <?php } ?>>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Contributor
                         </label>
@@ -239,78 +244,78 @@ include '/process/change_fname_lname.php';
     <!-- footer -->
 
     <footer class="bg-dark text-white pt-5 pb-4 mt-5">
-    <div class="container text-center text-md-left">
-      <div class="row text-center text-md-left">
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Kosai Limited</h5>
-          <p>It's a personal blog website.The blogs are mainly focused on programming world.</p>
-        </div>
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Kosai Limited</h5>
+                    <p>It's a personal blog website.The blogs are mainly focused on programming world.</p>
+                </div>
 
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Find me</h5>
-          <p> md3rahat2cse93@gmail.com</p>
-        </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Find me</h5>
+                    <p> md3rahat2cse93@gmail.com</p>
+                </div>
 
 
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact site</h5>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact site</h5>
 
-          <p><i class="fas fa-envelop mr-3"></i>kosailimited@gmail.com
-          </p>
+                    <p><i class="fas fa-envelop mr-3"></i>kosailimited@gmail.com
+                    </p>
 
-          <p><i class="fas fa-home mr-3"></i>Rajshahi, Bangladesh
-          </p>
-        </div>
+                    <p><i class="fas fa-home mr-3"></i>Rajshahi, Bangladesh
+                    </p>
+                </div>
 
-        <hr class="mb-4">
-        <div class="row align-items-center">
-          <div class="col-md-7 col-lg-8">
-            <p>Copyright ©2022 All rights reserved by :
-              <a href="#" style="text-decoration: none;">
-                <strong class="text-warning">Kosai Limited</strong>
-              </a>
-            </p>
-          </div>
+                <hr class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-7 col-lg-8">
+                        <p>Copyright ©2022 All rights reserved by :
+                            <a href="#" style="text-decoration: none;">
+                                <strong class="text-warning">Kosai Limited</strong>
+                            </a>
+                        </p>
+                    </div>
 
-          <div class="col-md-5 col-lg-4">
-            <div class="text-center text-md-right">
-              <ul class="list-unstyleed list-inline">
-                <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
-                    <i class="fab fa-facebook"></i></a>
-                </li>
+                    <div class="col-md-5 col-lg-4">
+                        <div class="text-center text-md-right">
+                            <ul class="list-unstyleed list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                        <i class="fab fa-facebook"></i></a>
+                                </li>
 
-                <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
-                    <i class="fab fa-facebook"></i></a>
-                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                        <i class="fab fa-facebook"></i></a>
+                                </li>
 
-                <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
-                    <i class="fab fa-facebook"></i></a>
-                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                        <i class="fab fa-facebook"></i></a>
+                                </li>
 
-                <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
-                    <i class="fab fa-facebook"></i></a>
-                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                        <i class="fab fa-facebook"></i></a>
+                                </li>
 
-                <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
-                    <i class="fab fa-facebook"></i></a>
-                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                        <i class="fab fa-facebook"></i></a>
+                                </li>
 
-              </ul>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
             </div>
-          </div>
-
         </div>
-
-
-
-      </div>
-    </div>
-  </footer>
+    </footer>
 
 
 

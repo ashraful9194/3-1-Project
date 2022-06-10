@@ -19,6 +19,7 @@ if(isset($_POST['sublogin']))
             $_SESSION["f_name"]=$row['fname'];
             $_SESSION["l_name"]=$row['lname'];
             $_SESSION["id"]=$row['id'];
+            $_SESSION["role"]=$row['role'];
             
             $_SESSION["username"]=$row['username'];
             

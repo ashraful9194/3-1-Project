@@ -104,7 +104,7 @@
 
                         //insert
                         $result = mysqli_query($dbc, "INSERT into users
-                    values(null, '$fname','$lname','$username','$email','$password','$date')");
+                    values(null, '$fname','$lname','$username','$email','$password','$date','$role')");
 
                         if ($result) {
                             $done = 2;
@@ -214,6 +214,23 @@
                             <label class="label_txt">Confirm Password</label>
                             <input type="password" class="form-control" name="passwordConfirm" required="">
                         </div>
+                        <br>
+
+                        <!-- adding role -->
+                        <div>
+                        <h5 class=" mb-4">
+                            Change Role
+                        </h5>
+                        <input class="form-check-input" type="radio" name="role" id="learner" value="learner">
+                        <label class="form-check-label me-5" for="learner">
+                            Learner
+                        </label>
+                        <input class="form-check-input" type="radio" name="role" id="contributor" value="contributor" >
+                        <label class="form-check-label" for="contributor">
+                            Contributor
+                        </label>
+                        </div>
+
                         <br>
                         <button type="submit" class="form-btn btn btn-primary" name="signup">Signup</button>
                         <br>
