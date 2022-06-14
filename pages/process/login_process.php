@@ -31,7 +31,7 @@ if(isset($_POST['sublogin']))
                 if($_SESSION['role']=="admin")
                 {
                     setcookie('emailcookie',$login,time()+604800); // 7 days cookie
-                    header("location: ../adminpanel.php");
+                    header("location: ../adminpanel2.php");
                     exit();
                 }
 
