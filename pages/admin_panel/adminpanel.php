@@ -20,16 +20,17 @@
 <body>
 
 
-
+<!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
     <div class="container">
-        <aside>
+        <!-- --------------------- ASIDE -------------------------------------------- -->
+        <aside id="aside-menu" class="">
             <div class="top">
                 <div class="logo">
                     <img src="../../assets_home/home-logo.png" alt="Kosai Limited logo">
                     <h2>Kosai <span style="color:#0a98f7">Limited</span></h2>
                 </div>
-                <div class="close" id="btn-close">
+                <div class="close" id="close-btn">
                     <span class="material-icons-sharp">
                         close
                     </span>
@@ -81,15 +82,16 @@
                 </a>
             </div>
         </aside>
-        <!-- ================================= End of aside ======================================= -->
+        <!-- ================================= END OF ASIDE ======================================= -->
 
+        <!-- ================================= MAIN BODY ======================================= -->
         <main>
             <h1>Dashboard</h1>
             <div class="date">
                 <input type="date">
             </div>
             <div class="insights">
-                <div class="card1">
+                <div class="card1 res-card">
                     <span class="material-icons-sharp">
                         analytics
                     </span>
@@ -98,20 +100,12 @@
                             <h3>Total posts</h3>
                             <h1>2022</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            
-                            <div class="number">
-                                <p>81%</p>
-                            </div>
-                        </div>
+
                     </div>
                     <small class="text-muted">Last 24 Hour</small>
                 </div>
 
-                <div class="card2">
+                <div class="card2 res-card">
                     <span class="material-icons-sharp">
                         analytics
                     </span>
@@ -120,19 +114,12 @@
                             <h3>Total posts</h3>
                             <h1>2022</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>81%</p>
-                            </div>
-                        </div>
+
                     </div>
                     <small class="text-muted">Last 24 Hour</small>
                 </div>
 
-                <div class="card3">
+                <div class="card3 res-card">
                     <span class="material-icons-sharp">
                         analytics
                     </span>
@@ -141,24 +128,104 @@
                             <h3>Total posts</h3>
                             <h1>2022</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>81%</p>
-                            </div>
-                        </div>
+
                     </div>
                     <small class="text-muted">Last 24 Hour</small>
                 </div>
 
 
             </div>
+
+            <!-- ----------------------------- END OF INSIGHTS ------------------------------------- -->
+
+            <div class="recent-posts">
+                <h2>Recent Posts</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Post Number</th>
+                            <th>Post Topic</th>
+                            <th>Post Catregory</th>
+                            <th>Publisher</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to c</td>
+                            <td>C programming</td>
+                            <td>mdrthw</td>
+                            <td>pending</td>
+                            <td>Review</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Introduction to c</td>
+                            <td>C programming</td>
+                            <td>mdrthw</td>
+                            <td>pending</td>
+                            <td>Review</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#">Show All</a>
+            </div>
         </main>
+        <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
+
+        <!-- ================================= RIGHT SIDE ======================================= -->
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Rahat</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                    </div>
+                </div>
+            </div>
+            <div class="recent-updates">
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                        </div>
+                        <div class="message">
+                            <p><b>Rahat Ali updated this page</b></p>
+                            <small class="text-muted">2mins ago</small>
+                        </div>
+                    </div>
+
+
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                        </div>
+                        <div class="message">
+                            <p><b>Rahat Ali updated this page</b></p>
+                            <small class="text-muted">2mins ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ================================= END OF RIGHT SIDE ======================================= -->
 
     </div>
 
+<!-- ================================= FOOTER ======================================= -->
 
 
 
