@@ -62,7 +62,7 @@ include '/process/change_fname_lname.php';
                     <!-- if admin then show admin panel in navbar -->
                     <?php if ($_SESSION['role'] == "admin") { ?>
                         <li class="nav-item">
-                            <a class="nav-link active" href="adminpanel.php">AdminPanel</a>
+                            <a class="nav-link active" href="admin_panel/adminpanel.php">AdminPanel</a>
                         </li><?php } else { ?>
                         <li class="nav-item">
                             <a class="nav-link active" href="dashboard.php">Dashboard</a>
