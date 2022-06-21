@@ -27,7 +27,7 @@ try {
 
 <body>
 
-  <!--Navbar-->
+  <!--Navbarrr-->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
     <div class="container">
       <a href="index.php" class="navbar-brand">
