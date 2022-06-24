@@ -2,7 +2,7 @@
 
 
 try {
-    session_start();
+    //session_start();
     
 
     
@@ -76,12 +76,12 @@ try {
 
                 if($result)
                 {  
-                    $updateStatus="success";
+                    $_SESSION['updatedone']="Update successfull";
                     header("Refresh:0; url=../edit_profile.php");
                 }
                 else
                 {
-                    $updateStatus="failed";
+                    $_SESSION['updatedone']="Update failed. Please try again.";
                     header("Refresh:0; url=../edit_profile.php");
                 }
                 //echo "ready to upload";
@@ -89,7 +89,7 @@ try {
             } 
             else
             {
-                $updateStatus="failed";
+                $_SESSION['updatedone']="Update failed. Please try again.";
                 $_SESSION['errors_names'] = json_encode($errors_fname_lname);
                 header("Refresh:0; url=../edit_profile.php");
                 

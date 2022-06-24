@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sign in to Kosai Limited</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./style.css">
     </head>
 
     <body class="login_body">
@@ -18,7 +18,7 @@
                 <!--Form starting here-->
                 <div class="col-sm-4">
                     <div class="login_form">
-                        <center><img src="assets/home-logo.png" alt="Kosai Limited Logo" style="width:70;height:70px;" class="logo img-fluid mb-2">
+                        <center><img src="./assets/home-logo.png" alt="Kosai Limited Logo" style="width:70;height:70px;" class="logo img-fluid mb-2">
                             <h1 class="mb-3">Kosai Limited</h1>
                         </center>
                         <?php
@@ -30,7 +30,7 @@
                         }
                         ?>
 
-                        <form action="process/login_process.php" method="POST">
+                        <form action="./process/login_process.php" method="POST">
                             <!--email section-->
                             <div class=" mb-3 form-group">
                                 <label class="label_txt">Username or Email</label>
@@ -67,12 +67,12 @@
 
                         <!--Forgot password section-->
                         <p style="font-size: 12px ; text-align: center;">
-                            <a href="forgot_password.php" style="color: #00376b;">Forgot Password?</a>
+                            <a href="./forgot_password.php" style="color: #00376b;">Forgot Password?</a>
                         </p>
                         <br>
 
                         <!--Sign uo section-->
-                        <p>Don't have an account? <a href="sign_up.php">Sign up</a>
+                        <p>Don't have an account? <a href="./sign_up.php">Sign up</a>
                         </p>
 
                     </div>

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'config.php';
-include '/process/change_fname_lname.php';
+require_once './config.php';
+// include './process/change_fname_lname.php';
 
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
@@ -16,17 +16,18 @@ include '/process/change_fname_lname.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
 
     <?php
-
+    require_once './errors/Error_edit_profile_fname_lname.php';
+    require_once "./errors/Error_edit_profile_password_change.php";
     extract($_POST);
-    $errors = json_decode($_SESSION['errors']);
-    $errors2 = json_decode($_SESSION['errors_names']);
+    $errors = isset($_SESSION['errors']) ? json_decode($_SESSION['errors']) : new EditProfilePasswordChange();
+    $errors2 = isset($_SESSION['errors_names']) ? json_decode($_SESSION['errors_names']) : new EditProfileFnameLname();;
     unset($_SESSION['errors']);
     unset($_SESSION['errors_names']);
 
@@ -60,16 +61,16 @@ include '/process/change_fname_lname.php';
                     </li>
 
                     <!-- if admin then show admin panel in navbar -->
-                    <?php if ($_SESSION['role'] == "admin") { ?>
+                    <?php if ($_SESSION['role'] == "Admin") { ?>
                         <li class="nav-item">
-                            <a class="nav-link active" href="admin_panel/adminpanel.php">AdminPanel</a>
+                            <a class="nav-link active" href="./admin_panel/adminpanel.php">AdminPanel</a>
                         </li><?php } else { ?>
                         <li class="nav-item">
-                            <a class="nav-link active" href="dashboard.php">Dashboard</a>
+                            <a class="nav-link active" href="./dashboard.php">Dashboard</a>
                         </li>
                     <?php } ?>
 
-                            <!-- if loged in then show log out option in navbar -->
+                    <!-- if loged in then show log out option in navbar -->
                     <?php
                     if (isset($_SESSION['id'])) {
                     ?>
@@ -79,6 +80,7 @@ include '/process/change_fname_lname.php';
                             </li>
                         </form>
                     <?php } else { ?>
+                        <!--this is done beacause if anyone is able to reach it but won't be ble to logout-->
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Logout</a>
                         </li>
@@ -119,28 +121,6 @@ include '/process/change_fname_lname.php';
 
                 <div class="col-sm-4 editProfile ">
                     <!-- col2 -->
-                    <!-- update alert start not working-->
-                    <?php
-
-                    if ($updateStatus == "success") { ?>
-                        <div class="alert alert-success mt-4" role="alert">
-                            <center>Update successfull... <br>
-                        </div>
-                    <?php }
-                    if ($updateStatus == "failed") { ?>
-
-
-                        <div class="alert alert-danger mt-4" role="alert">
-                            <center>Update failed... <br>
-                        </div>
-
-                    <?php }
-                    if ($updateStatus != "success" && $updateStatus != "failed") { ?>
-
-                    <?php } ?>
-
-                    <!-- update alert ends -->
-
 
                     <h1 class="pt-5">Edit Profile</h1>
                     <hr>
@@ -148,7 +128,7 @@ include '/process/change_fname_lname.php';
 
 
                     <!-- name section -->
-                    <form action="process/change_fname_lname.php" method="POST">
+                    <form action="./process/change_fname_lname.php" method="POST">
                         <div class="form-group">
                             <label class="label_txt">First Name</label>
                             <input type="text" class="form-control" name="fname" value="">
@@ -182,18 +162,26 @@ include '/process/change_fname_lname.php';
                             Change Role
 
                         </h3>
-                        <input class="form-check-input" type="radio" name="role" id="learner" value="learner" <?php
+                        <input class="form-check-input" type="radio" name="role" id="learner" value="Learner" <?php
                                                                                                                 if ($_SESSION["role"] == "learner") {
                                                                                                                 ?> checked <?php } ?>>
                         <label class="form-check-label me-5" for="flexRadioDefault1">
                             Learner
                         </label>
-                        <input class="form-check-input" type="radio" name="role" id="contributor" value="contributor" <?php
+                        <input class="form-check-input " type="radio" name="role" id="contributor" value="Contributor" <?php
                                                                                                                         if ($_SESSION["role"] == "contributor") {
                                                                                                                         ?> checked <?php } ?>>
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label me-5" for="flexRadioDefault2">
                             Contributor
                         </label>
+
+                        <!-- if admin then show this -->
+                        <?php if ($_SESSION["role"] == "Admin") { ?>
+                            <input class="form-check-input" type="radio" name="role" id="admin" value="Admin" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Admin
+                            </label>
+                        <?php } ?>
                         <br>
                         <button type="submit" class="form-btn2 btn btn-primary mt-3" name="save_changes2">Save</button>
                     </form>
@@ -202,7 +190,7 @@ include '/process/change_fname_lname.php';
 
 
                     <!-- password section -->
-                    <form action="process/change_password.php" method="POST">
+                    <form action="./process/change_password.php" method="POST">
                         <h3 class="mt-5 mb-4">
                             Change Password
                         </h3>
@@ -281,7 +269,7 @@ include '/process/change_fname_lname.php';
                 <div class="row align-items-center">
                     <div class="col-md-7 col-lg-8">
                         <p>Copyright ©2022 All rights reserved by :
-                            <a href="#" style="text-decoration: none;">
+                            <a href="../index.php" style="text-decoration: none;">
                                 <strong class="text-warning">Kosai Limited</strong>
                             </a>
                         </p>
@@ -328,6 +316,22 @@ include '/process/change_fname_lname.php';
     </footer>
 
 
+
+    <!-- ------------------------------ PROMPT SECTION ------------------------------------------ -->
+
+    <script>
+        setTimeout(() => {
+            <?php
+            if (isset($_SESSION['updatedone'])) {
+            ?>
+                alert("<?php echo $_SESSION['updatedone']; ?>")
+            <?php
+                unset($_SESSION['updatedone']);
+            }
+
+            ?>
+        }, 500);
+    </script>
 
 
 

@@ -37,7 +37,7 @@
                 <hr class="mb-4">
                 
                     <p>Copyright ©2022 All rights reserved by :
-                        <a href="#" style="text-decoration: none;">
+                        <a href="../../index.php" style="text-decoration: none;">
                             <strong class="text-warning">Kosai Limited</strong>
                         </a>
                     </p>
