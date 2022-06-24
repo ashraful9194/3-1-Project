@@ -81,6 +81,12 @@ body{
     margin: 0 auto;
     gap: 4rem;
     grid-template-columns: 14rem auto 23rem;
+      /* new by rahat */
+      /* display:grid;
+      width: 96%;
+      margin: 0 1rem;
+      gap: 5rem ;
+      grid-template-columns: 24rem auto 30rem;  */
 }
 
 
