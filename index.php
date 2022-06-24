@@ -21,7 +21,8 @@ try {
   <title>Kosai Limited</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./stylesheet.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
@@ -44,10 +45,10 @@ try {
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
-          <li class="nav-item"><a href="../index.php" class="nav-link text-white">Home</a></li>
-          <li class="nav-item"><a href="pages/about_site.php" class="nav-link text-white">About site</a></li>
-          <li class="nav-item"><a href="pages/courses.php" class="nav-link text-white">Courses</a></li>
-          <li class="nav-item"><a href="pages/contact_us.php" class="nav-link text-white">Contatct us</a></li>
+          <li class="nav-item"><a href="./index.php" class="nav-link text-white">Home</a></li>
+          <li class="nav-item"><a href="./pages/about_site.php" class="nav-link text-white">About site</a></li>
+          <li class="nav-item"><a href="./pages/courses.php" class="nav-link text-white">Courses</a></li>
+          <li class="nav-item"><a href="./pages/contact_us.php" class="nav-link text-white">Contatct us</a></li>
           <?php
           if (isset($_SESSION['id'])) {
           ?>
@@ -59,8 +60,8 @@ try {
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href="#">Dashboard</a></li>
                   <li><a class="dropdown-item" href="#">Create Post</a></li>
-                  <li><a class="dropdown-item" href="pages/edit_profile.php">Edit Profile</a></li>
-                  <form action="pages/process/logout.php" method="post">
+                  <li><a class="dropdown-item" href="./pages/edit_profile.php">Edit Profile</a></li>
+                  <form action="./pages/process/logout.php" method="post">
                     <li class="nav-item">
                       <input type="submit" value="Logout" class="btn btn-light">
                     </li>
@@ -72,7 +73,7 @@ try {
           <?php
           } else {
           ?>
-            <li class="nav-item"><a href="pages/login.php" class="nav-link text-white">Login/Signup</a></li>
+            <li class="nav-item"><a href="./pages/login.php" class="nav-link text-white">Login/Signup</a></li>
           <?php
           }
           ?>
@@ -129,7 +130,7 @@ try {
         <div class="col-lg-4 mb-5">
           <!--Bootstrap cards1-->
           <div class="card" style="width: 21rem;">
-            <img src="assets_home/card sample.jpg" alt="Card one" class="card-img-top">
+            <img src="./assets_home/card sample.jpg" alt="Card one" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><?php echo $posts[$i]['title'] ?></h5>
               <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
@@ -174,7 +175,7 @@ try {
         <div class="row align-items-center">
           <div class="col-md-7 col-lg-8">
             <p>Copyright ©2022 All rights reserved by :
-              <a href="#" style="text-decoration: none;">
+              <a href="./index.php" style="text-decoration: none;">
                 <strong class="text-warning">Kosai Limited</strong>
               </a>
             </p>
@@ -241,7 +242,7 @@ try {
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

@@ -62,13 +62,13 @@ try {
                                                                                WHERE id='$session_id'; ");
                                 if($result)
                                 {
-                                    $_SESSION['updatedone']="success";
+                                    $_SESSION['updatedone']="Update successfull";
                                     header("Location: ../edit_profile.php");
                                     exit();
                                 }
                                 else
                                 {
-                                    $_SESSION['updatedone']="failed";
+                                    $_SESSION['updatedone']="Update failed. Please try again.";
                                     header("Location: ../edit_profile.php");
                                     exit();
                                 }
@@ -77,24 +77,28 @@ try {
 
 
                             } else {
+                                $_SESSION['updatedone']="Update failed. Please try again.";
                                 $errors->newpassword[] = 'Password do not match';
                                 $_SESSION['errors'] = json_encode($errors);
                                 header("Location: ../edit_profile.php");
                                 exit();
                             }
                         } else {
+                            $_SESSION['updatedone']="Update failed. Please try again.";
                             $errors->newpassword[] = 'Password must not exceed 20 characters.';
                             $_SESSION['errors'] = json_encode($errors);
                             header("Location: ../edit_profile.php");
                             exit();
                         }
                     } else {
+                        $_SESSION['updatedone']="Update failed. Please try again.";
                         $errors->newpassword[] = 'Password must be at least 6  characters long';
                         $_SESSION['errors'] = json_encode($errors);
                         header("Location: ../edit_profile.php");
                         exit();
                     }
                 } else {
+                    $_SESSION['updatedone']="Update failed. Please try again.";
                     $errors->oldpassword[] = 'Password do not match with your current password';
                     $_SESSION['errors'] = json_encode($errors);
                     header("Location: ../edit_profile.php");

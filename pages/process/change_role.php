@@ -2,7 +2,7 @@
 
 
 try {
-    session_start();
+    //session_start();
     require_once "../config.php";
     //echo ("<script> console.log ('username: " . $_SESSION["username"] . "')</script>");
     if (isset($_SESSION["username"])) {
@@ -18,19 +18,28 @@ try {
 
             $role = validation($_POST['role']);
             
-           
-        $result = mysqli_query($dbc,"UPDATE users SET role='$role' WHERE id='$session_id';");
-
+           if($role=="Learner" || $role=="Contributor"){
+                $result = mysqli_query($dbc,"UPDATE users SET role='$role' WHERE id='$session_id';");
+                //checking database error
                 if($result)
                 {  
-                    $updateStatus="success";
+                    $_SESSION['updatedone']="Update successfull";
                     header("Refresh:0; url=../edit_profile.php");
                 }
                 else
                 {
-                    $updateStatus="failed";
+                    $_SESSION['updatedone']="Update failed. Please try again.";
                     header("Refresh:0; url=../edit_profile.php");
                 }
+           }
+           // checking user end error
+           else
+           {
+            $_SESSION['updatedone']="Update failed. Please try again.";
+            header("Refresh:0; url=../edit_profile.php");
+           }
+
+               
     }
 
     else
