@@ -89,24 +89,109 @@
             <input type="date">
         </div>
         <!-- form -->
-        <div class="form-card">
+        <div class="form-card card-body d-flex flex-column">
             <div class="card1 res-card">
 
                 <div class="middle">
-                    <div class="left">
-                        <h3>Total posts</h3>
-                        <h1>2022</h1>
-                    </div>
+                    <form>
+                        <!-- post title -->
+                        <div class="row mb-3 post-title">
+                            <label for="post-title" class="col-sm-2 col-form-label">Post Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="post-tittle">
+                            </div>
+                        </div>
+                        <!-- category -->
+                        <div class="row mb-3 category">
+                            <label for="category" class="col-sm-2 col-form-label">Category</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="category">
+                            </div>
+                        </div>
+                        <!-- Paragraph 1 -->
+                        <div class="row mb-3 paragraph1">
+                            <label for="paragraph1" class="col-sm-2 col-form-label">Paragraph 1</label>
+                            <div class="col-sm-10">
+                                <textarea name="paragraph1" id="paragraph1" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <!-- code 1 -->
+                        <div class="row mb-3 code1">
+                            <label for="code1" class="col-sm-2 col-form-label">Code 1</label>
+                            <div class="col-sm-10">
+                                <textarea name="code1" id="code1" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <!-- Paragraph 2 -->
+                        <div class="row mb-3 paragraph2">
+                            <label for="paragraph2" class="col-sm-2 col-form-label">Paragraph 2</label>
+                            <div class="col-sm-10">
+                                <textarea name="paragraph2" id="paragraph2" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <!-- code 2 -->
+                        <div class="row mb-3 code2">
+                            <label for="code2" class="col-sm-2 col-form-label">Code 2</label>
+                            <div class="col-sm-10">
+                                <textarea name="code2" id="code2" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <!-- Paragraph 3 -->
+                        <div class="row mb-3 paragraph3">
+                            <label for="paragraph3" class="col-sm-2 col-form-label">Paragraph 3</label>
+                            <div class="col-sm-10">
+                                <textarea name="paragraph3" id="paragraph3" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <!-- code 3 -->
+                        <div class="row mb-3 code3">
+                            <label for="code3" class="col-sm-2 col-form-label">Code 3</label>
+                            <div class="col-sm-10">
+                                <textarea name="code3" id="code3" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                        
+                    </form>
 
                 </div>
-                <small class="text-muted">Cretaing post form</small>
-                
+
+               
             </div>
+             <!-- here -->
+             
         </div>
 
     </main>
 
     <!-- ================================= END OF Center main ======================================= -->
+
+    <!-- ================================= Starting right side ======================================= -->
+
+    <div class="right">
+        <div class="top">
+            <button id="menu-btn">
+                <span class="material-icons-sharp">menu</span>
+            </button>
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <p>Hey, <b>Rahat</b></p>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================= End of right side ======================================= -->
+
 
 
 </div>

@@ -40,14 +40,14 @@
             </div>
             <div class="sidebar">
                 <!-- Dashboard -->
-                <a href="#" class="active">
+                <a href="./adminpanel.php" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
                 <!-- Create post -->
-                <a href="#">
+                <a href="../create_post/create_post.php">
                     <span class="material-icons-sharp">
                         draw
                     </span>
@@ -76,14 +76,14 @@
                     <span class="message-count">26</span>
                 </a>
                 <!-- settings -->
-                <a href="#">
+                <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Settings</h3>
                 </a>
                 <!-- logout -->
-                <a href="#">
+                <a href="../process/logout.php">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -238,7 +238,8 @@
 
 
     <!--Footer 1-->
-    <footer class="bg-dark text-white mt-5">
+   <div class="footer-manual">
+   <footer class="bg-dark text-white mt-5">
         <div class="row">
             <div class="col-md-4 left">
                 <h2>Kosai Limited</h2>
@@ -281,6 +282,7 @@
             </div>
         </div>
     </footer>
+   </div>
 
 
 

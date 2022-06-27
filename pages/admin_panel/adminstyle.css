@@ -65,13 +65,14 @@ html{
 
 body{
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
     font-family: poppins,sans-serif;
     font-size: .88rem;
     background: var(--color-background);
     user-select: none;
     overflow-x: hidden;
     color: var(--color-dark);
+    
 
 }
 
@@ -396,6 +397,8 @@ main .recent-posts a{
 }
 
 
+
+
 /* ============================== RIGHT TOP ========================================= */
 
 .right{
@@ -480,6 +483,8 @@ footer{
     display: block;
     text-align: center;
     padding: 25px 50px 30px;
+    
+   
 }
 
 footer .row .col-md-4 h2{
@@ -540,8 +545,11 @@ footer .row .col-md-4 h2{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin: 2rem 0 0 8.8rem;
+    margin: 2rem 0 0 4.8rem;
     padding-left: 110px;
+
+    
+    
  }
  main .recent-posts a{
     padding-right: 12rem;
@@ -549,6 +557,7 @@ footer .row .col-md-4 h2{
 
  main .recent-posts table{
     width: 65vw;
+    position: relative;
     
  }
  main table thead tr th:nth-child(3), main table thead tr th:first-child{
@@ -557,6 +566,10 @@ footer .row .col-md-4 h2{
 
  main table tbody tr td:nth-child(3), main table tbody tr td:first-child{
     display: none;
+ }
+ /* fix it after inserting 20 row to table */
+ .footer-manual{ 
+     margin-top: 230px;
  }
 }
 
