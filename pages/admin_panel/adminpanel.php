@@ -27,10 +27,10 @@
         <aside id="aside-menu" class="">
             <div class="top">
                 <a href="../../index.php">
-                <div class="logo">
-                    <img src="../../assets_home/home-logo.png" alt="Kosai Limited logo">
-                    <h2>Kosai <span style="color:#0a98f7">Limited</span></h2>
-                </div>
+                    <div class="logo">
+                        <img src="../../assets_home/home-logo.png" alt="Kosai Limited logo">
+                        <h2>Kosai <span style="color:#0a98f7">Limited</span></h2>
+                    </div>
                 </a>
                 <div class="close" id="close-btn">
                     <span class="material-icons-sharp">
@@ -40,14 +40,21 @@
             </div>
             <div class="sidebar">
                 <!-- Dashboard -->
-                <a href="#">
+                <a href="./adminpanel.php" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
+                <!-- Create post -->
+                <a href="../create_post/create_post.php">
+                    <span class="material-icons-sharp">
+                        draw
+                    </span>
+                    <h3>Create Post</h3>
+                </a>
                 <!-- Users -->
-                <a href="#" class="active">
+                <a href="#">
                     <span class="material-icons-sharp">
                         person
                     </span>
@@ -69,14 +76,14 @@
                     <span class="message-count">26</span>
                 </a>
                 <!-- settings -->
-                <a href="#">
+                <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Settings</h3>
                 </a>
                 <!-- logout -->
-                <a href="#">
+                <a href="../process/logout.php">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -231,7 +238,8 @@
 
 
     <!--Footer 1-->
-    <footer class="bg-dark text-white mt-5">
+   <div class="footer-manual">
+   <footer class="bg-dark text-white mt-5">
         <div class="row">
             <div class="col-md-4 left">
                 <h2>Kosai Limited</h2>
@@ -262,18 +270,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col" >
+            <div class="col">
                 <hr class="mb-4">
-                
-                    <p>Copyright ©2022 All rights reserved by :
-                        <a href="#" style="text-decoration: none;">
-                            <strong class="text-warning">Kosai Limited</strong>
-                        </a>
-                    </p>
-                
+
+                <p>Copyright ©2022 All rights reserved by :
+                    <a href="#" style="text-decoration: none;">
+                        <strong class="text-warning">Kosai Limited</strong>
+                    </a>
+                </p>
+
             </div>
         </div>
     </footer>
+   </div>
 
 
 
