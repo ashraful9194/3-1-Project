@@ -93,19 +93,19 @@
             <div class="card1 res-card">
 
                 <div class="middle">
-                    <form>
+                    <form action="" method="POST">
                         <!-- post title -->
                         <div class="row mb-3 post-title">
                             <label for="post-title" class="col-sm-2 col-form-label">Post Title</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="post-tittle">
+                                <input type="text" class="form-control" id="post-tittle" name="post-title">
                             </div>
                         </div>
                         <!-- category -->
                         <div class="row mb-3 category">
                             <label for="category" class="col-sm-2 col-form-label">Category</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="category">
+                                <input type="text" class="form-control" id="category" name="category">
                             </div>
                         </div>
                         <!-- Paragraph 1 -->
@@ -151,7 +151,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                        <button type="submit" class="btn btn-primary submit-btn" name="submit_post">Submit</button>
                         
                     </form>
 

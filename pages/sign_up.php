@@ -219,7 +219,7 @@
                         <!-- adding role -->
                         <div>
                         <h5 class=" mb-4">
-                            Change Role
+                            Select Role
                         </h5>
                         <input class="form-check-input" type="radio" name="role" id="learner" value="learner">
                         <label class="form-check-label me-5" for="learner">
