@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require_once "../config.php" ?>
 <!doctype html>
 <html lang="en">
 
@@ -21,6 +21,14 @@
 <body>
 
 
+    <!-- fetching database -->
+    <?php
+    $query = "SELECT * FROM kosai_limited.allpost;";
+    $res = mysqli_query($dbc, $query);
+    $numRows = mysqli_num_rows($res);
+
+
+    ?>
     <!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
     <div class="container">
@@ -53,6 +61,15 @@
                         draw
                     </span>
                     <h3>Create Post</h3>
+                </a>
+                <!-- all post -->
+                <a href="../show_post/show_post.php" class="">
+                    <span class="material-icons-sharp">
+                        <span class="material-icons-sharp">
+                            format_list_bulleted
+                        </span>
+                    </span>
+                    <h3>All Post</h3>
                 </a>
                 <!-- Users -->
                 <a href="#">
@@ -149,35 +166,41 @@
             <!-- ----------------------------- END OF INSIGHTS ------------------------------------- -->
 
             <div class="recent-posts">
-                <h2>Recent Posts</h2>
+                <h2>Pending Posts</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Post Number</th>
-                            <th>Post Topic</th>
+                            <th>Post ID</th>
+                            <th>Post Title</th>
                             <th>Post Catregory</th>
                             <th>Publisher</th>
-                            <th>Status</th>
+                            <!-- <th>Status</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to c</td>
-                            <td>C programming</td>
-                            <td>mdrthw</td>
-                            <td>pending</td>
-                            <td>Review</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Introduction to c</td>
-                            <td>C programming</td>
-                            <td>mdrthw</td>
-                            <td>pending</td>
-                            <td>Review</td>
-                        </tr>
+
+                        <?php
+                        if ($numRows > 0) {
+                            $limit=10;
+                            while (($row = mysqli_fetch_assoc($res)) && $limit>0) { ?>
+
+                                <tr>
+                                    <td><?php echo $row['post_id']; ?></td>
+                                    <td><?php echo $row['post_title']; ?></td>
+                                    <td><?php echo $row['post_category']; ?></td>
+                                    <td><?php echo $row['post_publisher_username']; ?></td>
+                                    <!-- <td>pending</td> -->
+                                    <td>
+                                        <a href="">
+                                        <button type="button" class="btn review-button">Review</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                        <?php $limit--; }
+                        } ?>
+
+
                     </tbody>
                 </table>
                 <a href="#">Show All</a>
@@ -239,51 +262,51 @@
 
 
     <!--Footer 1-->
-   <div class="footer-manual">
-   <footer class="bg-dark text-white mt-5">
-        <div class="row">
-            <div class="col-md-4 left">
-                <h2>Kosai Limited</h2>
-                <p class="text-muted warning">
-                <h3>
-                    An E-learning platfrom. <br><br> From beginner to advance.
-                </h3>
-                </p>
+    <div class="footer-manual">
+        <footer class="bg-dark text-white mt-5">
+            <div class="row">
+                <div class="col-md-4 left">
+                    <h2>Kosai Limited</h2>
+                    <p class="text-muted warning">
+                    <h3>
+                        An E-learning platfrom. <br><br> From beginner to advance.
+                    </h3>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Find us</h2>
+                    <span class="material-icons-sharp">
+                        email
+                    </span>
+                    <p class="text-muted">
+                    <h3>
+                        md3rahat2cse93@gmail.com
+                    </h3>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Follow us</h2>
+                    <img src="../svg/icons8-facebook.svg" alt="" class="svg">
+                    <img src="../svg/icons8-instagram.svg" alt="" class="svg">
+                    <img src="../svg/icons8-linkedin.svg" alt="" class="svg">
+                    <img src="../svg/icons8-twitter.svg" alt="" class="svg">
+                    <img src="../svg/icons8-youtube.svg" alt="" class="svg">
+                </div>
             </div>
-            <div class="col-md-4">
-                <h2>Find us</h2>
-                <span class="material-icons-sharp">
-                    email
-                </span>
-                <p class="text-muted">
-                <h3>
-                    md3rahat2cse93@gmail.com
-                </h3>
-                </p>
-            </div>
-            <div class="col-md-4">
-                <h2>Follow us</h2>
-                <img src="../svg/icons8-facebook.svg" alt="" class="svg">
-                <img src="../svg/icons8-instagram.svg" alt="" class="svg">
-                <img src="../svg/icons8-linkedin.svg" alt="" class="svg">
-                <img src="../svg/icons8-twitter.svg" alt="" class="svg">
-                <img src="../svg/icons8-youtube.svg" alt="" class="svg">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <hr class="mb-4">
+            <div class="row">
+                <div class="col">
+                    <hr class="mb-4">
 
-                <p>Copyright ©2022 All rights reserved by :
-                    <a href="#" style="text-decoration: none;">
-                        <strong class="text-warning">Kosai Limited</strong>
-                    </a>
-                </p>
+                    <p>Copyright ©2022 All rights reserved by :
+                        <a href="#" style="text-decoration: none;">
+                            <strong class="text-warning">Kosai Limited</strong>
+                        </a>
+                    </p>
 
+                </div>
             </div>
-        </div>
-    </footer>
-   </div>
+        </footer>
+    </div>
 
 
 
@@ -301,7 +324,8 @@
 
     <!-- for setting up theme -->
     <!-- will work on latter -->
-    <?php //include "../process/set_theme.php"?>
+    <?php //include "../process/set_theme.php"
+    ?>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

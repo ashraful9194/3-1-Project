@@ -2,7 +2,7 @@
 try {
   //code...
 
-  require_once 'pages/config.php';
+  require_once './pages/config.php';
 } catch (\Throwable $e) {
   //throw $th;
   die($e->getMessage());
@@ -101,45 +101,42 @@ try {
 
 
   <!--Main body-->
-  <!--Row 1-->
+  <!-- fetching data from database -->
+          <?php 
+          $query="select count(post_id) as total_posts from allpost"; // this will set the value in total_posts variable like a row
+          $result=mysqli_query($dbc,$query); //executing the query
+          $numRows=mysqli_num_rows($result);
+          if($numRows==1)
+            {
+              $row = mysqli_fetch_assoc($result);
+
+              //this is my query result $row['total_posts'];
+              $total_posts=$row['total_posts'];
+            }
+            else
+            {
+              $_SESSION['update_status']="failed";
+              header("location:./index.php");
+              exit();
+            }
+              // $row = mysqli_fetch_assoc($result);
+              // echo $result;
+
+          ?>
+  <!-- fetching ends here -->
   <div class="container " id="cardcontainer">
     <div class="row">
       <?php
-      $posts = [
-        [
-          'title' => 'Post #1',
-          'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
-        ],
-        [
-          'title' => 'Post #2',
-          'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
-        ],
-        [
-          'title' => 'Post #3',
-          'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
-        ],
-        [
-          'title' => 'Post #4',
-          'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
-        ],
-        [
-          'title' => 'Post #5',
-          'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
-        ],
-        [
-          'title' => 'Post #6',
-          'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, ipsum?',
-        ],
-      ];
-      for ($i = 0; $i < count($posts); $i++) {
+      
+      for ($i = 0; $i < 9; $i++) {
       ?>
         <div class="col-lg-4 mb-5">
           <!--Bootstrap cards1-->
           <div class="card" style="width: 21rem;">
             <img src="./assets_home/card sample.jpg" alt="Card one" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title"><?php echo $posts[$i]['title'] ?></h5>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, velit.</p>
+              <h5 class="card-title"><?php  ?></h5>
+              <p class="card-text"><?php  ?></p>
               <a href="#" class="btn btn-primary">Read...</a>
             </div>
           </div>

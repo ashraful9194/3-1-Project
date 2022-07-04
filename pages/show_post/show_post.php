@@ -1,17 +1,13 @@
-<?php include "./cpheader.php" ?>
-
-
-
-
+<?php include "./show_post_header.php"?>
 <!--------------------------------------The whole body starts from here-------------------------------------->
-<!-- This whole page is divied into 3 portion aside , center main and right portion. 
+<!-- This whole page is divied into 3 portion : aside , center main and right portion. 
      Aside contains page navigations.
-     Center main contains the tittle and full form.
+     Center main contains the full post.
      Right portion has top navigation , theme toggler, profile info.
      At last there is footer.-->
 
 
-<div class="container">
+     <div class="container">
     <!-- --------------------- ASIDE -------------------------------------------- -->
     <aside id="aside-menu" class="">
         <div class="top">
@@ -29,14 +25,14 @@
         </div>
         <div class="sidebar">
             <!-- Dashboard -->
-            <a href="#">
+            <a href="../admin_panel/adminpanel.php">
                 <span class="material-icons-sharp">
                     dashboard
                 </span>
                 <h3>Dashboard</h3>
             </a>
             <!-- Create post -->
-            <a href="#" class="active">
+            <a href="../create_post/create_post.php" class="">
                 <span class="material-icons-sharp">
                     draw
                 </span>
@@ -74,7 +70,7 @@
                 <span class="message-count">26</span>
             </a>
             <!-- settings -->
-            <a href="#">
+            <a href="../edit_profile.php">
                 <span class="material-icons-sharp">
                     settings
                 </span>
@@ -93,10 +89,8 @@
 
     <!-- ================================= Starting center main ======================================= -->
     <main>
-        <h2>Create Post</h2>
-        <div class="date">
-            <input type="date" id="date-picker" name="date-picker" value="">
-        </div>
+        <h2>Admin Review</h2>
+        
         <!-- form -->
         <!-- 
            form variables for php--
@@ -117,62 +111,38 @@
                     <form action="./create_post_process.php" method="POST">
                         <!-- post title -->
                         <div class="row mb-3 post-title">
-                            <label for="post-title" class="col-sm-2 col-form-label">Post Title</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="post_tittle" name="post_title">
-                            </div>
+                            
                         </div>
                         <!-- category -->
                         <div class="row mb-3 category">
-                            <label for="category" class="col-sm-2 col-form-label">Category</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="post_category" name="post_category">
-                            </div>
+                           
                         </div>
                         <!-- Paragraph 1 -->
                         <div class="row mb-3 paragraph1">
-                            <label for="paragraph1" class="col-sm-2 col-form-label">Paragraph 1</label>
-                            <div class="col-sm-10">
-                                <textarea name="post_paragraph1" id="paragraph1" rows="5" class="form-control"></textarea>
-                            </div>
+                            
                         </div>
                         <!-- code 1 -->
                         <div class="row mb-3 code1">
-                            <label for="code1" class="col-sm-2 col-form-label">Code 1</label>
-                            <div class="col-sm-10">
-                                <textarea name="post_code1" id="code1" rows="5" class="form-control"></textarea>
-                            </div>
+                           
                         </div>
                         <!-- Paragraph 2 -->
                         <div class="row mb-3 paragraph2">
-                            <label for="paragraph2" class="col-sm-2 col-form-label">Paragraph 2</label>
-                            <div class="col-sm-10">
-                                <textarea name="post_paragraph2" id="paragraph2" rows="5" class="form-control"></textarea>
-                            </div>
+                           
                         </div>
                         <!-- code 2 -->
                         <div class="row mb-3 code2">
-                            <label for="code2" class="col-sm-2 col-form-label">Code 2</label>
-                            <div class="col-sm-10">
-                                <textarea name="post_code2" id="code2" rows="5" class="form-control"></textarea>
-                            </div>
+                           
                         </div>
                         <!-- Paragraph 3 -->
                         <div class="row mb-3 paragraph3">
-                            <label for="paragraph3" class="col-sm-2 col-form-label">Paragraph 3</label>
-                            <div class="col-sm-10">
-                                <textarea name="post_paragraph3" id="paragraph3" rows="5" class="form-control"></textarea>
-                            </div>
+                            
                         </div>
                         <!-- code 3 -->
                         <div class="row mb-3 code3">
-                            <label for="code3" class="col-sm-2 col-form-label">Code 3</label>
-                            <div class="col-sm-10">
-                                <textarea name="post_code3" id="code3" rows="5" class="form-control"></textarea>
-                            </div>
+                            
                         </div>
 
-                        <button type="submit" class="btn btn-primary submit-btn" name="submit_post">Submit</button>
+                        <button type="submit" class="btn btn-primary submit-btn" name="approve_post">Approve</button>
 
                     </form>
 
@@ -218,9 +188,4 @@
 </div>
 <!--------------------------------------The whole body ends  here-------------------------------------------->
 
-
-
-
-
-
-<?php include "./cpfooter.php" ?>
+<?php include "./show_post_footer.php"?>
