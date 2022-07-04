@@ -182,8 +182,8 @@
 
                         <?php
                         if ($numRows > 0) {
-                            $limit=10;
-                            while (($row = mysqli_fetch_assoc($res)) && $limit>0) { ?>
+                            $limit = 10;
+                            while (($row = mysqli_fetch_assoc($res)) && $limit > 0) { ?>
 
                                 <tr>
                                     <td><?php echo $row['post_id']; ?></td>
@@ -192,12 +192,32 @@
                                     <td><?php echo $row['post_publisher_username']; ?></td>
                                     <!-- <td>pending</td> -->
                                     <td>
-                                        <a href="">
-                                        <button type="button" class="btn review-button">Review</button>
-                                        </a>
+                                        <!-- <form action="./post_review_page.php" method="GET">
+
+                                            <button type="button" class="btn review-button" name="review_id" value="
+                                                                                                    <?php
+                                                                                                    //$row['post_id'];
+                                                                                                    ?>
+                                                                                                    ">Review</button>
+
+                                        </form> -->
+                                        <form action="" method="POST">
+                                            <button  type="submit" id="review-button" class="btn review-button" name="review_id" value="
+                                                                                                    <?php
+                                                                                                    $row['post_id'];
+                                                                                                    ?>
+                                                                                                    ">Review</button>
+
+                                            <script type="text/javascript">
+                                                document.getElementById("review-button").onclick = function() {
+                                                    location.href = "./post_review_page.php";
+                                                };
+                                            </script>
+                                        </form>
                                     </td>
                                 </tr>
-                        <?php $limit--; }
+                        <?php $limit--;
+                            }
                         } ?>
 
 
