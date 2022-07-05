@@ -23,7 +23,7 @@
 
     <!-- fetching database -->
     <?php
-    $query = "SELECT * FROM kosai_limited.allpost;";
+    $query = "SELECT * FROM kosai_limited.temporaryposts;";
     $res = mysqli_query($dbc, $query);
     $numRows = mysqli_num_rows($res);
 
@@ -63,7 +63,7 @@
                     <h3>Create Post</h3>
                 </a>
                 <!-- all post -->
-                <a href="../show_post/show_post.php" class="">
+                <a href="../all_posts/all_posts.php" class="">
                     <span class="material-icons-sharp">
                         <span class="material-icons-sharp">
                             format_list_bulleted
@@ -201,10 +201,10 @@
                                                                                                     ">Review</button>
 
                                         </form> -->
-                                        <form action="" method="POST">
+                                        <form action="./post_review_page.php" method="POST">
                                             <button  type="submit" id="review-button" class="btn review-button" name="review_id" value="
                                                                                                     <?php
-                                                                                                    $row['post_id'];
+                                                                                                    echo $row['post_id'];
                                                                                                     ?>
                                                                                                     ">Review</button>
 

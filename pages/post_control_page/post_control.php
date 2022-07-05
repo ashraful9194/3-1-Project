@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./post_review_page.css">
+    <link rel="stylesheet" href="./post_control.css">
     <!-- date viewer -->
     <title>post title</title>
 </head>
@@ -22,7 +22,7 @@
     if (isset($_POST['review_id'])) {
         extract($_POST);
         $reviewID = $_POST['review_id'];
-        $query = "SELECT * FROM kosai_limited.temporaryposts WHERE (post_id= $reviewID );";
+        $query = "SELECT * FROM kosai_limited.allpost WHERE (post_id= $reviewID );";
         $res = mysqli_query($dbc, $query);
         $numRows = mysqli_num_rows($res);
         if ($numRows == 1) {
@@ -119,7 +119,7 @@
 
             <!-- ================================= Starting center main ======================================= -->
             <main>
-                <h2>Admin Review</h2>
+                <h2>Post Control</h2>
 
                 <!-- form -->
                 <!-- 
@@ -138,7 +138,7 @@
                     <div class="card1 res-card">
 
                         <div class="middle">
-                            <form action="./post_approve_action.php" method="POST">
+                            <form action="../process/post_delete_action.php" method="POST">
                                 <!-- post title -->
                                 <div class="row mb-3 post-title">
                                     <h1><?php echo $row['post_title']; ?></h1>
@@ -181,12 +181,10 @@
                                 </div>
 
                                 <div class="postActionButtons">
-                                    <button type="submit" class="btn btn-primary submit-btn" name="approve_post" value="
-                                                                                                                <?php echo $reviewID; ?>
-                                                                                                                ">Approve</button>
-                                    <button type="submit" class="btn btn-primary submit-btn-2 " name="delete_post" value="
+                                    <button type="submit" class="btn btn-primary submit-btn" name="delete_post" value="
                                                                                                                 <?php echo $reviewID; ?>
                                                                                                                 ">Delete</button>
+                                    
                                 </div>
 
                             </form>
@@ -284,7 +282,7 @@
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="./post_review_page.js"></script>
+        <script src="./post_controljs"></script>
 
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
