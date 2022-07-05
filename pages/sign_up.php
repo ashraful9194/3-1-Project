@@ -94,7 +94,7 @@
                             $errors->username[] = 'Username already exists.';
                         }
                         if ($email == $row['email']) {
-                            $errors->username[] = 'Email already exists';
+                            $errors->email[] = 'Email already exists';
                         }
                     }
                     if (!$errors->haserror()) {
@@ -219,13 +219,13 @@
                         <!-- adding role -->
                         <div>
                         <h5 class=" mb-4">
-                            Change Role
+                            Select Role
                         </h5>
-                        <input class="form-check-input" type="radio" name="role" id="learner" value="learner">
+                        <input class="form-check-input" type="radio" name="role" id="learner" value="Learner">
                         <label class="form-check-label me-5" for="learner">
                             Learner
                         </label>
-                        <input class="form-check-input" type="radio" name="role" id="contributor" value="contributor" >
+                        <input class="form-check-input" type="radio" name="role" id="contributor" value="Contributor" >
                         <label class="form-check-label" for="contributor">
                             Contributor
                         </label>
