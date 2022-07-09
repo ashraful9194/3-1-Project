@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./show_all_pending_posts.css">
+    <link rel="stylesheet" href="./all_users.css">
     <!-- date viewer -->
-    <title>All Pending Posts</title>
+    <title>All Users</title>
 </head>
 
 <body>
@@ -21,10 +21,18 @@
     <?php
     // fetching for current user
     $userID = $_SESSION["id"];
-    $query = "SELECT * FROM kosai_limited.temporaryposts;";
-    $res = mysqli_query($dbc, $query);
-    $numRows = mysqli_num_rows($res);
-
+    $query = "SELECT role FROM kosai_limited.users where (id=$userID);";
+    $result = mysqli_query($dbc, $query);
+    $numRows = mysqli_num_rows($result);
+    if ($numRows == 1) {
+        $row = mysqli_fetch_assoc($result);
+        $user_role = $row['role']; //fetching role from users table
+    }
+    if ($user_role == "Admin") {
+        $query = "SELECT * FROM kosai_limited.users;";
+        $res = mysqli_query($dbc, $query);
+        $numRows = mysqli_num_rows($res);
+    }
     ?>
 
     <!--------------------------------------The whole body starts from here-------------------------------------->
@@ -127,12 +135,13 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Post ID</th>
-                            <th>Post Title</th>
-                            <th>Post Catregory</th>
-                            <th>Publisher</th>
+                            <th>User ID</th>
+                            <th>User name</th>
+                            <th>Full name</th>
+                            <th>Email</th>
                             <!-- <th>Status</th> -->
-                            <th>Action</th>
+                            <th>Role</th>
+                            <th>Remove User</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,22 +152,23 @@
                             while (($row = mysqli_fetch_assoc($res))) { ?>
 
                                 <tr>
-                                    <td><?php echo $row['post_id']; ?></td>
-                                    <td><?php echo $row['post_title']; ?></td>
-                                    <td><?php echo $row['post_category']; ?></td>
-                                    <td><?php echo $row['post_publisher_username']; ?></td>
+                                    <td><?php echo $row['id']; ?></td>
+                                    <td><?php echo $row['username']; ?></td>
+                                    <td><?php echo $row['fname'] . " " . $row['lname']; ?></td>
+                                    <td><?php echo $row['email']; ?></td>
+                                    <td><?php echo $row['role']; ?></td>
                                     <!-- <td>pending</td> -->
                                     <td>
-                                        <form action="./post_review_page.php" method="POST">
-                                            <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
+                                        <form action="./user_remove_action.php" method="POST">
+                                            <button type="submit" id="user_remove" class="btn review-button" name="user_remove" value="
                                                                                                     <?php
-                                                                                                    echo $row['post_id'];
+                                                                                                    echo $row['id'];
                                                                                                     ?>
-                                                                                                    ">Review</button>
+                                                                                                    ">Remove</button>
 
                                             <script type="text/javascript">
                                                 document.getElementById("review-button").onclick = function() {
-                                                    location.href = "./post_review_page.php";
+                                                    location.href = "./user_remove_action.php";
                                                 };
                                             </script>
                                         </form>
@@ -267,7 +277,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="./show_all_pending_posts.js"></script>
+    <script src="./all_users.js"></script>
 
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->

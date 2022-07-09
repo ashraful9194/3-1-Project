@@ -117,7 +117,7 @@
 
                             <?php
                             if ($numRows > 0) {
-                                $limit = 10;
+                                $limit = 20;
                                 while (($row = mysqli_fetch_assoc($res)) && $limit > 0) { ?>
 
                                     <tr>
@@ -127,15 +127,6 @@
                                         <td><?php echo $row['post_publisher_username']; ?></td>
                                         <!-- <td>pending</td> -->
                                         <td>
-                                            <!-- <form action="./post_review_page.php" method="GET">
-
-                                            <button type="button" class="btn review-button" name="review_id" value="
-                                                                                                    <?php
-                                                                                                    //$row['post_id'];
-                                                                                                    ?>
-                                                                                                    ">Review</button>
-
-                                        </form> -->
                                             <form action="../post_control_page/post_control.php" method="POST">
                                                 <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
                                                                                                     <?php
@@ -145,7 +136,7 @@
 
                                                 <script type="text/javascript">
                                                     document.getElementById("review-button").onclick = function() {
-                                                        location.href = "./post_review_page.php";
+                                                        location.href = "../post_control_page/post_control.php";
                                                     };
                                                 </script>
                                             </form>
@@ -178,44 +169,47 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            <!-- to view all post from all post database only for admins -->
                             <?php
-                            if ($numRows > 0) {
-                                $limit = 10;
-                                while (($row = mysqli_fetch_assoc($res)) && $limit > 0) { ?>
+                            $query = "SELECT role FROM kosai_limited.users where (id=$userID);";
+                            $result = mysqli_query($dbc, $query);
+                            $numRows = mysqli_num_rows($result);
+                            if ($numRows == 1) {
+                                $row = mysqli_fetch_assoc($result);
+                                $user_role = $row['role']; //fetching role from users table
+                            }
+                            if ($user_role == "Admin") {
+                                $query = "SELECT * FROM kosai_limited.allpost;";
+                                $res = mysqli_query($dbc, $query);
+                                $numRows = mysqli_num_rows($res);
+                                if ($numRows > 0) {
+                                    $limit = 20;
+                                    while (($row = mysqli_fetch_assoc($res)) && $limit > 0) { ?>
 
-                                    <tr>
-                                        <td><?php echo $row['post_id']; ?></td>
-                                        <td><?php echo $row['post_title']; ?></td>
-                                        <td><?php echo $row['post_category']; ?></td>
-                                        <td><?php echo $row['post_publisher_username']; ?></td>
-                                        <!-- <td>pending</td> -->
-                                        <td>
-                                            <!-- <form action="./post_review_page.php" method="GET">
-
-                                            <button type="button" class="btn review-button" name="review_id" value="
-                                                                                                    <?php
-                                                                                                    //$row['post_id'];
-                                                                                                    ?>
-                                                                                                    ">Review</button>
-
-                                        </form> -->
-                                            <form action="./post_review_page.php" method="POST">
-                                                <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
+                                        <tr>
+                                            <td><?php echo $row['post_id']; ?></td>
+                                            <td><?php echo $row['post_title']; ?></td>
+                                            <td><?php echo $row['post_category']; ?></td>
+                                            <td><?php echo $row['post_publisher_username']; ?></td>
+                                            <!-- <td>pending</td> -->
+                                            <td>
+                                                <form action="../post_control_page/post_control.php" method="POST">
+                                                    <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
                                                                                                     <?php
                                                                                                     echo $row['post_id'];
                                                                                                     ?>
                                                                                                     ">Review</button>
 
-                                                <script type="text/javascript">
-                                                    document.getElementById("review-button").onclick = function() {
-                                                        location.href = "./post_review_page.php";
-                                                    };
-                                                </script>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                                    <script type="text/javascript">
+                                                        document.getElementById("review-button").onclick = function() {
+                                                            location.href = "../post_control_page/post_control.php";
+                                                        };
+                                                    </script>
+                                                </form>
+                                            </td>
+                                        </tr>
                             <?php $limit--;
+                                    }
                                 }
                             } ?>
 

@@ -2,6 +2,7 @@
 
 
     <!--Footer 1-->
+    <div class="footer-manual">
     <footer class="bg-dark text-white mt-5">
         <div class="row">
             <div class="col-md-4 left">
@@ -45,6 +46,7 @@
             </div>
         </div>
     </footer>
+    </div>
 <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

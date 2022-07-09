@@ -72,7 +72,7 @@
                     <h3>All Post</h3>
                 </a>
                 <!-- Users -->
-                <a href="#">
+                <a href="./all_users.php">
                     <span class="material-icons-sharp">
                         person
                     </span>
@@ -223,7 +223,7 @@
 
                     </tbody>
                 </table>
-                <a href="#">Show All</a>
+                <a href="./show_all_pending_posts.php">Show All</a>
             </div>
         </main>
         <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
