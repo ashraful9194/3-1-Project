@@ -25,7 +25,17 @@
         </div>
         <div class="sidebar">
             <!-- Dashboard -->
-            <a href="../admin_panel/adminpanel.php">
+            <a href="<?php
+                        $query2 = "SELECT role FROM kosai_limited.users where (id=$userID);";
+                        $result2 = mysqli_query($dbc, $query2);
+                        $row = mysqli_fetch_assoc($result2);
+                        if ($row['role'] == "Admin")
+                            echo "../admin_panel/adminpanel.php";
+                        // if($row['role']=="Learner")
+                        // echo "../learners_dashboard/learners_dashboard.php";
+                        if ($row['role'] == "Contributor")
+                            echo "../contributors_dashboard/contributors_dashboard.php";
+                        ?>">
                 <span class="material-icons-sharp">
                     dashboard
                 </span>
@@ -39,7 +49,7 @@
                 <h3>Create Post</h3>
             </a>
             <!-- all post -->
-            <a href="../show_post/show_post.php" class="">
+            <a href="./all_posts.php" class="active">
                 <span class="material-icons-sharp">
                     <span class="material-icons-sharp">
                         format_list_bulleted
@@ -48,12 +58,15 @@
                 <h3>All Post</h3>
             </a>
             <!-- Users -->
-            <a href="#">
-                <span class="material-icons-sharp">
-                    person
-                </span>
-                <h3>Users</h3>
-            </a>
+            <?php
+            if ($row['role'] == "Admin") { ?>
+                <a href="../admin_panel/all_users.php">
+                    <span class="material-icons-sharp">
+                        person
+                    </span>
+                    <h3>Users</h3>
+                </a>
+            <?php } ?>
             <!-- Analytics -->
             <a href="#">
                 <span class="material-icons-sharp">
@@ -94,7 +107,10 @@
         <!-- tabs -->
         <ul class="nav nav-tabs">
             <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#my_posts">My Posts</a></li>
-            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#all_posts">All Posts</a></li>
+            <?php
+            if ($row['role'] == "Admin") { ?>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#all_posts">All Posts</a></li>
+            <?php } ?>
         </ul>
         <!-- tab content -->
         <div class="tab-content">
@@ -171,11 +187,11 @@
                         <tbody>
                             <!-- to view all post from all post database only for admins -->
                             <?php
-                            $query = "SELECT role FROM kosai_limited.users where (id=$userID);";
-                            $result = mysqli_query($dbc, $query);
-                            $numRows = mysqli_num_rows($result);
+                            $query2 = "SELECT role FROM kosai_limited.users where (id=$userID);";
+                            $result2 = mysqli_query($dbc, $query2);
+                            $numRows = mysqli_num_rows($result2);
                             if ($numRows == 1) {
-                                $row = mysqli_fetch_assoc($result);
+                                $row = mysqli_fetch_assoc($result2);
                                 $user_role = $row['role']; //fetching role from users table
                             }
                             if ($user_role == "Admin") {

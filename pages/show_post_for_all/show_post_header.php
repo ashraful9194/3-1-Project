@@ -18,4 +18,14 @@
 
 <body>
     <!-- fetching from database -->
-    
+    <?php
+        if (isset($_POST['review_id'])) {
+            extract($_POST);
+            $reviewID = $_POST['review_id'];
+            $query = "SELECT * FROM kosai_limited.allpost WHERE (post_id= $reviewID );";
+            $res = mysqli_query($dbc, $query);
+            $numRows = mysqli_num_rows($res);
+            if ($numRows == 1) {
+                $row = mysqli_fetch_assoc($res);
+            }}
+    ?>

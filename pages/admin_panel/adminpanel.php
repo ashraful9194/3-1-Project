@@ -1,4 +1,7 @@
-<?php require_once "../config.php" ?>
+<?php
+require_once "../config.php";
+//$current_visitor=$_SESSION['id'];
+?>
 <!doctype html>
 <html lang="en">
 
@@ -202,7 +205,7 @@
 
                                         </form> -->
                                         <form action="./post_review_page.php" method="POST">
-                                            <button  type="submit" id="review-button" class="btn review-button" name="review_id" value="
+                                            <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
                                                                                                     <?php
                                                                                                     echo $row['post_id'];
                                                                                                     ?>

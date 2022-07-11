@@ -61,7 +61,13 @@
             </div>
             <div class="sidebar">
                 <!-- Dashboard -->
-                <a href="../admin_panel/adminpanel.php">
+                <a href="<?php
+                            $query2 = "SELECT role FROM kosai_limited.users where (id=$userID);";
+                            $result2 = mysqli_query($dbc, $query2);
+                            $row = mysqli_fetch_assoc($result2);
+                            if ($row['role'] == "Admin")
+                                echo "../admin_panel/adminpanel.php";
+                            ?>">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -75,7 +81,7 @@
                     <h3>Create Post</h3>
                 </a>
                 <!-- all post -->
-                <a href="../show_post/show_post.php" class="">
+                <a href="../all_posts/all_posts.php" class="">
                     <span class="material-icons-sharp">
                         <span class="material-icons-sharp">
                             format_list_bulleted
@@ -84,7 +90,7 @@
                     <h3>All Post</h3>
                 </a>
                 <!-- Users -->
-                <a href="#">
+                <a href="./all_users.php" class="active">
                     <span class="material-icons-sharp">
                         person
                     </span>

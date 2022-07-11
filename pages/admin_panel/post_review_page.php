@@ -55,7 +55,7 @@
                 </div>
                 <div class="sidebar">
                     <!-- Dashboard -->
-                    <a href="../admin_panel/adminpanel.php">
+                    <a href="./adminpanel.php">
                         <span class="material-icons-sharp">
                             dashboard
                         </span>
@@ -69,7 +69,7 @@
                         <h3>Create Post</h3>
                     </a>
                     <!-- all post -->
-                    <a href="../show_post/show_post.php" class="">
+                    <a href="../all_posts/all_posts.php" class="">
                         <span class="material-icons-sharp">
                             <span class="material-icons-sharp">
                                 format_list_bulleted
@@ -78,7 +78,7 @@
                         <h3>All Post</h3>
                     </a>
                     <!-- Users -->
-                    <a href="#">
+                    <a href="./all_users.php">
                         <span class="material-icons-sharp">
                             person
                         </span>
