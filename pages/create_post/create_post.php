@@ -209,6 +209,15 @@ if ($res) {
 
         <!-- ================================= Starting right side ======================================= -->
 
+        <!-- connecting with database -->
+        <?php
+        $current_user = $_SESSION['id'];
+        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+        $numRows = mysqli_num_rows($result);
+        if ($numRows == 1) {
+            $row_info = mysqli_fetch_assoc($result);
+        }
+        ?>
         <div class="right">
             <div class="top">
                 <button id="menu-btn">
@@ -220,14 +229,16 @@ if ($res) {
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Rahat</b></p>
-                        <small class="text-muted">Admin</small>
+                        <!-- info -->
+                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
+                        <small class="text-muted"><?php echo $row_info['role'];?></small>
                     </div>
                     <div class="profile-photo">
                         <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
                     </div>
                 </div>
             </div>
+            
         </div>
 
         <!-- ================================= End of right side ======================================= -->

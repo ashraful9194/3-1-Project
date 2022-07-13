@@ -9,6 +9,8 @@ require_once "../config.php";
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- to refresh after 1 min -->
+    <meta http-equiv="refresh" content="60" />
 
 
     <!-- material CDN -->
@@ -232,6 +234,15 @@ require_once "../config.php";
         <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
 
         <!-- ================================= RIGHT SIDE ======================================= -->
+        <!-- connecting with database -->
+        <?php
+        $current_user = $_SESSION['id'];
+        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+        $numRows = mysqli_num_rows($result);
+        if ($numRows == 1) {
+            $row_info = mysqli_fetch_assoc($result);
+        }
+        ?>
         <div class="right">
             <div class="top">
                 <button id="menu-btn">
@@ -243,8 +254,9 @@ require_once "../config.php";
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Rahat</b></p>
-                        <small class="text-muted">Admin</small>
+                        <!-- info -->
+                        <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
+                        <small class="text-muted"><?php echo $row_info['role']; ?></small>
                     </div>
                     <div class="profile-photo">
                         <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
@@ -252,6 +264,37 @@ require_once "../config.php";
                 </div>
             </div>
             <div class="recent-updates">
+                <!-- fetching last three post from database -->
+
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <?php
+                        $last_three_post = mysqli_query($dbc, "SELECT * FROM temporaryposts order by post_id desc LIMIT 3;");
+                        $numRows = mysqli_num_rows($last_three_post);
+                        if ($numRows == 3) {
+                            while ($rows = mysqli_fetch_assoc($last_three_post)) {
+                                $userID = $rows['post_publisher_id'];
+                                $full_name = mysqli_query($dbc, "SELECT fname,lname from users where (id=$userID)");
+                                $name_row = mysqli_fetch_assoc($full_name);
+                        ?>
+                                <div class="profile-photo">
+                                    <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                                </div>
+                                <div class="message">
+                                    <p><b> <?php echo $name_row['fname'] . " " . $name_row['lname']; ?> added a post.</b></p>
+                                    <small class="text-muted"><?php echo $rows['post_date']; ?></small>
+                                </div>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- <div class="recent-updates">
                 <h2>Recent Updates</h2>
                 <div class="updates">
                     <div class="update">
@@ -275,7 +318,7 @@ require_once "../config.php";
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- ================================= END OF RIGHT SIDE ======================================= -->
 

@@ -6,3 +6,7 @@ window.addEventListener('scroll',function(){
         nav.classList.remove('bg-dark','shadow');
     }
 })
+
+$(document).ready(function(){
+    $(".owl-carousel").owlCarousel();
+  });

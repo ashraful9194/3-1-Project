@@ -21,7 +21,7 @@
     <?php  
     // fetching for current user
     $userID=$_SESSION["id"];
-    $query = "SELECT * FROM kosai_limited.allpost WHERE (post_publisher_id=$userID);";
+    $query = "SELECT * FROM kosai_limited.allpost WHERE (post_publisher_id=$userID) order by post_id desc;";
     $res = mysqli_query($dbc, $query);
     $numRows = mysqli_num_rows($res);
 

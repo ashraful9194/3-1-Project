@@ -195,7 +195,7 @@
                                 $user_role = $row['role']; //fetching role from users table
                             }
                             if ($user_role == "Admin") {
-                                $query = "SELECT * FROM kosai_limited.allpost;";
+                                $query = "SELECT * FROM kosai_limited.allpost order by post_id desc;";
                                 $res = mysqli_query($dbc, $query);
                                 $numRows = mysqli_num_rows($res);
                                 if ($numRows > 0) {
@@ -249,26 +249,37 @@
 
     <!-- ================================= Starting right side ======================================= -->
 
-    <div class="right">
-        <div class="top">
-            <button id="menu-btn">
-                <span class="material-icons-sharp">menu</span>
-            </button>
-            <div class="theme-toggler">
-                <span class="material-icons-sharp active">light_mode</span>
-                <span class="material-icons-sharp">dark_mode</span>
-            </div>
-            <div class="profile">
-                <div class="info">
-                    <p>Hey, <b>Rahat</b></p>
-                    <small class="text-muted">Admin</small>
+     <!-- connecting with database -->
+     <?php
+        $current_user = $_SESSION['id'];
+        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+        $numRows = mysqli_num_rows($result);
+        if ($numRows == 1) {
+            $row_info = mysqli_fetch_assoc($result);
+        }
+        ?>
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
                 </div>
-                <div class="profile-photo">
-                    <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                <div class="profile">
+                    <div class="info">
+                        <!-- info -->
+                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
+                        <small class="text-muted"><?php echo $row_info['role'];?></small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                    </div>
                 </div>
             </div>
+            
         </div>
-    </div>
 
     <!-- ================================= End of right side ======================================= -->
 
