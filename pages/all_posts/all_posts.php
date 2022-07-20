@@ -195,7 +195,7 @@
                                 $user_role = $row['role']; //fetching role from users table
                             }
                             if ($user_role == "Admin") {
-                                $query = "SELECT * FROM kosai_limited.allpost order by post_id desc;";
+                                $query = "SELECT * FROM kosai_limited.allpost WHERE  post_status='approved' order by post_id desc;";
                                 $res = mysqli_query($dbc, $query);
                                 $numRows = mysqli_num_rows($res);
                                 if ($numRows > 0) {

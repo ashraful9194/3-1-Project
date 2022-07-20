@@ -89,7 +89,7 @@
                     </a>
                     <!-- Users -->
                     <?php
-                    if ($row['role'] == "Admin") { ?>
+                    if ($row2['role'] == "Admin") { ?>
                         <a href="../admin_panel/all_users.php">
                             <span class="material-icons-sharp">
                                 person

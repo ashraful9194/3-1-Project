@@ -21,7 +21,7 @@
     <?php
     // fetching for current user
     $userID = $_SESSION["id"];
-    $query = "SELECT * FROM kosai_limited.temporaryposts;";
+    $query = "SELECT * FROM kosai_limited.allpost where post_status='pending';";
     $res = mysqli_query($dbc, $query);
     $numRows = mysqli_num_rows($res);
 

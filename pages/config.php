@@ -5,7 +5,7 @@ $dbHost='thwserver.mysql.database.azure.com';
 $dbName='kosai_limited';
 $dbUsername='mdrahat';
 $dbPassword='Cssb140020z';
-$certificatePath="/Applications/XAMPP/xamppfiles/htdocs/kosai_limited/includes/DigiCertGlobalRootCA.crt";
+$certificatePath='C:\xampp\htdocs\kosai_limited\includes\DigiCertGlobalRootCA.crt';
  
 
 try {

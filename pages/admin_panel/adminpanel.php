@@ -28,7 +28,7 @@ require_once "../config.php";
 
     <!-- fetching database -->
     <?php
-    $query = "SELECT * FROM kosai_limited.temporaryposts;";
+    $query = "SELECT * FROM kosai_limited.allpost where post_status='pending';";
     $res = mysqli_query($dbc, $query);
     $numRows = mysqli_num_rows($res);
 
@@ -270,7 +270,7 @@ require_once "../config.php";
                 <div class="updates">
                     <div class="update">
                         <?php
-                        $last_three_post = mysqli_query($dbc, "SELECT * FROM temporaryposts order by post_id desc LIMIT 3;");
+                        $last_three_post = mysqli_query($dbc, "SELECT * FROM kosai_limited.allpost WHERE post_status='pending' order by post_id desc  LIMIT 3 ;");
                         $numRows = mysqli_num_rows($last_three_post);
                         if ($numRows == 3) {
                             while ($rows = mysqli_fetch_assoc($last_three_post)) {

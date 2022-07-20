@@ -22,7 +22,7 @@
     if (isset($_POST['review_id'])) {
         extract($_POST);
         $reviewID = $_POST['review_id'];
-        $query = "SELECT * FROM kosai_limited.temporaryposts WHERE (post_id= $reviewID );";
+        $query = "SELECT * FROM kosai_limited.allpost WHERE (post_id= $reviewID AND post_status='pending');";
         $res = mysqli_query($dbc, $query);
         $numRows = mysqli_num_rows($res);
         if ($numRows == 1) {
@@ -132,6 +132,7 @@
             post_code2
             post_paragraph3
             post_code3  
+            post_status
          -->
 
                 <div class="form-card card-body d-flex flex-column">
