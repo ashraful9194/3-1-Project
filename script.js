@@ -7,6 +7,3 @@ window.addEventListener('scroll',function(){
     }
 })
 
-$(document).ready(function(){
-    $(".owl-carousel").owlCarousel();
-  });
