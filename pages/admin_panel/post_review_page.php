@@ -55,7 +55,12 @@
                 </div>
                 <div class="sidebar">
                     <!-- Dashboard -->
-                    <a href="./adminpanel.php">
+                    <a href="<?php 
+                                if($_SESSION['role']=="Admin")
+                                {echo "./adminpanel.php";}
+                                if($_SESSION['role']=="Contributor")
+                                {echo "../contributors_dashboard/contributors_dashboard.php";}
+                                ?>">
                         <span class="material-icons-sharp">
                             dashboard
                         </span>
@@ -78,12 +83,14 @@
                         <h3>All Post</h3>
                     </a>
                     <!-- Users -->
+                    <?php if($_SESSION['role']==="Admin"){?>
                     <a href="./all_users.php">
                         <span class="material-icons-sharp">
                             person
                         </span>
                         <h3>Users</h3>
                     </a>
+                    <?php }?>
                     <!-- Analytics -->
                     <a href="#">
                         <span class="material-icons-sharp">
@@ -182,9 +189,10 @@
                                 </div>
 
                                 <div class="postActionButtons">
-                                    <button type="submit" class="btn btn-primary submit-btn" name="approve_post" value="
+                                    <?php if($_SESSION['role']==="Admin"){?>
+                                     <button type="submit" class="btn btn-primary submit-btn" name="approve_post" value="
                                                                                                                 <?php echo $reviewID; ?>
-                                                                                                                ">Approve</button>
+                                                                                                                ">Approve</button> <?php }?>
                                     <button type="submit" class="btn btn-primary submit-btn-2 " name="delete_post" value="
                                                                                                                 <?php echo $reviewID; ?>
                                                                                                                 ">Delete</button>

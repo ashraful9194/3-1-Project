@@ -21,7 +21,30 @@
     <?php
     // fetching for current user
     $userID = $_SESSION["id"];
-    $query = "SELECT * FROM kosai_limited.allpost where post_status='pending';";
+    if($_SESSION['role']==="Admin")
+    {
+        $query = "SELECT * FROM kosai_limited.allpost where post_status='pending';";
+    }
+    if($_SESSION['role']==="Contributor")
+    {
+        $query = "SELECT 
+        post_id,
+        post_date,
+        post_publisher_username,
+        post_publisher_id,
+        post_title,
+        post_category,
+        post_paragraph_1,
+        post_code_1,
+        post_paragraph_2,
+        post_code_2,
+        post_paragraph_3,
+        post_code_3,
+        post_status,
+        role  FROM kosai_limited.allpost  join kosai_limited.users 
+        ON (allpost.post_publisher_id=users.id)
+         where post_status='pending' and role='Contributor';";
+    }
     $res = mysqli_query($dbc, $query);
     $numRows = mysqli_num_rows($res);
 

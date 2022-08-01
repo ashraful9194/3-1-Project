@@ -1,4 +1,5 @@
 <?php
+//unset($_SESSION['role']);
 try {
   //code...
 
@@ -107,6 +108,8 @@ try {
 
   <!-- fetching ends here -->
   <div class="container " id="cardcontainer">
+    <h3 class="mb-5">Recent Post</h3>
+   
     <div class="row">
       <!-- make carousel card here -->
 

@@ -34,6 +34,12 @@ if(isset($_POST['sublogin']))
                     header("location: ../admin_panel/adminpanel.php");
                     exit();
                 }
+                elseif($_SESSION['role']=="Contributor")
+                {
+                    setcookie('emailcookie',$login,time()+604800); // 7 days cookie
+                    header("location: ../contributors_dashboard/contributors_dashboard.php");
+                    exit();
+                }
 
                 else {setcookie('emailcookie',$login,time()+604800); // 7 days cookie
                 header("location: ../../index.php");
@@ -47,6 +53,11 @@ if(isset($_POST['sublogin']))
                 {
                     header("location: ../admin_panel/adminpanel.php");
                     exit(); 
+                }
+                elseif($_SESSION['role']=="Contributor")
+                {
+                    header("location: ../contributors_dashboard/contributors_dashboard.php");
+                    exit();
                 }
                 else{
                 header("location: ../../index.php");
