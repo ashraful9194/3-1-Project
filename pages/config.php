@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 $dbHost='thwserver.mysql.database.azure.com';
 $dbName='kosai_limited';
 $dbUsername='mdrahat';

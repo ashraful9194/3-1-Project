@@ -21,6 +21,7 @@
     <?php
         if (isset($_POST['review_id'])) {
             extract($_POST);
+            $userID=$_SESSION["id"];
             $reviewID = $_POST['review_id'];
             $query = "SELECT * FROM kosai_limited.allpost WHERE (post_id= $reviewID );";
             $res = mysqli_query($dbc, $query);

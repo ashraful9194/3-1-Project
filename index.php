@@ -66,7 +66,11 @@ try {
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <!-- if admin dashboard will navigate to admin panel 
                 if user then user dashboard -->
-                  <li><a class="dropdown-item" <?php if ($_SESSION['role'] == "Admin") { ?> href="./pages/admin_panel/adminpanel.php" <?php } else { ?> href="./pages/user_dashboard/user_dashboard.php" <?php } ?>>
+                  <li><a class="dropdown-item" href=<?php 
+                  if ($_SESSION['role'] === "Admin") {  echo "./pages/admin_panel/adminpanel.php"; } 
+                  elseif($_SESSION['role'] === "Contributor")  {echo "./pages/contributors_dashboard/contributors_dashboard.php" ;}
+                  else if($_SESSION['role'] === "Learner") {echo "./pages/learners_dashboard/learners_dashboard.php";}?>
+                  >
                       Dashboard</a></li>
 
                   <li><a class="dropdown-item" href="#">Create Post</a></li>
@@ -262,3 +266,4 @@ try {
 </body>
 
 </html>
+<?php mysqli_close($dbc);?>

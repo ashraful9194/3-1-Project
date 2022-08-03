@@ -70,7 +70,7 @@ require_once "../config.php";
             </div>
             <div class="sidebar">
                 <!-- Dashboard -->
-                <a href="./adminpanel.php" class="active">
+                <a href="./contributors_dashboard.php" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -412,3 +412,4 @@ require_once "../config.php";
 </body>
 
 </html>
+<?php mysqli_close($dbc);?>

@@ -86,3 +86,4 @@ catch(Exception $e)
 {
     echo $e->getMessage() ;
 }
+mysqli_close($dbc);?>

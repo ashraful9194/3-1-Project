@@ -1,6 +1,7 @@
 <?php
 require_once "../config.php";
-//$current_visitor=$_SESSION['id'];
+$current_visitor=$_SESSION['id'];
+if(isset($current_visitor)){
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,7 +27,8 @@ require_once "../config.php";
 <body>
 
 
-    <!-- fetching database -->
+    <!-- fetching database  -->
+    <!-- a problem is here that here only fetching is done but not cheking if the user is valid or not -->
     <?php
     $query = "SELECT * FROM kosai_limited.allpost where post_status='pending';";
     $res = mysqli_query($dbc, $query);
@@ -401,3 +403,7 @@ require_once "../config.php";
 </body>
 
 </html>
+<?php } //if the visitor is valid
+else{echo "The page you are looking for is not here to be found. Try looking into your pocket. And try again!";}
+?>
+<?php mysqli_close($dbc);?>
