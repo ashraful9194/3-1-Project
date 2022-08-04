@@ -42,7 +42,7 @@
                                                                                                             echo $_COOKIE['emailcookie'];
                                                                                                         }
                                                                                                     }
-                                                                                                    ?> ">
+                                                                                                    ?>">
 
                             </div>
 
