@@ -18,9 +18,9 @@ $current_visitor = $_SESSION['id'];
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./learners_dashboard.css">
+    <link rel="stylesheet" href="./all_courses.css">
 
-    <title>Dashboard</title>
+    <title>All Courses</title>
 </head>
 
 <body>
@@ -55,134 +55,92 @@ $current_visitor = $_SESSION['id'];
             </div>
             <div class="sidebar">
                 <!-- Dashboard -->
-                <a href="./contributors_dashboard.php" class="active">
+                <!-- <a href="./contributors_dashboard.php" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
-                </a>
-                <!-- Create post -->
-                <!-- <a href="../create_post/create_post.php">
-                    <span class="material-icons-sharp">
-                        draw
-                    </span>
-                    <h3>Create Post</h3>
-                </a> -->
-                <!-- all post -->
-                <!-- <a href="../all_posts/all_posts.php" class="">
-                    <span class="material-icons-sharp">
-                        <span class="material-icons-sharp">
-                            format_list_bulleted
-                        </span>
-                    </span>
-                    <h3>All Post</h3>
                 </a> -->
 
-                <!-- Analytics -->
-                <!-- <a href="#">
-                    <span class="material-icons-sharp">
-                        insights
-                    </span>
-                    <h3>Analytics</h3>
-                </a> -->
                 <!-- messages -->
-                <a href="#">
+                <!-- <a href="#">
                     <span class="material-icons-sharp">
                         question_answer
                     </span>
                     <h3>Messages</h3>
                     <span class="message-count">26</span>
-                </a>
+                </a> -->
                 <!-- my courses -->
-                <a href="">
+                <!-- <a href="">
                     <span class="material-icons-sharp">
                         library_books
                     </span>
                     <h3>My courses</h3>
-                </a>
+                </a> -->
                 <!-- all courses -->
-                <a href="../all_courses/all_courses.php">
+                <!-- <a href="../all_courses/all_courses.php">
                     <span class="material-icons-sharp">
                         queue
                     </span>
                     <h3>All courses</h3>
-                </a>
+                </a> -->
                 <!-- settings -->
-                <a href="../edit_profile.php">
+                <!-- <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Settings</h3>
-                </a>
-                
+                </a> -->
+
                 <!-- logout -->
-                <a href="../process/logout.php">
+                <!-- <a href="../process/logout.php">
                     <span class="material-icons-sharp">
                         logout
                     </span>
                     <h3>Logout</h3>
-                </a>
+                </a> -->
             </div>
         </aside>
         <!-- ================================= END OF ASIDE ======================================= -->
 
         <!-- ================================= MAIN BODY ======================================= -->
         <main>
-            <h1>Dashboard</h1>
-            <div class="date">
-                <input type="date">
-            </div>
-            <div class="insights">
-                <div class="card1 res-card">
-                    <span class="material-icons-sharp">
-                        analytics
-                    </span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total posts</h3>
-                            <h1>2022</h1>
+            <h1>Categories</h1>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="outer-container ">
+                        <div class="inside-container">
+                            <div class="inside-card">
+                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                                <div class="intro">
+                                    <h2 class="card-title">CP</h2>
+                                    <p class="inside-para">A complete guide to competetive programming.From begginer to advance level.
+                                        Everything you need to know. </p>
+                                </div>
+                            </div>
+                            <div class="inside-card">
+                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                                <div class="intro">
+                                    <h2 class="card-title">CP</h2>
+                                    <p class="inside-para">A complete guide to competetive programming.From begginer to advance level.
+                                        Everything you need to know. </p>
+                                </div>
+                            </div>
+                            <div class="inside-card">
+                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                                <div class="intro">
+                                    <h2 class="card-title">CP</h2>
+                                    <p class="inside-para">A complete guide to competetive programming.From begginer to advance level.
+                                        Everything you need to know. </p>
+                                </div>
+                            </div>
+
                         </div>
-
                     </div>
-                    <small class="text-muted">Last 24 Hour</small>
                 </div>
-
-                <div class="card2 res-card">
-                    <span class="material-icons-sharp">
-                        analytics
-                    </span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total posts</h3>
-                            <h1>2022</h1>
-                        </div>
-
-                    </div>
-                    <small class="text-muted">Last 24 Hour</small>
-                </div>
-
-                <div class="card3 res-card">
-                    <span class="material-icons-sharp">
-                        analytics
-                    </span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total posts</h3>
-                            <h1>2022</h1>
-                        </div>
-
-                    </div>
-                    <small class="text-muted">Last 24 Hour</small>
-                </div>
-
-
             </div>
-
-            <!-- ----------------------------- END OF INSIGHTS ------------------------------------- -->
-
-            <div class="recent-posts">
-
-            </div>
+            
         </main>
         <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
 
@@ -214,64 +172,15 @@ $current_visitor = $_SESSION['id'];
                     <div class="profile-photo">
                         <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
                     </div>
+                    <!-- logout -->
+                    <a href="../process/logout.php">
+                        <span class="material-icons-sharp">
+                            logout
+                        </span>
+                        <h3>Logout</h3>
+                    </a>
                 </div>
             </div>
-            <div class="recent-updates">
-                <!-- fetching last three post from database -->
-
-                <h2>Recent Updates</h2>
-                <div class="updates">
-                    <div class="update">
-                        <?php
-                        $last_three_post = mysqli_query($dbc, "SELECT * FROM kosai_limited.allpost WHERE post_status='approved' order by post_id desc  LIMIT 3 ;");
-                        $numRows = mysqli_num_rows($last_three_post);
-                        if ($numRows == 3) {
-                            while ($rows = mysqli_fetch_assoc($last_three_post)) {
-                                $userID = $rows['post_publisher_id'];
-                                $full_name = mysqli_query($dbc, "SELECT fname,lname from users where (id=$userID)");
-                                $name_row = mysqli_fetch_assoc($full_name);
-                        ?>
-                                <div class="profile-photo">
-                                    <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
-                                </div>
-                                <div class="message">
-                                    <p><b> <?php echo $name_row['fname'] . " " . $name_row['lname']; ?> added a post.</b></p>
-                                    <small class="text-muted"><?php echo $rows['post_date']; ?></small>
-                                </div>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </div>
-
-                </div>
-
-            </div>
-            <!-- <div class="recent-updates">
-                <h2>Recent Updates</h2>
-                <div class="updates">
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
-                        </div>
-                        <div class="message">
-                            <p><b>Rahat Ali updated this page</b></p>
-                            <small class="text-muted">2mins ago</small>
-                        </div>
-                    </div>
-
-
-                    <div class="update">
-                        <div class="profile-photo">
-                            <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
-                        </div>
-                        <div class="message">
-                            <p><b>Rahat Ali updated this page</b></p>
-                            <small class="text-muted">2mins ago</small>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <!-- ================================= END OF RIGHT SIDE ======================================= -->
 
@@ -338,7 +247,7 @@ $current_visitor = $_SESSION['id'];
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <script src="learners_dashboard.js"></script>
+    <script src="./all_courses.js"></script>
 
 
     <!-- for setting up theme -->
