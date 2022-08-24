@@ -130,9 +130,9 @@
 
                 <div class="signup_form">
                     <br>
-                    <div class="d-flex justify-content-center"><img src="./assets/home-logo.png" alt="Kosai Limited Logo" style="width:70;height:70px;" class="logo img-fluid mb-2">
-                        <h1 class="mb-3">Kosai Limited</h1>
-                    </div>
+                    <center><img src="./assets/home-logo.png" alt="Kosai Limited Logo" style="width:70;height:70px;" class="logo img-fluid mb-2">
+                            <h1 class="mb-3">Kosai Limited</h1>
+                        </center>
                     <?php
                     if (isset($done)) { ?>
                         <div class="alert alert-success" role="alert">

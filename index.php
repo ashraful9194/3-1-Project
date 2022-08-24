@@ -103,7 +103,9 @@ try {
       <div class="banner-text">
         <h1 class="text-white banner-text"><b>Just Read a Blog</h1>
       </div>
+      <a href="./pages/all_courses/all_courses.php">
       <button type="button" class="btn btn-light btn-">Explore</button>
+      </a>
     </div>
   </div>
 

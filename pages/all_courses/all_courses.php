@@ -1,7 +1,4 @@
-<?php
-require_once "../config.php";
-$current_visitor = $_SESSION['id'];
-?>
+<?php require_once "../config.php"; ?>
 <!doctype html>
 <html lang="en">
 
@@ -10,7 +7,7 @@ $current_visitor = $_SESSION['id'];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- to refresh after 1 min -->
-    <meta http-equiv="refresh" content="60" />
+    <!-- <meta http-equiv="refresh" content="60" /> -->
 
 
     <!-- material CDN -->
@@ -26,164 +23,206 @@ $current_visitor = $_SESSION['id'];
 <body>
 
 
-    <!-- fetching database -->
-    <?php
-
-    $query = "SELECT  role  FROM kosai_limited.users  where id=$current_visitor;";
-    $res = mysqli_query($dbc, $query);
-    $numRows = mysqli_num_rows($res);
 
 
-    ?>
     <!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
     <div class="container">
-        <!-- --------------------- ASIDE -------------------------------------------- -->
-        <aside id="aside-menu" class="">
-            <div class="top">
+        <div class="nav-row">
+            <div class="left-top">
                 <a href="../../index.php">
                     <div class="logo">
-                        <img src="../../assets_home/home-logo.png" alt="Kosai Limited logo">
+                        <img src="../assets/home-logo.png" alt="Kosai Limited logo">
                         <h2>Kosai <span style="color:#0a98f7">Limited</span></h2>
                     </div>
                 </a>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">
-                        close
-                    </span>
-                </div>
             </div>
-            <div class="sidebar">
-                <!-- Dashboard -->
-                <!-- <a href="./contributors_dashboard.php" class="active">
-                    <span class="material-icons-sharp">
-                        dashboard
-                    </span>
-                    <h3>Dashboard</h3>
-                </a> -->
-
-                <!-- messages -->
-                <!-- <a href="#">
-                    <span class="material-icons-sharp">
-                        question_answer
-                    </span>
-                    <h3>Messages</h3>
-                    <span class="message-count">26</span>
-                </a> -->
-                <!-- my courses -->
-                <!-- <a href="">
-                    <span class="material-icons-sharp">
-                        library_books
-                    </span>
-                    <h3>My courses</h3>
-                </a> -->
-                <!-- all courses -->
-                <!-- <a href="../all_courses/all_courses.php">
-                    <span class="material-icons-sharp">
-                        queue
-                    </span>
-                    <h3>All courses</h3>
-                </a> -->
-                <!-- settings -->
-                <!-- <a href="../edit_profile.php">
-                    <span class="material-icons-sharp">
-                        settings
-                    </span>
-                    <h3>Settings</h3>
-                </a> -->
-
-                <!-- logout -->
-                <!-- <a href="../process/logout.php">
-                    <span class="material-icons-sharp">
-                        logout
-                    </span>
-                    <h3>Logout</h3>
-                </a> -->
+            <div class="top-middle">
+                <h1>Categories</h1>
             </div>
-        </aside>
-        <!-- ================================= END OF ASIDE ======================================= -->
+            <div class="top-right">
 
-        <!-- ================================= MAIN BODY ======================================= -->
-        <main>
-            <h1>Categories</h1>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="outer-container ">
-                        <div class="inside-container">
-                            <div class="inside-card">
-                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
-                                <div class="intro">
-                                    <h2 class="card-title">CP</h2>
-                                    <p class="inside-para">A complete guide to competetive programming.From begginer to advance level.
-                                        Everything you need to know. </p>
-                                </div>
-                            </div>
-                            <div class="inside-card">
-                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
-                                <div class="intro">
-                                    <h2 class="card-title">CP</h2>
-                                    <p class="inside-para">A complete guide to competetive programming.From begginer to advance level.
-                                        Everything you need to know. </p>
-                                </div>
-                            </div>
-                            <div class="inside-card">
-                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
-                                <div class="intro">
-                                    <h2 class="card-title">CP</h2>
-                                    <p class="inside-para">A complete guide to competetive programming.From begginer to advance level.
-                                        Everything you need to know. </p>
-                                </div>
-                            </div>
-
-                        </div>
+                <?php if (isset($_SESSION['id'])) { ?>
+                    <div class="profile">
+                       
+                        <a  href=<?php
+                                                        if ($_SESSION['role'] === "Admin") {
+                                                            echo "../admin_panel/adminpanel.php";
+                                                        } elseif ($_SESSION['role'] === "Contributor") {
+                                                            echo "../contributors_dashboard/contributors_dashboard.php";
+                                                        } else if ($_SESSION['role'] === "Learner") {
+                                                            echo "../learners_dashboard/learners_dashboard.php";
+                                                        } ?>>
+                            <button type="button" class="dash-btn">Dashboard</button> </a>
+                        <!-- logout -->
+                        <a href="../process/logout.php" style="margin: 0px;">
+                            <span class="material-icons-sharp">
+                                logout
+                            </span>
+                        </a>
                     </div>
-                </div>
-            </div>
-            
-        </main>
-        <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
-
-        <!-- ================================= RIGHT SIDE ======================================= -->
-        <!-- connecting with database -->
-        <?php
-        //$current_user = $_SESSION['id'];
-        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_visitor");
-        $numRows = mysqli_num_rows($result);
-        if ($numRows == 1) {
-            $row_info = mysqli_fetch_assoc($result);
-        }
-        ?>
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
+                <?php } else { ?>
+                    <a href="../login.php"><button type="button" class="dash-btn">Log in/ Sign up</button></a>
+                <?php } ?>
                 <div class="theme-toggler">
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <!-- info -->
-                        <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
-                        <small class="text-muted"><?php echo $row_info['role']; ?></small>
+            </div>
+        </div>
+        <div class="row mid-row d-flex justify-content-sm-center">
+            <!-- card1 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">CD</h2>
+                                <p class="inside-para">One have Communication disorder doesn't mean they don't
+                                    want to communicate.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="profile-photo">
-                        <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                </div>
+            </div>
+            <!-- card 2 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">Shikimori san</h2>
+                                <p class="inside-para">A complete pacakge you want in your wifu.Yeah, but she can't cook. </p>
+                            </div>
+                        </div>
                     </div>
-                    <!-- logout -->
-                    <a href="../process/logout.php">
-                        <span class="material-icons-sharp">
-                            logout
-                        </span>
-                        <h3>Logout</h3>
-                    </a>
+                </div>
+            </div>
+            <!-- card 3 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">Happy face</h2>
+                                <p class="inside-para">You have to die , that doesn't mean you can't live right now.
+                                    Just keep doing what you have to do.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card 4 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">Care</h2>
+                                <p class="inside-para">A caring partner is all need right now. And that's Shouko komi.
+                                    Silent but heals your heart. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card 5 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">Scarlet witch</h2>
+                                <p class="inside-para">You do wrong and become hero. I do the same and become evil. That
+                                    doesn't seem fair.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card 6 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">Performance</h2>
+                                <p class="inside-para">If you teach her well. She can be incredible in bed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card 7 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">Tsundre</h2>
+                                <p class="inside-para">Violent enough to rip your heart apart. Cute enough to melt your heart.
+                                    Be careful while you are with her. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card 8 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">First sight</h2>
+                                <p class="inside-para">Love that happens faster than thunder, pure as
+                                    holy water. Yes thats true love.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card 9 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">Hanabi</h2>
+                                <p class="inside-para">The night sky is fully colored with the light of hanabi, just as
+                                    we are with our love.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card 10 -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="outer-container ">
+                    <div class="inside-container">
+                        <div class="inside-card">
+                            <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
+                            <div class="intro">
+                                <h2 class="card-title">True love</h2>
+                                <p class="inside-para">For true love a man can do anything. The laziest person
+                                    attends several part time, the irresponsible one doesn't let you ride without a helmet.
+                                    It's the power of true love. </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- ================================= END OF RIGHT SIDE ======================================= -->
-
     </div>
 
     <!-- ================================= FOOTER ======================================= -->
