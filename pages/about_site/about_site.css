@@ -288,15 +288,15 @@ main {
 
 .mid-row {
     margin: 2rem 1rem 1rem 1rem;
-    background: #111e88;
+    background: #e9480d;
 }
 
 
-
+/* ==============================fliping started==================================== */
 .cards-container{
-    background: #111e88;
+    background: #000002;
     position: relative;
-    width: 500px;
+    width: 1300px;
     height: 500px;
 
 }
@@ -306,8 +306,56 @@ main {
     height: 100%;
     width: 100%;
     transform-style: preserve-3d;
-    transition: all .5s ease;
+    transition: all .7s ease;
 }
+
+.thefront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #ffbb55;
+    color: #333;
+}
+.first-des:hover{
+    transform: rotateX(180deg);
+}
+.theback{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #fafafa;
+    color: #333;
+    transform: rotateX(180deg);
+
+}
+.column2 img{
+    width: 400px;
+}
+/* ==============================fliping done==================================== */
+/* card elements */
+.card-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2% 5%;
+}
+.card-row .column1{
+    padding-right: 50px;
+
+}
+.column1 h2{
+    font-size: 60px;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.column1 p{
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 /* ====================================== FOOTER ====================================================== */
 
 footer {
@@ -389,5 +437,21 @@ footer .row .col-md-4 h2 {
 
     .mid-row {
         justify-content: center;
+    }
+    .column1 h2{
+        align-items: center;
+        font-size: 35px;
+    }
+    .column1 p{
+        font-size: 15px;
+    }
+    .card-row{
+        display: block;
+        align-items: center;
+    }
+    .column2 img{
+        width: 300px;
+        height: 300px;
+        
     }
 }

@@ -1,4 +1,4 @@
-<?php require_once "../config.php"; ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -15,87 +15,134 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./about_site.css">
+    <link rel="stylesheet" href="./all_category.css">
 
-    <title>About site</title>
+    <title>demo</title>
 </head>
 
 <body>
 
 
-
-
+    <!-- fetching database -->
+    
     <!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
     <div class="container">
-        <div class="nav-row">
-            <div class="left-top">
+        <!-- --------------------- ASIDE -------------------------------------------- -->
+        <aside id="aside-menu" class="">
+            <div class="top">
                 <a href="../../index.php">
                     <div class="logo">
-                        <img src="../assets/home-logo.png" alt="Kosai Limited logo">
+                        <img src="../../assets_home/home-logo.png" alt="Kosai Limited logo">
                         <h2>Kosai <span style="color:#0a98f7">Limited</span></h2>
                     </div>
                 </a>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
             </div>
-            <div class="top-middle">
-                <h1>About site</h1>
+            <div class="sidebar">
+                <!-- Dashboard -->
+                <a href="./contributors_dashboard.php" class="active">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                
+                
+                
+                <!-- logout -->
+                <a href="../process/logout.php" style="">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
             </div>
-            <div class="top-right">
+        </aside>
+        <!-- ================================= END OF ASIDE ======================================= -->
 
-                <?php if (isset($_SESSION['id'])) { ?>
-                    <div class="profile">
-                       
-                        <a  href=<?php
-                                                        if ($_SESSION['role'] === "Admin") {
-                                                            echo "../admin_panel/adminpanel.php";
-                                                        } elseif ($_SESSION['role'] === "Contributor") {
-                                                            echo "../contributors_dashboard/contributors_dashboard.php";
-                                                        } else if ($_SESSION['role'] === "Learner") {
-                                                            echo "../learners_dashboard/learners_dashboard.php";
-                                                        } ?>>
-                            <button type="button" class="dash-btn">Dashboard</button> </a>
-                        <!-- logout -->
-                        <a href="../process/logout.php" style="margin: 0px;">
-                            <span class="material-icons-sharp">
-                                logout
-                            </span>
-                        </a>
+        <!-- ================================= MAIN BODY ======================================= -->
+        <main>
+            <h1>Dashboard</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <div class="insights">
+                <div class="card1 res-card">
+                    <span class="material-icons-sharp">
+                        analytics
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total posts</h3>
+                            <h1>2022</h1>
+                        </div>
+
                     </div>
-                <?php } else { ?>
-                    <a href="../login.php"><button type="button" class="dash-btn">Log in/ Sign up</button></a>
-                <?php } ?>
+                    <small class="text-muted">Last 24 Hour</small>
+                </div>
+
+                <div class="card2 res-card">
+                    <span class="material-icons-sharp">
+                        analytics
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total posts</h3>
+                            <h1>2022</h1>
+                        </div>
+
+                    </div>
+                    <small class="text-muted">Last 24 Hour</small>
+                </div>
+
+                <div class="card3 res-card">
+                    <span class="material-icons-sharp">
+                        analytics
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total posts</h3>
+                            <h1>2022</h1>
+                        </div>
+
+                    </div>
+                    <small class="text-muted">Last 24 Hour</small>
+                </div>
+
+
+            </div>
+
+            <!-- ----------------------------- END OF INSIGHTS ------------------------------------- -->
+
+            <div class="recent-posts">
+
+            </div>
+        </main>
+        <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
+
+        <!-- ================================= RIGHT SIDE ======================================= -->
+        <!-- connecting with database -->
+        
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
                 <div class="theme-toggler">
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
                 </div>
+                
             </div>
+           
         </div>
-        <div class="row mid-row d-flex justify-content-sm-center">
-          
-           <div class="cards-container">
-           <div class="first-des">
-              <div class="thefront">
-                  <div class="card-row">
-                    <div class="column1">
-                        <h2>nice to meet you</h2>
-                        <p>hey there folk, if you are willing to become a competitive programmer,
-                            want to learn language and don't know where to start, then congratulations! 
-                            you already have taken a step to your dream.
-                            
-                        </p>
-                    </div>
-                    <div class="column2">
-                        <img src="../assets/boy_on_computer.jpeg" alt="">
-                    </div>
-                  </div>
-              </div>
-              <div class="theback">
-                 back of card
-              </div>
-            </div>
-           </div>
-          
-        </div>
+        <!-- ================================= END OF RIGHT SIDE ======================================= -->
+
     </div>
 
     <!-- ================================= FOOTER ======================================= -->
@@ -159,13 +206,12 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <script src="./about_site.js"></script>
+    <script src="all_category.js"></script>
 
 
     <!-- for setting up theme -->
     <!-- will work on latter -->
-    <?php //include "../process/set_theme.php"
-    ?>
+    
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -175,4 +221,3 @@
 </body>
 
 </html>
-<?php mysqli_close($dbc); ?>
