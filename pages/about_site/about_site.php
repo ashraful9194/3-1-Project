@@ -90,7 +90,7 @@
                   </div>
               </div>
               <div class="theback">
-                 back of card
+                 back of cards
               </div>
             </div>
            </div>
