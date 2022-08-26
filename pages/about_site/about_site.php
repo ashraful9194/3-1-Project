@@ -44,15 +44,15 @@
 
                 <?php if (isset($_SESSION['id'])) { ?>
                     <div class="profile">
-                       
-                        <a  href=<?php
-                                                        if ($_SESSION['role'] === "Admin") {
-                                                            echo "../admin_panel/adminpanel.php";
-                                                        } elseif ($_SESSION['role'] === "Contributor") {
-                                                            echo "../contributors_dashboard/contributors_dashboard.php";
-                                                        } else if ($_SESSION['role'] === "Learner") {
-                                                            echo "../learners_dashboard/learners_dashboard.php";
-                                                        } ?>>
+
+                        <a href=<?php
+                                if ($_SESSION['role'] === "Admin") {
+                                    echo "../admin_panel/adminpanel.php";
+                                } elseif ($_SESSION['role'] === "Contributor") {
+                                    echo "../contributors_dashboard/contributors_dashboard.php";
+                                } else if ($_SESSION['role'] === "Learner") {
+                                    echo "../learners_dashboard/learners_dashboard.php";
+                                } ?>>
                             <button type="button" class="dash-btn">Dashboard</button> </a>
                         <!-- logout -->
                         <a href="../process/logout.php" style="margin: 0px;">
@@ -71,30 +71,47 @@
             </div>
         </div>
         <div class="row mid-row d-flex justify-content-sm-center">
-          
-           <div class="cards-container">
-           <div class="first-des">
-              <div class="thefront">
-                  <div class="card-row">
-                    <div class="column1">
-                        <h2>nice to meet you</h2>
-                        <p>hey there folk, if you are willing to become a competitive programmer,
-                            want to learn language and don't know where to start, then congratulations! 
-                            you already have taken a step to your dream.
-                            
-                        </p>
+
+            <div class="cards-container">
+                <div class="first-des">
+                    <div class="thefront">
+                        <div class="card-row">
+                            <div class="column1">
+                                <h2>nice to meet you</h2>
+                                <p>hey there folk, if you are willing to become a competitive programmer,
+                                    want to learn language and don't know where to start, then congratulations!
+                                    you already have taken a step to your dream.
+
+                                </p>
+                            </div>
+                            <div class="column2">
+                                <img src="../assets/boy_on_computer.png" alt="">
+                            </div>
+                        </div>
                     </div>
-                    <div class="column2">
-                        <img src="../assets/boy_on_computer.jpeg" alt="">
+                    <div class="theback">
+                        <div class="card-row">
+                            <div class="column1">
+                                <h2>What are we offering?</h2>
+                            </div>
+                            <div class="column2">
+                                <div class="fullcontainer">
+                                    <div class="scard">
+                                        <p class="animate-txt">
+                                            <span>CP guide</span>
+                                            <span>Algorithm</span>
+                                            <span>Development</span>
+                                            <span>Front end</span>
+                                            <span>Back end</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-              </div>
-              <div class="theback">
-                 back of cards
-              </div>
+                </div>
             </div>
-           </div>
-          
+
         </div>
     </div>
 
