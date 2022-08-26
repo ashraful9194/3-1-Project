@@ -80,7 +80,7 @@
                                 <h2>nice to meet you</h2>
                                 <p>hey there folk, if you are willing to become a competitive programmer,
                                     want to learn language and don't know where to start, then congratulations!
-                                    you already have taken a step to your dream.
+                                    you already have taken a step to your dreams.
 
                                 </p>
                             </div>
