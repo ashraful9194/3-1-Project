@@ -176,10 +176,7 @@ b {
 
 
 /* ========================= main section =========================== */
-main {
-    margin-top: 1.4rem;
 
-}
 
 .logo img {
     border-radius: 20rem;
@@ -196,7 +193,9 @@ main {
 .nav-row {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    padding-top: 1rem;
+    padding-left: 1rem;
 }
 
 .top-middle {
@@ -213,11 +212,7 @@ main {
 
 }
 
-.info {
-    display: block;
-    justify-content: flex-end;
 
-}
 
 .dash-btn {
     background-color: var(--color-button);
@@ -266,14 +261,6 @@ main {
     align-items: center;
 }
 
-.container .row {
-    /* background: #41f1b6; */
-    display: flex;
-    align-items: center;
-    gap: 0rem;
-
-}
-
 
 .profile a {
     display: flex;
@@ -286,196 +273,175 @@ main {
 
 /* =====================================mid portion design============================================== */
 
-.mid-row {
-    margin: 2rem 1rem 1rem 1rem;
-    /* background: #e9480d; */
-}
 
 
-/* ==============================fliping started==================================== */
-.cards-container{
-    /* background: #000002; */
-    position: relative;
-    width: 1300px;
-    height: 500px;
-    border-radius: 20px;
-
-}
-.first-des{
-    /* background: #41f1b6; */
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    transform-style: preserve-3d;
-    transition: all .7s ease;
-    border-radius: 20px;
-}
-
-.thefront{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    /* background: #ffbb55; */
+.container1{
+    
+    background:url(../assets/bg\ \(1\).jpeg) ;
    
-    border-radius: 20px;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
-.thefront .card-row .column1 h2{
-    color: var(--color-dark);
-}
-.first-des:hover{
-    transform: rotateX(180deg);
-}
-.theback{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    background: #181a1e;
-    color: #333;
-    transform: rotateX(180deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-
-}
-.column2 img{
-    width: 400px;
-}
-.theback .card-row{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-.theback .card-row .column1 h2{
-    font-size: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-dark);
-}
-/* ==============================fliping done==================================== */
-/* ==============================card animation==================================== */
-
-/* .fullcontainer{
-    height: 100vh;
-    width: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #181818;
-    
-} */
-.scard{
-    width: 200px;
-    height: 200px;
-    box-shadow: 16px 14px 20px #0000008c;
-    border-radius: 10px;
+.contact{
     position: relative;
-    overflow: hidden;
+    min-height: 100vh;
+    padding: 50px 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    
 }
-.scard .animate-txt{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.contact .content{
+    max-width: 800px;
+    text-align: center;
 }
 
-.scard::before{
-    content: "";
-    background-image: conic-gradient(
-        rgb(231, 25, 197) 20deg,
-        transparent 120deg
-    );
-    width: 150%;
-    height: 150%;
+.contact .content h2{
+    font-size: 36px;
+    font-weight: 500;
+    color: black;
+}
+.contact .content p{
+    
+    font-weight: 300;
+    color: black;
+    font-size: 20px;
+}
+.container2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.container2 .contactInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container2 .contactInfo .box{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+.container2 .contactInfo .box .icon{
+    min-width: 60px;
+    height: 60px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+}
+.container2 .contactInfo .icontext{
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #fff;
+    flex-direction: column;
+    font-weight: 300;
+
+
+}
+.container2 .contactInfo .icontext h3{
+    font-size: 20px;
+    font-weight: 500;
+    color: #f70ac4;
+
+}
+.container2 .contactInfo .icontext p{
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.contactForm{
+    width: 40%;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 30px;
+
+}
+.contactForm h2{
+    font-size: 30px;
+    color: #333;
+    font-weight: 500;
+}
+.contactForm .inputBox{
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+
+}
+
+.contactForm .inputBox input,
+.contactForm .inputBox textarea{
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    resize: none;
+}
+
+.contactForm .inputBox span{
     position: absolute;
-    animation: rotate 2s linear infinite;
-    
-    
-}
-.scard::after{
-    content: "";
-    width: 198px;
-    height: 198px;
-    background: #101010;
-    position: absolute;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:rgb(231, 25, 197) ;
-    font-size: larger;
-    letter-spacing: 5px;
-    box-shadow: inset 20px 20px 20px #0000008c;
-
-}
-@keyframes rotate {
-    0%{
-        transform: rotate(0deg);
-    }
-    
-    100%{
-        transform: rotate(-360deg);
-    }
-}
-
-.animate-txt{
-    visibility: hidden;
-}
-.scard span.text-in{
- 
-    display: block;
-    
-    z-index: 1;
-    position:fixed;
-    visibility: visible;
-
-    color:rgb(231, 25, 197) ;
-    font-size: larger;
-    letter-spacing: 5px;
-
-    animation: textIn .5s ease;
-}
-@keyframes textIn {
-    0%{
-        transform: translateY(100%);
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0s 2s, opacity 2s linear;
-    }
-    100%{
-        transform: translateY(0%);
-        
-    }
-    
-}
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    pointer-events: none;
+    transition: .5s;
+    color: #666;
 
 
-/* ==============================animation done==================================== */
-/* card elements */
-.thefront .card-row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2% 5%;
 }
-.thefront .card-row .column1{
-    padding-right: 50px;
 
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span,
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span{
+    color: #e91e63;
+    font-size: 12px;
+    transform: translateY(-20px);
 }
-.thefront .column1 h2{
-    font-size: 60px;
-    margin-bottom: 10px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-.thefront .column1 p{
+.contactForm .inputBox input[type="submit"]
+{
+    width: 100px;
+    background: #00bcd4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
     font-size: 18px;
-    margin-bottom: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 15px;
 }
+
+@media(max-width: 991px)
+{
+    .contact{
+        padding: 50px;
+    }
+    .container2{
+        flex-direction: column;
+    }
+    .container2 .contactInfo{
+        margin-bottom: 40px;
+
+    }
+    .container2 .contactInfo,
+    .contactForm{
+        width: 100%;
+    }
+
+}
+
 
 /* ====================================== FOOTER ====================================================== */
 
@@ -523,22 +489,7 @@ footer .row .col-md-4 h2 {
         width: 295px;
     }
 
-    .mid-row {
-        justify-content: center;
-    }
-
-    .thefront .card-row{
-        display: block;
-        justify-content: center;
-        align-items: center;
-    }
-    .theback .card-row{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-    }
+ 
     /* fix it after inserting 20 row to table */
     .footer-manual {
         margin-top: 230px;
@@ -568,42 +519,5 @@ footer .row .col-md-4 h2 {
         width: 350px;
     }
 
-    .mid-row {
-        justify-content: center;
-    }
-    .thefront .column1 h2{
-        align-items: center;
-        font-size: 35px;
-    }
-    .thefront .column1 p{
-        font-size: 15px;
-    }
-   
-    .thefront .column2 img{
-        width: 300px;
-        height: 300px;
-        
-    }
-    /* .thefront .card-row{
-        display: block;
-        justify-content: center;
-        align-items: center;
-    } */
-    .thefront .card-row .column1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
-    }
-    .theback .card-row{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-    }
-    .theback .card-row .column1 h2{
-        font-size: 30px;
-    }
+    
 }

@@ -15,8 +15,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./about_site.css">
+    <link rel="stylesheet" href="./contact_us.css">
 
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>About site</title>
 </head>
 
@@ -27,7 +29,16 @@
 
     <!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
-    <div class="container">
+    <!-- <div class="container"> -->
+
+
+
+    <!-- -------------------------main body starts here-------------------------------------------- -->
+
+
+    <div class="container1">
+
+
         <div class="nav-row">
             <div class="left-top">
                 <a href="../../index.php">
@@ -70,57 +81,76 @@
                 </div>
             </div>
         </div>
-        <div class="row mid-row d-flex justify-content-sm-center">
-
-            <div class="cards-container">
-                <div class="first-des">
-                    <div class="thefront">
-                        <div class="card-row">
-                            <div class="column1">
-                                <h2>Yorosukune onegaisimasu</h2>
-                                <p>hey there folk, if you are willing to become a competitive programmer,
-                                    want to learn language and don't know where to start, then congratulations!
-                                    you already have taken a step to your dreams.
-
-                                </p>
-                            </div>
-                            <div class="column2">
-                                <img src="../assets/boy_on_computer.png" alt="">
-                            </div>
+        <section class="contact">
+            <div class="content">
+                <h2>Contact Us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, nostrum numquam expedita esse aspernatur corporis!
+                </p>
+            </div>
+            <div class="container2">
+                <div class="contactInfo">
+                    <div class="box">
+                        <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                        <div class="icontext">
+                            <h3>Address</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
                         </div>
                     </div>
-                    <div class="theback">
-                        <div class="card-row">
-                            <div class="column1">
-                                <h2>What are we offering?</h2>
-                            </div>
-                            <div class="column2">
-                                <div class="fullcontainer">
-                                    <div class="scard">
-                                        <p class="animate-txt">
-                                            <span>CP guide</span>
-                                            <span>Algorithm</span>
-                                            <span>Development</span>
-                                            <span>Front end</span>
-                                            <span>Back end</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+
+                    <div class="box">
+                        <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                        <div class="icontext">
+                            <h3>Phone</h3>
+                            <p>019XXXXXXXX</p>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="icontext">
+                            <h3>Email</h3>
+                            <p>md3XXXXXXXXXXXX.com</p>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="contactForm">
+                    <form action="">
+                        <h2>Send Message</h2>
+                        <div class="inputBox">
+                            <input type="text" name="" required="required">
+                            <span>Full Name</span>
+                        </div>
 
-        </div>
+                        <div class="inputBox">
+                            <input type="text" name="" required="required">
+                            <span>Email</span>
+                        </div>
+
+                        <div class="inputBox">
+                            <textarea required="required"></textarea>
+                            <span>Type your message...</span>
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" name="" value="Send"">
+                        </div>
+                    </form>
+                </div>
+            </div>
+         </section>
     </div>
+
+    
+
+
+    <!-- </div> -->
 
     <!-- ================================= FOOTER ======================================= -->
 
 
     <!--Footer 1-->
-    <div class="footer-manual">
-        <footer class="bg-dark text-white mt-5">
+    <div class=" footer-manual">
+        <footer class="bg-dark text-white ">
             <div class="row">
                 <div class="col-md-4 left">
                     <h2>Kosai Limited</h2>
@@ -171,21 +201,21 @@
 
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
+                        <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                        <!-- Option 1: Bootstrap Bundle with Popper -->
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <script src="./about_site.js"></script>
+                        <script src="./contact_us.js"></script>
 
 
-    <!-- for setting up theme -->
-    <!-- will work on latter -->
-    <?php //include "../process/set_theme.php"
-    ?>
+                        <!-- for setting up theme -->
+                        <!-- will work on latter -->
+                        <?php //include "../process/set_theme.php"
+                        ?>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+                        <!-- Option 2: Separate Popper and Bootstrap JS -->
+                        <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
