@@ -54,7 +54,7 @@ try {
           <li class="nav-item"><a href="./index.php" class="nav-link text-white">Home</a></li>
           <li class="nav-item"><a href="./pages/about_site/about_site.php" class="nav-link text-white">About site</a></li>
           <li class="nav-item"><a href="./pages/all_courses/all_courses.php" class="nav-link text-white">Courses</a></li>
-          <li class="nav-item"><a href="./pages/contact_us.php" class="nav-link text-white">Contatct us</a></li>
+          <li class="nav-item"><a href="./pages/contact_us/contact_us.php" class="nav-link text-white">Contatct us</a></li>
           <?php
           if (isset($_SESSION['id'])) {
           ?>
