@@ -78,9 +78,8 @@
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">CD</h2>
-                                <p class="inside-para">One have Communication disorder doesn't mean they don't
-                                    want to communicate.</p>
+                                <h2 class="card-title">CP</h2>
+                                <p class="inside-para">A complete competitive programming guide is provided here. From beginner to advance.</p>
                             </div>
                         </div>
                     </div>
@@ -93,8 +92,8 @@
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">Shikimori san</h2>
-                                <p class="inside-para">A complete pacakge you want in your wifu.Yeah, but she can't cook. </p>
+                                <h2 class="card-title">Programming Language</h2>
+                                <p class="inside-para">A complete pacakge of programming language to start programming from beginner to advance</p>
                             </div>
                         </div>
                     </div>
@@ -107,9 +106,8 @@
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">Happy face</h2>
-                                <p class="inside-para">You have to die , that doesn't mean you can't live right now.
-                                    Just keep doing what you have to do.</p>
+                                <h2 class="card-title">Algorithm</h2>
+                                <p class="inside-para">Learn variuos algorithms about CP.</p>
                             </div>
                         </div>
                     </div>
@@ -122,106 +120,99 @@
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">Care</h2>
-                                <p class="inside-para">A caring partner is all need right now. And that's Shouko komi.
-                                    Silent but heals your heart. </p>
+                                <h2 class="card-title">Pro tips</h2>
+                                <p class="inside-para">Read posts of various experts. Discuss with them and so on. </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- card 5 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                 <div class="outer-container ">
                     <div class="inside-container">
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">Scarlet witch</h2>
-                                <p class="inside-para">You do wrong and become hero. I do the same and become evil. That
-                                    doesn't seem fair.
+                                <h2 class="card-title"></h2>
+                                <p class="inside-para">
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- card 6 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                 <div class="outer-container ">
                     <div class="inside-container">
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">Performance</h2>
-                                <p class="inside-para">If you teach her well. She can be incredible in bed.</p>
+                                <h2 class="card-title"></h2>
+                                <p class="inside-para"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- card 7 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                 <div class="outer-container ">
                     <div class="inside-container">
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">Tsundre</h2>
-                                <p class="inside-para">Violent enough to rip your heart apart. Cute enough to melt your heart.
-                                    Be careful while you are with her. </p>
+                                <h2 class="card-title"></h2>
+                                <p class="inside-para"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- card 8 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                 <div class="outer-container ">
                     <div class="inside-container">
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">First sight</h2>
-                                <p class="inside-para">Love that happens faster than thunder, pure as
-                                    holy water. Yes thats true love.</p>
+                                <h2 class="card-title"></h2>
+                                <p class="inside-para"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- card 9 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                 <div class="outer-container ">
                     <div class="inside-container">
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">Hanabi</h2>
-                                <p class="inside-para">The night sky is fully colored with the light of hanabi, just as
-                                    we are with our love.
+                                <h2 class="card-title"></h2>
+                                <p class="inside-para">
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- card 10 -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                 <div class="outer-container ">
                     <div class="inside-container">
                         <div class="inside-card">
                             <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
                             <div class="intro">
-                                <h2 class="card-title">True love</h2>
-                                <p class="inside-para">For true love a man can do anything. The laziest person
-                                    attends several part time, the irresponsible one doesn't let you ride without a helmet.
-                                    It's the power of true love. </p>
+                                <h2 class="card-title"></h2>
+                                <p class="inside-para"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

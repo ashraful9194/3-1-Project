@@ -19,7 +19,7 @@
 
     <!-- fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>About site</title>
+    <title>Contact Us</title>
 </head>
 
 <body>
@@ -75,10 +75,10 @@
                 <?php } else { ?>
                     <a href="../login.php"><button type="button" class="dash-btn">Log in/ Sign up</button></a>
                 <?php } ?>
-                <div class="theme-toggler">
+                <!-- <div class="theme-toggler">
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
-                </div>
+                </div> -->
             </div>
         </div>
         <section class="contact">
@@ -201,21 +201,21 @@
 
 
 
-                        <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Optional JavaScript; choose one of the two! -->
 
-                        <!-- Option 1: Bootstrap Bundle with Popper -->
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-                        <script src="./contact_us.js"></script>
+    <script src="./contact_us.js"></script>
 
 
-                        <!-- for setting up theme -->
-                        <!-- will work on latter -->
-                        <?php //include "../process/set_theme.php"
-                        ?>
+    <!-- for setting up theme -->
+    <!-- will work on latter -->
+    <?php //include "../process/set_theme.php"
+    ?>
 
-                        <!-- Option 2: Separate Popper and Bootstrap JS -->
-                        <!--
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
