@@ -1,0 +1,34 @@
+/* ====================================== FOOTER ====================================================== */
+
+footer {
+    display: block;
+    text-align: center;
+    padding: 25px 50px 30px;
+
+
+}
+
+footer .row .col-md-4 h2 {
+    color: #fd7e14;
+}
+
+.svg {
+    height: 48px;
+    width: 48px;
+    display: inline-block;
+}
+
+.svg {
+    transition: all 300ms ease;
+}
+
+.svg:hover {
+    cursor: pointer;
+    margin-bottom: .8rem;
+    font-size: 3rem;
+}
+
+
+@media screen and (max-width: 1200px) {  .footer-manual {
+    margin-top: 230px;
+}}

@@ -1,4 +1,5 @@
 <?php
+//unset($_SESSION['role']);
 try {
   //code...
 
@@ -23,6 +24,12 @@ try {
   <link rel="stylesheet" href="./stylesheet.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+  <!-- for owl carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 
 <body>
@@ -45,9 +52,9 @@ try {
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
           <li class="nav-item"><a href="./index.php" class="nav-link text-white">Home</a></li>
-          <li class="nav-item"><a href="./pages/about_site.php" class="nav-link text-white">About site</a></li>
-          <li class="nav-item"><a href="./pages/courses.php" class="nav-link text-white">Courses</a></li>
-          <li class="nav-item"><a href="./pages/contact_us.php" class="nav-link text-white">Contatct us</a></li>
+          <li class="nav-item"><a href="./pages/about_site/about_site.php" class="nav-link text-white">About site</a></li>
+          <li class="nav-item"><a href="./pages/all_courses/all_courses.php" class="nav-link text-white">Courses</a></li>
+          <li class="nav-item"><a href="./pages/contact_us/contact_us.php" class="nav-link text-white">Contatct us</a></li>
           <?php
           if (isset($_SESSION['id'])) {
           ?>
@@ -59,12 +66,13 @@ try {
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <!-- if admin dashboard will navigate to admin panel 
                 if user then user dashboard -->
-                  <li><a class="dropdown-item" <?php if ($_SESSION['role'] == "Admin") { ?> 
-                                                  href="./pages/admin_panel/adminpanel.php" 
-                                                  <?php } else { ?>
-                                                   href="./pages/user_dashboard/user_dashboard.php" <?php } ?>>
-                                                   Dashboard</a></li>
-                                                   
+                  <li><a class="dropdown-item" href=<?php 
+                  if ($_SESSION['role'] === "Admin") {  echo "./pages/admin_panel/adminpanel.php"; } 
+                  elseif($_SESSION['role'] === "Contributor")  {echo "./pages/contributors_dashboard/contributors_dashboard.php" ;}
+                  else if($_SESSION['role'] === "Learner") {echo "./pages/learners_dashboard/learners_dashboard.php";}?>
+                  >
+                      Dashboard</a></li>
+
                   <li><a class="dropdown-item" href="#">Create Post</a></li>
                   <li><a class="dropdown-item" href="./pages/edit_profile.php">Edit Profile</a></li>
                   <form action="./pages/process/logout.php" method="post">
@@ -95,55 +103,71 @@ try {
       <div class="banner-text">
         <h1 class="text-white banner-text"><b>Just Read a Blog</h1>
       </div>
+      <a href="./pages/all_courses/all_courses.php">
       <button type="button" class="btn btn-light btn-">Explore</button>
+      </a>
     </div>
   </div>
 
 
   <!--Main body-->
-  <!-- fetching data from database -->
-          <?php 
-          $query="select count(post_id) as total_posts from allpost"; // this will set the value in total_posts variable like a row
-          $result=mysqli_query($dbc,$query); //executing the query
-          $numRows=mysqli_num_rows($result);
-          if($numRows==1)
-            {
-              $row = mysqli_fetch_assoc($result);
 
-              //this is my query result $row['total_posts'];
-              $total_posts=$row['total_posts'];
-            }
-            else
-            {
-              $_SESSION['update_status']="failed";
-              header("location:./index.php");
-              exit();
-            }
-              // $row = mysqli_fetch_assoc($result);
-              // echo $result;
-
-          ?>
   <!-- fetching ends here -->
   <div class="container " id="cardcontainer">
+    <h3 class="mb-5">Recent Post</h3>
+   
     <div class="row">
-      <?php
-      
-      for ($i = 0; $i < 9; $i++) {
-      ?>
-        <div class="col-lg-4 mb-5">
-          <!--Bootstrap cards1-->
-          <div class="card" style="width: 21rem;">
-            <img src="./assets_home/card sample.jpg" alt="Card one" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"><?php  ?></h5>
-              <p class="card-text"><?php  ?></p>
-              <a href="#" class="btn btn-primary">Read...</a>
+      <!-- make carousel card here -->
+
+      <div class="owl-carousel owl-theme">
+        <!-- fetching data from database -->
+        <?php
+        //limiting the post description of post_paragaraph_1 for echo
+        function custom_echo($x, $length)
+        {
+          if (strlen($x) <= $length) {
+            echo $x;
+          } else {
+            $y = substr($x, 0, $length) . '...';
+            echo $y;
+          }
+        }
+
+        $last_nine_post = mysqli_query($dbc, "SELECT * FROM kosai_limited.allpost WHERE post_status='approved' order by post_id desc  LIMIT 9 ;");
+        $numRows = mysqli_num_rows($last_nine_post);
+        if ($numRows == 9) {
+          while ($rows = mysqli_fetch_assoc($last_nine_post)) {
+        ?>
+            <div class="item me-5">
+              <!--Bootstrap cards1-->
+              <div class="card" style="width: 21rem;">
+                <img src="./assets_home/card sample.jpg" alt="Card one" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $rows['post_title']; ?></h5>
+                  <p class="card-text"><?php echo $rows['post_category']; ?></p>
+                  <p class="card-text" style="font-weight:normal"><?php custom_echo($rows['post_paragraph_1'], 50); ?></p>
+                  <form action="./pages/show_post_for_all/show_post.php" method="POST">
+                    <button type="submit" id="review-button" class=" review-button" name="review_id" value="
+                                                                                                    <?php
+                                                                                                    echo $rows['post_id'];
+                                                                                                    ?>
+                                                                                                    ">Review</button>
+
+                    <script type="text/javascript">
+                      document.getElementById("review-button").onclick = function() {
+                        location.href = "./pages/show_post_for_all/show_post.php";
+                      };
+                    </script>
+                  </form>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      <?php
-      }
-      ?>
+        <?php
+          }
+        }
+        ?>
+      </div>
+
     </div>
   </div>
 
@@ -226,26 +250,16 @@ try {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="./script.js"></script>
+
+  <!-- for owl carousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./owl-carousel.js"></script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -254,5 +268,4 @@ try {
 </body>
 
 </html>
-<?php
-?>
+<?php mysqli_close($dbc);?>

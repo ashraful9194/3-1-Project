@@ -1,0 +1,461 @@
+/* import section */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(32, 139, 200, .18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --color-review-btn-background: #ffbb55;
+    --color-card-intro-background: rgb(27, 27, 27, .5);
+    --color-card-para: #ffff;
+    --color-button: #5D6B6C;
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+
+
+
+}
+
+/* ============================ DARK THEME VARIABLES ==================================================== */
+
+.dark-theme-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --color-info-light: #7d8da1;
+    --color-review-btn-background: #677483;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-card-intro-background: rgba(192, 192, 192, .5);
+    --color-card-para: black;
+    --color-button: #494b4b;
+}
+
+/* ====================================================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none !important;
+    list-style: none;
+    box-sizing: border-box;
+
+}
+
+
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: fit-content;
+    font-family: poppins, sans-serif;
+    font-size: .88rem;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+
+
+}
+
+.container {
+    /* display: grid; 
+    width: 96%;
+    margin: 0 auto;
+    gap: 4rem;
+     grid-template-columns: 14rem auto 23rem; 
+      /*new by rahat*/
+    /*display:grid;
+      width: 96%;
+      margin: 0 1rem;
+      gap: 5rem ;
+      grid-template-columns: 24rem auto 30rem;  */
+    /* background: red; */
+    width: auto;
+
+}
+
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: .87rem;
+}
+
+h4 {
+    font-size: .8rem;
+}
+
+h5 {
+    font-size: .77rem;
+}
+
+small {
+    font-size: .75rem;
+}
+
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    /* overflow: hidden; */
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+p {
+    color: var(--color-dark-variant);
+}
+
+b {
+    color: var(--color-dark);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.dnager {
+    color: var(--color-danger);
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+
+
+
+/* ========================= main section =========================== */
+main {
+    margin-top: 1.4rem;
+
+}
+
+.logo img {
+    border-radius: 20rem;
+    width: 40px;
+    height: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-row {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    margin-top: 1rem;
+}
+
+.top-middle {
+    display: flex;
+    /* align-self: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.info {
+    display: block;
+    justify-content: flex-end;
+
+}
+
+.dash-btn {
+    background-color: var(--color-button);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.top-right .theme-toggler {
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.top-right .theme-toggler span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-right .theme-toggler span.active {
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.top-right .profile {
+    display: flex;
+    gap: .5rem;
+    text-align: right;
+    align-items: center;
+}
+
+.container .row {
+    /* background: #41f1b6; */
+    display: flex;
+    align-items: center;
+    gap: 0rem;
+
+}
+
+.mid-row {
+    margin: 2rem 1rem 1rem 1rem;
+}
+
+.profile a {
+    display: flex;
+}
+
+/* ============================== Cards style ========================================= */
+.inside-img {
+    width: 322px;
+    height: 200px;
+    border-radius: 3px;
+    transition: .5s ease;
+
+}
+
+.inside-container {
+    display: flex;
+    gap: 1rem;
+    /* background: var(--color-info-light); */
+    /* background: #41f1b6; */
+    /* width: fit-content; */
+
+}
+
+.outer-container {
+    /* display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    margin-top: 1.4rem; */
+    position: relative;
+
+}
+
+.inside-card {
+    width: 322px;
+    margin: 10px;
+    height: 200px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.intro {
+    height: 40px;
+    width:322px;
+    padding: 4px;
+    box-sizing: border-box;
+    background: var(--color-card-intro-background);
+    color: var(--color-info-light);
+    bottom: 10px;
+    position: absolute;
+    transition: .5s ease;
+}
+
+.card-title {
+    margin: 7px;
+    font-size: 18px;
+    color:  var(--color-card-para);
+}
+
+.inside-para {
+    font-size: 11px;
+    margin: 9px;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: bold;
+    color: var(--color-card-para);
+}
+
+.inside-card:hover {
+    cursor: pointer;
+}
+
+.inside-card:hover .intro {
+    height: 110px;
+    bottom: 8px;
+    background: var(--color-card-intro-background);
+}
+
+.inside-card:hover .inside-para {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.inside-card:hover .inside-img {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+
+/* =============================card style ends========================================== */
+
+
+
+
+
+
+
+/* ============================== RIGHT TOP ========================================= */
+
+/* ====================================== FOOTER ====================================================== */
+
+footer {
+    display: block;
+    text-align: center;
+    padding: 25px 50px 30px;
+
+
+}
+
+footer .row .col-md-4 h2 {
+    color: #fd7e14;
+}
+
+.svg {
+    height: 48px;
+    width: 48px;
+    display: inline-block;
+}
+
+.svg {
+    transition: all 300ms ease;
+}
+
+.svg:hover {
+    cursor: pointer;
+    margin-bottom: .8rem;
+    font-size: 3rem;
+}
+
+/* ==================================== MEDIA QUERIES tablets ================================================== */
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 100%;
+        /* grid-template-columns: 7rem auto 23rem; */
+    }
+
+    .top-middle h1 {
+        align-items: center;
+    }
+
+    .intro {
+        width: 295px;
+    }
+
+    .mid-row {
+        justify-content: center;
+    }
+
+    /* fix it after inserting 20 row to table */
+    .footer-manual {
+        margin-top: 230px;
+    }
+}
+
+/* =================================== MEDIA QUERIES MOBILE,SMALL TABLETS ============================================= */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        /* grid-template-columns: 1fr; */
+    }
+
+    .logo img {
+        display: none;
+    }
+
+    .top-right .profile a {
+        display: none;
+    }
+
+    .top-middle h1 {
+        align-items: center;
+    }
+
+    .intro {
+        width: 350px;
+    }
+
+    .mid-row {
+        justify-content: center;
+    }
+}

@@ -445,6 +445,10 @@ footer .row .col-md-4 h2{
         left: 237px;
         
     }
+    /* fix it after inserting 20 row to table */
+ .footer-manual{ 
+    margin-top: 230px;
+}
 
 }
 

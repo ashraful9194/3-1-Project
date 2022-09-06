@@ -23,7 +23,8 @@ try {
             // post_paragraph_2
             // post_code_2
             // post_paragraph_3
-            // post_code_3 ]
+            // post_code_3
+            // post_status ]
 
             // form variables names[
             // post_title
@@ -39,13 +40,13 @@ try {
             $date = date('Y-m-d');
             $result = mysqli_query(
                 $dbc,
-                "INSERT into temporaryposts
+                "INSERT into allpost
                  values(
                             null,'$date','$publisher_username','$publisher_id',
                             '$post_title','$post_category',
                             '$post_paragraph1','$post_code1',
                             '$post_paragraph2','$post_code2',
-                            '$post_paragraph3','$post_code3');");
+                            '$post_paragraph3','$post_code3','pending');");
 
             if ($result) {
                 $_SESSION["update_status"] = "success";

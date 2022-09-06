@@ -1,0 +1,114 @@
+.logo img {
+    border-radius: 20rem;
+    width: 40px;
+    height: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-row {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    margin-top: 1rem;
+}
+
+.top-middle {
+    display: flex;
+    /* align-self: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+
+
+.dash-btn {
+    background-color: var(--color-button);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.top-right .theme-toggler {
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.top-right .theme-toggler span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-right .theme-toggler span.active {
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.top-right .profile {
+    display: flex;
+    gap: .5rem;
+    text-align: right;
+    align-items: center;
+}
+
+
+.profile a {
+    display: flex;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+.top-middle h1 {
+    align-items: center;
+}
+
+.intro {
+    width: 295px;
+}}
+@media screen and (max-width: 768px) {    .logo img {
+    display: none;
+}
+
+.top-right .profile a {
+    display: none;
+}
+
+.top-middle h1 {
+    align-items: center;
+}
+
+.intro {
+    width: 350px;
+}
+
+
+}

@@ -22,7 +22,7 @@
     if (isset($_POST['review_id'])) {
         extract($_POST);
         $reviewID = $_POST['review_id'];
-        $query = "SELECT * FROM kosai_limited.temporaryposts WHERE (post_id= $reviewID );";
+        $query = "SELECT * FROM kosai_limited.allpost WHERE (post_id= $reviewID AND post_status='pending');";
         $res = mysqli_query($dbc, $query);
         $numRows = mysqli_num_rows($res);
         if ($numRows == 1) {
@@ -55,7 +55,12 @@
                 </div>
                 <div class="sidebar">
                     <!-- Dashboard -->
-                    <a href="../admin_panel/adminpanel.php">
+                    <a href="<?php 
+                                if($_SESSION['role']=="Admin")
+                                {echo "./adminpanel.php";}
+                                if($_SESSION['role']=="Contributor")
+                                {echo "../contributors_dashboard/contributors_dashboard.php";}
+                                ?>">
                         <span class="material-icons-sharp">
                             dashboard
                         </span>
@@ -69,7 +74,7 @@
                         <h3>Create Post</h3>
                     </a>
                     <!-- all post -->
-                    <a href="../show_post/show_post.php" class="">
+                    <a href="../all_posts/all_posts.php" class="">
                         <span class="material-icons-sharp">
                             <span class="material-icons-sharp">
                                 format_list_bulleted
@@ -78,12 +83,14 @@
                         <h3>All Post</h3>
                     </a>
                     <!-- Users -->
-                    <a href="#">
+                    <?php if($_SESSION['role']==="Admin"){?>
+                    <a href="./all_users.php">
                         <span class="material-icons-sharp">
                             person
                         </span>
                         <h3>Users</h3>
                     </a>
+                    <?php }?>
                     <!-- Analytics -->
                     <a href="#">
                         <span class="material-icons-sharp">
@@ -132,6 +139,7 @@
             post_code2
             post_paragraph3
             post_code3  
+            post_status
          -->
 
                 <div class="form-card card-body d-flex flex-column">
@@ -181,9 +189,10 @@
                                 </div>
 
                                 <div class="postActionButtons">
-                                    <button type="submit" class="btn btn-primary submit-btn" name="approve_post" value="
+                                    <?php if($_SESSION['role']==="Admin"){?>
+                                     <button type="submit" class="btn btn-primary submit-btn" name="approve_post" value="
                                                                                                                 <?php echo $reviewID; ?>
-                                                                                                                ">Approve</button>
+                                                                                                                ">Approve</button> <?php }?>
                                     <button type="submit" class="btn btn-primary submit-btn-2 " name="delete_post" value="
                                                                                                                 <?php echo $reviewID; ?>
                                                                                                                 ">Delete</button>
@@ -205,26 +214,37 @@
 
             <!-- ================================= Starting right side ======================================= -->
 
-            <div class="right">
-                <div class="top">
-                    <button id="menu-btn">
-                        <span class="material-icons-sharp">menu</span>
-                    </button>
-                    <div class="theme-toggler">
-                        <span class="material-icons-sharp active">light_mode</span>
-                        <span class="material-icons-sharp">dark_mode</span>
+            <!-- connecting with database -->
+        <?php
+        $current_user = $_SESSION['id'];
+        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+        $numRows = mysqli_num_rows($result);
+        if ($numRows == 1) {
+            $row_info = mysqli_fetch_assoc($result);
+        }
+        ?>
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <!-- info -->
+                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
+                        <small class="text-muted"><?php echo $row_info['role'];?></small>
                     </div>
-                    <div class="profile">
-                        <div class="info">
-                            <p>Hey, <b>Rahat</b></p>
-                            <small class="text-muted">Admin</small>
-                        </div>
-                        <div class="profile-photo">
-                            <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
-                        </div>
+                    <div class="profile-photo">
+                        <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
                     </div>
                 </div>
             </div>
+            
+        </div>
 
             <!-- ================================= End of right side ======================================= -->
 
@@ -237,49 +257,51 @@
 
 
         <!--Footer 1-->
-        <footer class="bg-dark text-white mt-5">
-            <div class="row">
-                <div class="col-md-4 left">
-                    <h2>Kosai Limited</h2>
-                    <p class="text-muted warning">
-                    <h3>
-                        An E-learning platfrom. <br><br> From beginner to advance.
-                    </h3>
-                    </p>
+        <div class="footer-manual">
+            <footer class="bg-dark text-white mt-5">
+                <div class="row">
+                    <div class="col-md-4 left">
+                        <h2>Kosai Limited</h2>
+                        <p class="text-muted warning">
+                        <h3>
+                            An E-learning platfrom. <br><br> From beginner to advance.
+                        </h3>
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Find us</h2>
+                        <span class="material-icons-sharp">
+                            email
+                        </span>
+                        <p class="text-muted">
+                        <h3>
+                            md3rahat2cse93@gmail.com
+                        </h3>
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Follow us</h2>
+                        <img src="../svg/icons8-facebook.svg" alt="" class="svg">
+                        <img src="../svg/icons8-instagram.svg" alt="" class="svg">
+                        <img src="../svg/icons8-linkedin.svg" alt="" class="svg">
+                        <img src="../svg/icons8-twitter.svg" alt="" class="svg">
+                        <img src="../svg/icons8-youtube.svg" alt="" class="svg">
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h2>Find us</h2>
-                    <span class="material-icons-sharp">
-                        email
-                    </span>
-                    <p class="text-muted">
-                    <h3>
-                        md3rahat2cse93@gmail.com
-                    </h3>
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Follow us</h2>
-                    <img src="../svg/icons8-facebook.svg" alt="" class="svg">
-                    <img src="../svg/icons8-instagram.svg" alt="" class="svg">
-                    <img src="../svg/icons8-linkedin.svg" alt="" class="svg">
-                    <img src="../svg/icons8-twitter.svg" alt="" class="svg">
-                    <img src="../svg/icons8-youtube.svg" alt="" class="svg">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <hr class="mb-4">
+                <div class="row">
+                    <div class="col">
+                        <hr class="mb-4">
 
-                    <p>Copyright ©2022 All rights reserved by :
-                        <a href="../../index.php" style="text-decoration: none;">
-                            <strong class="text-warning">Kosai Limited</strong>
-                        </a>
-                    </p>
+                        <p>Copyright ©2022 All rights reserved by :
+                            <a href="../../index.php" style="text-decoration: none;">
+                                <strong class="text-warning">Kosai Limited</strong>
+                            </a>
+                        </p>
 
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
         <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -295,3 +317,4 @@
 </body>
 
 </html>
+<?php mysqli_close($dbc);?>

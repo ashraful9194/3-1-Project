@@ -372,3 +372,4 @@ require_once './config.php';
 </body>
 
 </html>
+<?php mysqli_close($dbc);?>

@@ -1,4 +1,8 @@
-<?php require_once "../config.php" ?>
+<?php
+require_once "../config.php";
+$current_visitor=$_SESSION['id'];
+if(isset($current_visitor)){
+?>
 <!doctype html>
 <html lang="en">
 
@@ -6,6 +10,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- to refresh after 1 min -->
+    <meta http-equiv="refresh" content="60" />
 
 
     <!-- material CDN -->
@@ -21,9 +27,10 @@
 <body>
 
 
-    <!-- fetching database -->
+    <!-- fetching database  -->
+    <!-- a problem is here that here only fetching is done but not cheking if the user is valid or not -->
     <?php
-    $query = "SELECT * FROM kosai_limited.temporaryposts;";
+    $query = "SELECT * FROM kosai_limited.allpost where post_status='pending';";
     $res = mysqli_query($dbc, $query);
     $numRows = mysqli_num_rows($res);
 
@@ -72,7 +79,7 @@
                     <h3>All Post</h3>
                 </a>
                 <!-- Users -->
-                <a href="#">
+                <a href="./all_users.php">
                     <span class="material-icons-sharp">
                         person
                     </span>
@@ -202,7 +209,7 @@
 
                                         </form> -->
                                         <form action="./post_review_page.php" method="POST">
-                                            <button  type="submit" id="review-button" class="btn review-button" name="review_id" value="
+                                            <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
                                                                                                     <?php
                                                                                                     echo $row['post_id'];
                                                                                                     ?>
@@ -223,12 +230,21 @@
 
                     </tbody>
                 </table>
-                <a href="#">Show All</a>
+                <a href="./show_all_pending_posts.php">Show All</a>
             </div>
         </main>
         <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
 
         <!-- ================================= RIGHT SIDE ======================================= -->
+        <!-- connecting with database -->
+        <?php
+        $current_user = $_SESSION['id'];
+        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+        $numRows = mysqli_num_rows($result);
+        if ($numRows == 1) {
+            $row_info = mysqli_fetch_assoc($result);
+        }
+        ?>
         <div class="right">
             <div class="top">
                 <button id="menu-btn">
@@ -240,8 +256,9 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Rahat</b></p>
-                        <small class="text-muted">Admin</small>
+                        <!-- info -->
+                        <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
+                        <small class="text-muted"><?php echo $row_info['role']; ?></small>
                     </div>
                     <div class="profile-photo">
                         <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
@@ -249,6 +266,37 @@
                 </div>
             </div>
             <div class="recent-updates">
+                <!-- fetching last three post from database -->
+
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <?php
+                        $last_three_post = mysqli_query($dbc, "SELECT * FROM kosai_limited.allpost WHERE post_status='pending' order by post_id desc  LIMIT 3 ;");
+                        $numRows = mysqli_num_rows($last_three_post);
+                        if ($numRows == 3) {
+                            while ($rows = mysqli_fetch_assoc($last_three_post)) {
+                                $userID = $rows['post_publisher_id'];
+                                $full_name = mysqli_query($dbc, "SELECT fname,lname from users where (id=$userID)");
+                                $name_row = mysqli_fetch_assoc($full_name);
+                        ?>
+                                <div class="profile-photo">
+                                    <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                                </div>
+                                <div class="message">
+                                    <p><b> <?php echo $name_row['fname'] . " " . $name_row['lname']; ?> added a post.</b></p>
+                                    <small class="text-muted"><?php echo $rows['post_date']; ?></small>
+                                </div>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- <div class="recent-updates">
                 <h2>Recent Updates</h2>
                 <div class="updates">
                     <div class="update">
@@ -272,7 +320,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- ================================= END OF RIGHT SIDE ======================================= -->
 
@@ -355,3 +403,7 @@
 </body>
 
 </html>
+<?php } //if the visitor is valid
+else{echo "The page you are looking for is not here to be found. Try looking into your pocket. And try again!";}
+?>
+<?php mysqli_close($dbc);?>

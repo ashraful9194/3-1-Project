@@ -8,7 +8,7 @@ try {
         //for checking if the user is exists or not
 
         $reviewID = $_POST['approve_post'];
-        $query = "SELECT * FROM kosai_limited.temporaryposts WHERE (post_id= $reviewID );";
+        $query = "SELECT * FROM kosai_limited.allpost WHERE (post_id= $reviewID  AND post_status='pending');";
         $res = mysqli_query($dbc, $query);
         $numRows = mysqli_num_rows($res);
         if ($numRows == 1) {
@@ -20,15 +20,13 @@ try {
 
         //inserting in to all post
 
-        $resultInsert = mysqli_query(
+        $change_status = mysqli_query(
             $dbc,
-            "INSERT INTO allpost SELECT * FROM temporaryposts where (temporaryposts.post_id=$reviewID)"
+            "UPDATE allpost SET post_status='approved' where (allpost.post_id=$reviewID)"
         );
-        // deleting from temporary post
+        
 
-        $resultDelete = mysqli_query($dbc, "DELETE FROM temporaryposts WHERE (post_id=$reviewID);");
-
-        if ($resultInsert && $resultDelete) {
+        if ($change_status) {
             $_SESSION["update_status"] = "success";
             header("location: ./adminpanel.php");
             exit();
@@ -42,7 +40,7 @@ try {
     elseif (isset($_POST["delete_post"])) {
         extract($_POST);
         $reviewID = $_POST['delete_post'];
-        $resultDelete = mysqli_query($dbc, "DELETE FROM temporaryposts WHERE (post_id=$reviewID);");
+        $resultDelete = mysqli_query($dbc, "DELETE FROM allpost WHERE (allpost.post_id=$reviewID);");
         if ($resultDelete) {
             $_SESSION["update_status"] = "success";
             header("location: ./adminpanel.php");
@@ -61,3 +59,4 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+ mysqli_close($dbc);?>

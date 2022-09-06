@@ -1,0 +1,609 @@
+/* import section */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(32, 139, 200, .18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --color-review-btn-background: #ffbb55;
+    --color-card-intro-background: rgb(27, 27, 27, .5);
+    --color-card-para: #ffff;
+    --color-button: #5D6B6C;
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+
+
+
+}
+
+/* ============================ DARK THEME VARIABLES ==================================================== */
+
+.dark-theme-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --color-info-light: #7d8da1;
+    --color-review-btn-background: #677483;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-card-intro-background: rgba(192, 192, 192, .5);
+    --color-card-para: black;
+    --color-button: #494b4b;
+}
+
+/* ====================================================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none !important;
+    list-style: none;
+    box-sizing: border-box;
+
+}
+
+
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: fit-content;
+    font-family: poppins, sans-serif;
+    font-size: .88rem;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+
+
+}
+
+.container {
+    /* display: grid; 
+    width: 96%;
+    margin: 0 auto;
+    gap: 4rem;
+     grid-template-columns: 14rem auto 23rem; 
+      /*new by rahat*/
+    /*display:grid;
+      width: 96%;
+      margin: 0 1rem;
+      gap: 5rem ;
+      grid-template-columns: 24rem auto 30rem;  */
+    /* background: red; */
+    width: auto;
+
+}
+
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: .87rem;
+}
+
+h4 {
+    font-size: .8rem;
+}
+
+h5 {
+    font-size: .77rem;
+}
+
+small {
+    font-size: .75rem;
+}
+
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    /* overflow: hidden; */
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+p {
+    color: var(--color-dark-variant);
+}
+
+b {
+    color: var(--color-dark);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.dnager {
+    color: var(--color-danger);
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+
+
+
+/* ========================= main section =========================== */
+main {
+    margin-top: 1.4rem;
+
+}
+
+.logo img {
+    border-radius: 20rem;
+    width: 40px;
+    height: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-row {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    margin-top: 1rem;
+}
+
+.top-middle {
+    display: flex;
+    /* align-self: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.info {
+    display: block;
+    justify-content: flex-end;
+
+}
+
+.dash-btn {
+    background-color: var(--color-button);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.top-right .theme-toggler {
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.top-right .theme-toggler span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-right .theme-toggler span.active {
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.top-right .profile {
+    display: flex;
+    gap: .5rem;
+    text-align: right;
+    align-items: center;
+}
+
+.container .row {
+    /* background: #41f1b6; */
+    display: flex;
+    align-items: center;
+    gap: 0rem;
+
+}
+
+
+.profile a {
+    display: flex;
+}
+
+
+
+
+
+
+/* =====================================mid portion design============================================== */
+
+.mid-row {
+    margin: 2rem 1rem 1rem 1rem;
+    /* background: #e9480d; */
+}
+
+
+/* ==============================fliping started==================================== */
+.cards-container{
+    /* background: #000002; */
+    position: relative;
+    width: 1300px;
+    height: 500px;
+    border-radius: 20px;
+
+}
+.first-des{
+    /* background: #41f1b6; */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: all .7s ease;
+    border-radius: 20px;
+}
+
+.thefront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    /* background: #ffbb55; */
+   
+    border-radius: 20px;
+}
+.thefront .card-row .column1 h2{
+    color: var(--color-dark);
+}
+.first-des:hover{
+    transform: rotateX(180deg);
+}
+.theback{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #181a1e;
+    color: #333;
+    transform: rotateX(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+
+}
+.column2 img{
+    width: 400px;
+}
+.theback .card-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.theback .card-row .column1 h2{
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-dark);
+}
+/* ==============================fliping done==================================== */
+/* ==============================card animation==================================== */
+
+/* .fullcontainer{
+    height: 100vh;
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #181818;
+    
+} */
+.scard{
+    width: 200px;
+    height: 200px;
+    box-shadow: 16px 14px 20px #0000008c;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.scard .animate-txt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scard::before{
+    content: "";
+    background-image: conic-gradient(
+        rgb(231, 25, 197) 20deg,
+        transparent 120deg
+    );
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    animation: rotate 2s linear infinite;
+    
+    
+}
+.scard::after{
+    content: "";
+    width: 198px;
+    height: 198px;
+    background: #101010;
+    position: absolute;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(231, 25, 197) ;
+    font-size: larger;
+    letter-spacing: 5px;
+    box-shadow: inset 20px 20px 20px #0000008c;
+
+}
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+.animate-txt{
+    visibility: hidden;
+}
+.scard span.text-in{
+ 
+    display: block;
+    
+    z-index: 1;
+    position:fixed;
+    visibility: visible;
+
+    color:rgb(231, 25, 197) ;
+    font-size: larger;
+    letter-spacing: 5px;
+
+    animation: textIn .5s ease;
+}
+@keyframes textIn {
+    0%{
+        transform: translateY(100%);
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 2s, opacity 2s linear;
+    }
+    100%{
+        transform: translateY(0%);
+        
+    }
+    
+}
+
+
+/* ==============================animation done==================================== */
+/* card elements */
+.thefront .card-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2% 5%;
+}
+.thefront .card-row .column1{
+    padding-right: 50px;
+
+}
+.thefront .column1 h2{
+    font-size: 60px;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.thefront .column1 p{
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* ====================================== FOOTER ====================================================== */
+
+footer {
+    display: block;
+    text-align: center;
+    padding: 25px 50px 30px;
+
+
+}
+
+footer .row .col-md-4 h2 {
+    color: #fd7e14;
+}
+
+.svg {
+    height: 48px;
+    width: 48px;
+    display: inline-block;
+}
+
+.svg {
+    transition: all 300ms ease;
+}
+
+.svg:hover {
+    cursor: pointer;
+    margin-bottom: .8rem;
+    font-size: 3rem;
+}
+
+/* ==================================== MEDIA QUERIES tablets ================================================== */
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 100%;
+        /* grid-template-columns: 7rem auto 23rem; */
+    }
+
+    .top-middle h1 {
+        align-items: center;
+    }
+
+    .intro {
+        width: 295px;
+    }
+
+    .mid-row {
+        justify-content: center;
+    }
+
+    .thefront .card-row{
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+    .theback .card-row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    /* fix it after inserting 20 row to table */
+    .footer-manual {
+        margin-top: 230px;
+    }
+}
+
+/* =================================== MEDIA QUERIES MOBILE,SMALL TABLETS ============================================= */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        /* grid-template-columns: 1fr; */
+    }
+
+    .logo img {
+        display: none;
+    }
+
+    .top-right .profile a {
+        display: none;
+    }
+
+    .top-middle h1 {
+        align-items: center;
+    }
+
+    .intro {
+        width: 350px;
+    }
+
+    .mid-row {
+        justify-content: center;
+    }
+    .thefront .column1 h2{
+        align-items: center;
+        font-size: 35px;
+    }
+    .thefront .column1 p{
+        font-size: 15px;
+    }
+   
+    .thefront .column2 img{
+        width: 300px;
+        height: 300px;
+        
+    }
+    /* .thefront .card-row{
+        display: block;
+        justify-content: center;
+        align-items: center;
+    } */
+    .thefront .card-row .column1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    .theback .card-row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .theback .card-row .column1 h2{
+        font-size: 30px;
+    }
+}
