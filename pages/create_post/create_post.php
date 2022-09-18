@@ -13,7 +13,7 @@
 <?php
 $current_visitor = $_SESSION['id'];
 $res = mysqli_query($dbc, "SELECT * FROM users WHERE id=$current_visitor;");
-$row=mysqli_fetch_assoc($res);
+$row = mysqli_fetch_assoc($res);
 
 //if the visitor is registered
 if ($res) {
@@ -37,15 +37,15 @@ if ($res) {
             </div>
             <div class="sidebar">
                 <!-- Dashboard -->
-               
-                <a href=" <?php 
-                if($row['role']=="Admin")
-                echo "../admin_panel/adminpanel.php";
-                // if($row['role']=="Learner")
-                // echo "../learners_dashboard/learners_dashboard.php";
-                if($row['role']=="Contributor")
-                echo "../contributors_dashboard/contributors_dashboard.php";
-                ?>">
+
+                <a href=" <?php
+                            if ($row['role'] == "Admin")
+                                echo "../admin_panel/adminpanel.php";
+                            // if($row['role']=="Learner")
+                            // echo "../learners_dashboard/learners_dashboard.php";
+                            if ($row['role'] == "Contributor")
+                                echo "../contributors_dashboard/contributors_dashboard.php";
+                            ?>">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -68,15 +68,15 @@ if ($res) {
                     <h3>All Post</h3>
                 </a>
                 <!-- Users -->
-                <?php 
-                if($row['role']=="Admin"){?>
-                <a href="../admin_panel/all_users.php">
-                    <span class="material-icons-sharp">
-                        person
-                    </span>
-                    <h3>Users</h3>
-                </a>
-                <?php }?>
+                <?php
+                if ($row['role'] == "Admin") { ?>
+                    <a href="../admin_panel/all_users.php">
+                        <span class="material-icons-sharp">
+                            person
+                        </span>
+                        <h3>Users</h3>
+                    </a>
+                <?php } ?>
                 <!-- Analytics -->
                 <a href="#">
                     <span class="material-icons-sharp">
@@ -145,7 +145,25 @@ if ($res) {
                             <div class="row mb-3 category">
                                 <label for="category" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="post_category" name="post_category">
+                                    <div class="mb-3 form-check me-5">
+                                        <input type="checkbox" class="form-check-input" name="category[]" value="Competitive_programming">
+                                        <label class="form-check-label" for="Competitive_programming">Competitive programming</label>
+                                    </div>
+
+                                    <div class="mb-3 form-check me-5">
+                                        <input type="checkbox" class="form-check-input" name="category[]" value="C_programming">
+                                        <label class="form-check-label" for="C_programming">C programming</label>
+                                    </div>
+
+                                    <div class="mb-3 form-check me-5">
+                                        <input type="checkbox" class="form-check-input" name="category[]" value="Algorithm">
+                                        <label class="form-check-label" for="Algorithm">Algorithm</label>
+                                    </div>
+
+                                    <div class="mb-3 form-check me-5">
+                                        <input type="checkbox" class="form-check-input" name="category[]" value="Tips">
+                                        <label class="form-check-label" for="Tips">Tips</label>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Paragraph 1 -->
@@ -230,15 +248,15 @@ if ($res) {
                 <div class="profile">
                     <div class="info">
                         <!-- info -->
-                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
-                        <small class="text-muted"><?php echo $row_info['role'];?></small>
+                        <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
+                        <small class="text-muted"><?php echo $row_info['role']; ?></small>
                     </div>
                     <div class="profile-photo">
                         <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
         <!-- ================================= End of right side ======================================= -->
@@ -258,13 +276,13 @@ if ($res) {
 ?>
 
 
-<!-- ------------------------------ PROMPT SECTION not working ------------------------------------------ -->
+    <!-- ------------------------------ PROMPT SECTION not working ------------------------------------------ -->
 
-<script>
-        setTimeout(() => {          
-                alert("<?php echo "Please log in to continue..." ?>")
+    <script>
+        setTimeout(() => {
+            alert("<?php echo "Please log in to continue..." ?>")
         }, 50);
     </script>
 
 
-<?php }?>
+<?php } ?>
