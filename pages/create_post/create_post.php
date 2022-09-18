@@ -146,22 +146,22 @@ if ($res) {
                                 <label for="category" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
                                     <div class="mb-3 form-check me-5">
-                                        <input type="checkbox" class="form-check-input" name="category[]" value="Competitive_programming">
+                                        <input type="checkbox" class="form-check-input" name="categoryy[]" value="Competitive_programming">
                                         <label class="form-check-label" for="Competitive_programming">Competitive programming</label>
                                     </div>
 
                                     <div class="mb-3 form-check me-5">
-                                        <input type="checkbox" class="form-check-input" name="category[]" value="C_programming">
+                                        <input type="checkbox" class="form-check-input" name="categoryy[]" value="C_programming">
                                         <label class="form-check-label" for="C_programming">C programming</label>
                                     </div>
 
                                     <div class="mb-3 form-check me-5">
-                                        <input type="checkbox" class="form-check-input" name="category[]" value="Algorithm">
+                                        <input type="checkbox" class="form-check-input" name="categoryy[]" value="Algorithm">
                                         <label class="form-check-label" for="Algorithm">Algorithm</label>
                                     </div>
 
                                     <div class="mb-3 form-check me-5">
-                                        <input type="checkbox" class="form-check-input" name="category[]" value="Tips">
+                                        <input type="checkbox" class="form-check-input" name="categoryy[]" value="Tips">
                                         <label class="form-check-label" for="Tips">Tips</label>
                                     </div>
                                 </div>

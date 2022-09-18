@@ -133,7 +133,8 @@ try {
           }
         }
 
-        $last_nine_post = mysqli_query($dbc, "SELECT * FROM kosai_limited.allpost WHERE post_status='approved' order by post_id desc  LIMIT 9 ;");
+        $last_nine_post = mysqli_query($dbc, "SELECT post_id,post_title,post_paragraph_1 FROM kosai_limited.allpost WHERE post_status='approved' order by post_id desc  LIMIT 9 ;");
+        // SELECT DISTINCT post_category,post_id FROM allpost natural join post_category_relationship  WHERE post_status='approved' order by post_id desc 
         $numRows = mysqli_num_rows($last_nine_post);
         if ($numRows == 9) {
           while ($rows = mysqli_fetch_assoc($last_nine_post)) {
@@ -144,14 +145,14 @@ try {
                 <img src="./assets_home/card sample.jpg" alt="Card one" class="card-img-top">
                 <div class="card-body">
                   <h5 class="card-title"><?php echo $rows['post_title']; ?></h5>
-                  <p class="card-text"><?php echo $rows['post_category']; ?></p>
+                 
                   <p class="card-text" style="font-weight:normal"><?php custom_echo($rows['post_paragraph_1'], 50); ?></p>
                   <form action="./pages/show_post_for_all/show_post.php" method="POST">
                     <button type="submit" id="review-button" class=" review-button" name="review_id" value="
                                                                                                     <?php
                                                                                                     echo $rows['post_id'];
                                                                                                     ?>
-                                                                                                    ">Review</button>
+                                                                                                    ">Read</button>
 
                     <script type="text/javascript">
                       document.getElementById("review-button").onclick = function() {
