@@ -266,133 +266,26 @@ main {
     align-items: center;
 }
 
-.container .row {
-    /* background: #41f1b6; */
-    display: flex;
-    align-items: center;
-    gap: 0rem;
-
-}
-
-.mid-row {
-    margin: 2rem 1rem 1rem 1rem;
-}
 
 .profile a {
     display: flex;
 }
 
-/* ============================== Cards style ========================================= */
-.inside-img {
-    width: 322px;
-    height: 200px;
-    border-radius: 3px;
-    transition: .5s ease;
+/* ============================== post cards ========================================= */
 
-}
+.mid-row{
+    background-color: #41f1b6;
 
-.inside-container {
     display: flex;
-    gap: 1rem;
-    /* background: var(--color-info-light); */
-    /* background: #41f1b6; */
-    /* width: fit-content; */
-
+   
+    
 }
-
-.outer-container {
-    /* display: flex;
-    justify-content: center;
-    height: 100vh;
-    align-items: center;
-    margin-top: 1.4rem; */
-    position: relative;
-
-}
-
-.inside-card {
-    width: 322px;
-    margin: 10px;
-    height: 200px;
-    box-shadow: var(--box-shadow);
-    overflow: hidden;
-}
-
-.intro {
-    height: 40px;
-    width:322px;
-    padding: 4px;
-    box-sizing: border-box;
-    background: var(--color-card-intro-background);
-    color: var(--color-info-light);
-    bottom: 10px;
-    position: absolute;
-    transition: .5s ease;
-}
-
-.card-title {
-    margin: 7px;
-    font-size: 18px;
-    color:  var(--color-card-para);
-}
-
-.inside-para {
-    font-size: 11px;
-    margin: 9px;
-    visibility: hidden;
-    opacity: 0;
-    font-weight: bold;
-    color: var(--color-card-para);
-}
-
-.inside-card:hover {
-    cursor: pointer;
-}
-
-.inside-card:hover .intro {
-    height: 110px;
-    bottom: 8px;
-    background: var(--color-card-intro-background);
-}
-
-.inside-card:hover .inside-para {
-    visibility: visible;
-    opacity: 1;
-
-}
-
-.inside-card:hover .inside-img {
-    transform: scale(1.1) rotate(-3deg);
-}
-
 
 /* =============================card style ends========================================== */
 
 
 
-.title-category{
-    background: none;
-    display: flex;
-    
-}
-.categoryBtn{
-    background: none;
-}
-.categoryBtn span{
-    color: #fff;
-}
-.card-container{
-    display: flex;
-   margin-top: 2rem;
-   
-}
 
-.card:hover{
-    -webkit-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
-    -moz-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
-    box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
-
-}
 
 
 

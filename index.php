@@ -66,14 +66,18 @@ try {
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <!-- if admin dashboard will navigate to admin panel 
                 if user then user dashboard -->
-                  <li><a class="dropdown-item" href=<?php 
-                  if ($_SESSION['role'] === "Admin") {  echo "./pages/admin_panel/adminpanel.php"; } 
-                  elseif($_SESSION['role'] === "Contributor")  {echo "./pages/contributors_dashboard/contributors_dashboard.php" ;}
-                  else if($_SESSION['role'] === "Learner") {echo "./pages/learners_dashboard/learners_dashboard.php";}?>
-                  >
+                  <li><a class="dropdown-item" href=<?php
+                                                    if ($_SESSION['role'] === "Admin") {
+                                                      echo "./pages/admin_panel/adminpanel.php";
+                                                    } elseif ($_SESSION['role'] === "Contributor") {
+                                                      echo "./pages/contributors_dashboard/contributors_dashboard.php";
+                                                    } else if ($_SESSION['role'] === "Learner") {
+                                                      echo "./pages/learners_dashboard/learners_dashboard.php";
+                                                    } ?>>
                       Dashboard</a></li>
-
-                  <li><a class="dropdown-item" href="#">Create Post</a></li>
+                  <?php
+                  if ($_SESSION['role'] === "Admin" or $_SESSION['role'] === "Contributor") { ?>
+                    <li><a class="dropdown-item" href="./pages/create_post/create_post.php">Create Post</a></li> <?php } ?>
                   <li><a class="dropdown-item" href="./pages/edit_profile.php">Edit Profile</a></li>
                   <form action="./pages/process/logout.php" method="post">
                     <li class="nav-item">
@@ -104,7 +108,7 @@ try {
         <h1 class="text-white banner-text"><b>Just Read a Blog</h1>
       </div>
       <a href="./pages/all_courses/all_courses.php">
-      <button type="button" class="btn btn-light btn-">Explore</button>
+        <button type="button" class="btn btn-light btn-">Explore</button>
       </a>
     </div>
   </div>
@@ -115,7 +119,7 @@ try {
   <!-- fetching ends here -->
   <div class="container " id="cardcontainer">
     <h3 class="mb-5">Recent Post</h3>
-   
+
     <div class="row">
       <!-- make carousel card here -->
 
@@ -134,10 +138,13 @@ try {
         }
 
         $last_nine_post = mysqli_query($dbc, "SELECT post_id,post_title,post_paragraph_1 FROM kosai_limited.allpost WHERE post_status='approved' order by post_id desc  LIMIT 9 ;");
-        // SELECT DISTINCT post_category,post_id FROM allpost natural join post_category_relationship  WHERE post_status='approved' order by post_id desc 
+
         $numRows = mysqli_num_rows($last_nine_post);
         if ($numRows == 9) {
           while ($rows = mysqli_fetch_assoc($last_nine_post)) {
+            //getting post id for category
+            $postId = $rows['post_id'];
+            $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
         ?>
             <div class="item me-5">
               <!--Bootstrap cards1-->
@@ -145,7 +152,18 @@ try {
                 <img src="./assets_home/card sample.jpg" alt="Card one" class="card-img-top">
                 <div class="card-body">
                   <h5 class="card-title"><?php echo $rows['post_title']; ?></h5>
-                 
+                  <!-- showing category -->
+                  <?php
+
+                  ?>
+                  <p class="card-text">
+                    <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                      <span class="category-viewer">
+                        <?php echo $categoryName['post_category'], " "; ?>
+                      </span>
+                    <?php } ?>
+                  </p>
+
                   <p class="card-text" style="font-weight:normal"><?php custom_echo($rows['post_paragraph_1'], 50); ?></p>
                   <form action="./pages/show_post_for_all/show_post.php" method="POST">
                     <button type="submit" id="review-button" class=" review-button" name="review_id" value="
@@ -269,4 +287,4 @@ try {
 </body>
 
 </html>
-<?php mysqli_close($dbc);?>
+<?php mysqli_close($dbc); ?>

@@ -55,11 +55,13 @@
                 </div>
                 <div class="sidebar">
                     <!-- Dashboard -->
-                    <a href="<?php 
-                                if($_SESSION['role']=="Admin")
-                                {echo "./adminpanel.php";}
-                                if($_SESSION['role']=="Contributor")
-                                {echo "../contributors_dashboard/contributors_dashboard.php";}
+                    <a href="<?php
+                                if ($_SESSION['role'] == "Admin") {
+                                    echo "./adminpanel.php";
+                                }
+                                if ($_SESSION['role'] == "Contributor") {
+                                    echo "../contributors_dashboard/contributors_dashboard.php";
+                                }
                                 ?>">
                         <span class="material-icons-sharp">
                             dashboard
@@ -83,14 +85,14 @@
                         <h3>All Post</h3>
                     </a>
                     <!-- Users -->
-                    <?php if($_SESSION['role']==="Admin"){?>
-                    <a href="./all_users.php">
-                        <span class="material-icons-sharp">
-                            person
-                        </span>
-                        <h3>Users</h3>
-                    </a>
-                    <?php }?>
+                    <?php if ($_SESSION['role'] === "Admin") { ?>
+                        <a href="./all_users.php">
+                            <span class="material-icons-sharp">
+                                person
+                            </span>
+                            <h3>Users</h3>
+                        </a>
+                    <?php } ?>
                     <!-- Analytics -->
                     <a href="#">
                         <span class="material-icons-sharp">
@@ -132,7 +134,7 @@
                 <!-- 
            form variables for php--
             post_title
-            post_category
+            
             post_paragraph1
             post_code1
             post_paragraph2
@@ -141,6 +143,12 @@
             post_code3  
             post_status
          -->
+
+                <!-- fetcing category -->
+                <?php
+                $postId = $row['post_id'];
+                $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                ?>
 
                 <div class="form-card card-body d-flex flex-column">
                     <div class="card1 res-card">
@@ -161,7 +169,12 @@
                                 </div>
                                 <!-- category -->
                                 <div class="row mb-3 category">
-                                    <h3><?php echo $row['post_category']; ?></h3>
+                                    <h3> <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                            
+                                                <?php echo $categoryName['post_category'], " "; ?>
+                                           
+                                        <?php } ?>
+                                    </h3>
                                 </div>
                                 <!-- Paragraph 1 -->
                                 <div class="row mb-3 paragraph1">
@@ -189,10 +202,10 @@
                                 </div>
 
                                 <div class="postActionButtons">
-                                    <?php if($_SESSION['role']==="Admin"){?>
-                                     <button type="submit" class="btn btn-primary submit-btn" name="approve_post" value="
+                                    <?php if ($_SESSION['role'] === "Admin") { ?>
+                                        <button type="submit" class="btn btn-primary submit-btn" name="approve_post" value="
                                                                                                                 <?php echo $reviewID; ?>
-                                                                                                                ">Approve</button> <?php }?>
+                                                                                                                ">Approve</button> <?php } ?>
                                     <button type="submit" class="btn btn-primary submit-btn-2 " name="delete_post" value="
                                                                                                                 <?php echo $reviewID; ?>
                                                                                                                 ">Delete</button>
@@ -215,36 +228,36 @@
             <!-- ================================= Starting right side ======================================= -->
 
             <!-- connecting with database -->
-        <?php
-        $current_user = $_SESSION['id'];
-        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
-        $numRows = mysqli_num_rows($result);
-        if ($numRows == 1) {
-            $row_info = mysqli_fetch_assoc($result);
-        }
-        ?>
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <!-- info -->
-                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
-                        <small class="text-muted"><?php echo $row_info['role'];?></small>
+            <?php
+            $current_user = $_SESSION['id'];
+            $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+            $numRows = mysqli_num_rows($result);
+            if ($numRows == 1) {
+                $row_info = mysqli_fetch_assoc($result);
+            }
+            ?>
+            <div class="right">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">menu</span>
+                    </button>
+                    <div class="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
                     </div>
-                    <div class="profile-photo">
-                        <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                    <div class="profile">
+                        <div class="info">
+                            <!-- info -->
+                            <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
+                            <small class="text-muted"><?php echo $row_info['role']; ?></small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                        </div>
                     </div>
                 </div>
+
             </div>
-            
-        </div>
 
             <!-- ================================= End of right side ======================================= -->
 
@@ -317,4 +330,4 @@
 </body>
 
 </html>
-<?php mysqli_close($dbc);?>
+<?php mysqli_close($dbc); ?>

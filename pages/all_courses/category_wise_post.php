@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./all_courses.css">
+    <link rel="stylesheet" href="./category_wise_post.css">
 
     <title>All Courses</title>
 </head>
@@ -70,102 +70,116 @@
                 </div>
             </div>
         </div>
-        <form action="./category_wise_post.php" method="GET">
-            <div class="row mid-row d-flex justify-content-sm-center">
 
-                <!-- card1 -->
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
-                    <div class="outer-container ">
-                        <div class="inside-container">
-                            <div class="inside-card">
-                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
 
-                                <div class="intro">
-                                    <div class="title-category">
-                                        <h2 class="card-title">CP</h2>
-                                        <button class="categoryBtn" name="categorySelector" value="competetive_programming">
-                                            <div>
-                                                <span class="material-icons-sharp">read_more</span>
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <p class="inside-para">A complete competitive programming guide is provided here. From beginner to advance.</p>
+        <?php
+        if (isset($_GET)) {
+            extract($_GET);
+            echo $categorySelector;
+            if ($categorySelector == "competetive_programming") {
+                $category = "Competitive_programming";
+            }
+            if ($categorySelector == "programming_language") {
+                $category = "C_programming";
+            }
+            if ($categorySelector == "algorithm") {
+                $category = "Algorithm";
+            }
+            if ($categorySelector == "tips") {
+                $category = "Tips";
+            }
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- </button> -->
-                <!-- card 2 -->
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
-                    <div class="outer-container ">
-                        <div class="inside-container">
-                            <div class="inside-card">
-                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
-                                <div class="intro">
-                                <div class="title-category">
-                                        <h2 class="card-title">Programming Language</h2>
-                                        <button class="categoryBtn" name="categorySelector" value="programming_language">
-                                            <div>
-                                                <span class="material-icons-sharp">read_more</span>
-                                            </div>
-                                        </button>
+        ?>
+
+            <div class="row mid-row">
+                
+                    <!-- fetching data from database -->
+                    <?php
+                    //limiting the post description of post_paragaraph_1 for echo
+                    function custom_echo($x, $length)
+                    {
+                        if (strlen($x) <= $length) {
+                            echo $x;
+                        } else {
+                            $y = substr($x, 0, $length) . '...';
+                            echo $y;
+                        }
+                    }
+
+                    $categoryWisePostId = mysqli_query($dbc, "SELECT post_id FROM `post_category_relationship` WHERE post_category= '$category';");
+
+                    $numRows = mysqli_num_rows($categoryWisePostId);
+                    if ($numRows) {
+                        while ($postIdSelector = mysqli_fetch_assoc($categoryWisePostId)) {
+                            //getting post id for category
+                            $postId = $postIdSelector['post_id'];
+                            echo $postId;
+                            $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                            $postInfoseek = mysqli_query($dbc, "SELECT post_title,post_paragraph_1 from allpost where post_id=$postId ;");
+                            $postInfo = mysqli_fetch_assoc($postInfoseek);
+                    ?>
+                            <div class="item me-5">
+                                <!--Bootstrap cards1-->
+                                <div class="card" style="width: 21rem;">
+                                    <img src="../assets/card sample.jpg" alt="Card one" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $postInfo['post_title']; ?></h5>
+                                        <!-- showing category -->
+                                        <?php
+
+                                        ?>
+                                        <p class="card-text">
+                                            <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                                <span class="category-viewer">
+                                                    <?php echo $categoryName['post_category'], " "; ?>
+                                                </span>
+                                            <?php } ?>
+                                        </p>
+
+                                        <p class="card-text" style="font-weight:normal"><?php custom_echo($postInfo['post_paragraph_1'], 50); ?></p>
+                                        <form action="./pages/show_post_for_all/show_post.php" method="POST">
+                                            <button type="submit" id="review-button" class=" review-button" name="review_id" value="
+                                                                                                    <?php
+                                                                                                    echo $postId;
+                                                                                                    ?>
+                                                                                                    ">Read</button>
+
+                                            <script type="text/javascript">
+                                                document.getElementById("review-button").onclick = function() {
+                                                    location.href = "../show_post_for_all/show_post.php";
+                                                };
+                                            </script>
+                                        </form>
                                     </div>
-                                    <p class="inside-para">A complete pacakge of programming language to start programming from beginner to advance</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 3 -->
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
-                    <div class="outer-container ">
-                        <div class="inside-container">
-                            <div class="inside-card">
-                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
-                                <div class="intro">
-                                <div class="title-category">
-                                        <h2 class="card-title">Algirithm</h2>
-                                        <button class="categoryBtn" name="categorySelector" value="algorithm">
-                                            <div>
-                                                <span class="material-icons-sharp">read_more</span>
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <p class="inside-para">Learn variuos algorithms about CP.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 4 -->
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
-                    <div class="outer-container ">
-                        <div class="inside-container">
-                            <div class="inside-card">
-                                <img src="../assets/Competitive-Programming.png" alt="CP" class="inside-img">
-                                <div class="intro">
-                                <div class="title-category">
-                                        <h2 class="card-title">Pro Tips</h2>
-                                        <button class="categoryBtn" name="categorySelector" value="tips">
-                                            <div>
-                                                <span class="material-icons-sharp">read_more</span>
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <p class="inside-para">Read posts of various experts. Discuss with them and so on. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                            }
+                        }
+                    }
+                    ?>
+                
+                
 
             </div>
-        </form>
 
 
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </div>
@@ -231,7 +245,7 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <script src="./all_courses.js"></script>
+    <script src="./category_wise_post.js"></script>
 
 
     <!-- for setting up theme -->

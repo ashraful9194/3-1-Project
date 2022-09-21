@@ -151,7 +151,7 @@ if ($res) {
                                     </div>
 
                                     <div class="mb-3 form-check me-5">
-                                        <input type="checkbox" class="form-check-input" name="categoryy[]" value="C_programming">
+                                        <input type="checkbox" class="form-check-input" name="categoryy[]" value="C programming">
                                         <label class="form-check-label" for="C_programming">C programming</label>
                                     </div>
 
