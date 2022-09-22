@@ -27,7 +27,7 @@
 
     <!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
-    <div class="container">
+    <div class="container mb-3">
         <div class="nav-row">
             <div class="left-top">
                 <a href="../../index.php">
@@ -75,7 +75,7 @@
         <?php
         if (isset($_GET)) {
             extract($_GET);
-            echo $categorySelector;
+            // echo $categorySelector;
             if ($categorySelector == "competetive_programming") {
                 $category = "Competitive_programming";
             }
@@ -91,75 +91,78 @@
 
         ?>
 
-            <div class="row mid-row">
-                
-                    <!-- fetching data from database -->
-                    <?php
-                    //limiting the post description of post_paragaraph_1 for echo
-                    function custom_echo($x, $length)
-                    {
-                        if (strlen($x) <= $length) {
-                            echo $x;
-                        } else {
-                            $y = substr($x, 0, $length) . '...';
-                            echo $y;
-                        }
+            <div class="row mid-row mt-5">
+
+                <!-- fetching data from database -->
+                <?php
+                //limiting the post description of post_paragaraph_1 for echo
+                function custom_echo($x, $length)
+                {
+                    if (strlen($x) <= $length) {
+                        echo $x;
+                    } else {
+                        $y = substr($x, 0, $length) . '...';
+                        echo $y;
                     }
+                }
 
-                    $categoryWisePostId = mysqli_query($dbc, "SELECT post_id FROM `post_category_relationship` WHERE post_category= '$category';");
+                $categoryWisePostId = mysqli_query($dbc, "SELECT post_id FROM `post_category_relationship` WHERE post_category= '$category' order by post_id DESC;");
 
-                    $numRows = mysqli_num_rows($categoryWisePostId);
-                    if ($numRows) {
-                        while ($postIdSelector = mysqli_fetch_assoc($categoryWisePostId)) {
-                            //getting post id for category
-                            $postId = $postIdSelector['post_id'];
-                            echo $postId;
-                            $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
-                            $postInfoseek = mysqli_query($dbc, "SELECT post_title,post_paragraph_1 from allpost where post_id=$postId ;");
-                            $postInfo = mysqli_fetch_assoc($postInfoseek);
-                    ?>
-                            <div class="item me-5">
-                                <!--Bootstrap cards1-->
-                                <div class="card" style="width: 21rem;">
-                                    <img src="../assets/card sample.jpg" alt="Card one" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?php echo $postInfo['post_title']; ?></h5>
-                                        <!-- showing category -->
-                                        <?php
+                $numRows = mysqli_num_rows($categoryWisePostId);
+                if ($numRows) {
+                    while ($postIdSelector = mysqli_fetch_assoc($categoryWisePostId)) {
+                        //getting post id for category
+                        $postId = $postIdSelector['post_id'];
+                        // echo $postId;
+                        $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                        $postInfoseek = mysqli_query($dbc, "SELECT post_title,post_paragraph_1 from allpost where post_id=$postId ;");
+                        $postInfo = mysqli_fetch_assoc($postInfoseek);
+                ?>
 
-                                        ?>
-                                        <p class="card-text">
-                                            <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
-                                                <span class="category-viewer">
-                                                    <?php echo $categoryName['post_category'], " "; ?>
-                                                </span>
-                                            <?php } ?>
-                                        </p>
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3 d-flex justify-content-center align-items-center">
+                            <!--Bootstrap cards1-->
+                            <div class="card" >
 
-                                        <p class="card-text" style="font-weight:normal"><?php custom_echo($postInfo['post_paragraph_1'], 50); ?></p>
-                                        <form action="./pages/show_post_for_all/show_post.php" method="POST">
-                                            <button type="submit" id="review-button" class=" review-button" name="review_id" value="
+                                <img src="../assets/card sample.jpg" alt="Card one" class="card-img-top">
+
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $postInfo['post_title']; ?></h5>
+                                    <!-- showing category -->
+                                    <?php
+
+                                    ?>
+                                    <p>
+                                        <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                            <span class="category-viewer">
+                                                <?php echo $categoryName['post_category'], " "; ?>
+                                            </span>
+                                        <?php } ?>
+                                    </p>
+
+                                    <p class="card-text" style="font-weight:normal"><?php custom_echo($postInfo['post_paragraph_1'], 50); ?></p>
+                                    <form action="../show_post_for_all/show_post.php" method="POST">
+                                        <button type="submit" id="review-button" class=" review-button" name="review_id" value="
                                                                                                     <?php
                                                                                                     echo $postId;
                                                                                                     ?>
                                                                                                     ">Read</button>
 
-                                            <script type="text/javascript">
-                                                document.getElementById("review-button").onclick = function() {
-                                                    location.href = "../show_post_for_all/show_post.php";
-                                                };
-                                            </script>
-                                        </form>
-                                    </div>
+                                        <script type="text/javascript">
+                                            document.getElementById("review-button").onclick = function() {
+                                                location.href = "../show_post_for_all/show_post.php";
+                                            };
+                                        </script>
+                                    </form>
                                 </div>
                             </div>
-                    <?php
-                            }
-                        }
+                        </div>
+            <?php
                     }
-                    ?>
-                
-                
+                }
+            }
+            ?>
+
+
 
             </div>
 

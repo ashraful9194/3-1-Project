@@ -24,6 +24,8 @@
     --border-radius-1: 0.4rem;
     --border-radius-2: 0.8rem;
     --border-radius-3: 1.2rem;
+    --card-body-color: rgb(236, 242, 242);
+    --color-category:#dce1eb;
 
 
     --card-padding: 1.8rem;
@@ -49,6 +51,8 @@
     --color-card-intro-background: rgba(192, 192, 192, .5);
     --color-card-para: black;
     --color-button: #494b4b;
+    --card-body-color:rgb(43, 46, 46);
+    --color-category:#202225;
 }
 
 /* ====================================================================================================== */
@@ -274,12 +278,65 @@ main {
 /* ============================== post cards ========================================= */
 
 .mid-row{
-    background-color: #41f1b6;
+    /* background-color: #41f1b6; */
 
     display: flex;
    
     
 }
+.review-button {
+    border: none;
+    color: #363949;
+    background: #ffbb55;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: .5rem;
+   
+  }
+
+  .card:hover{
+    -webkit-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
+    box-shadow: -1px 9px 40px -12px rgb(0,0,0,0.75);
+
+}
+.card{
+    width: 22rem;
+    height: auto;
+    border-radius: 20px;
+    background:var(--card-body-color) ;
+}
+.card img{
+    border-radius: 20px 20px 0px 0px;
+}
+.card .card-body h5{
+    color: var(--color-dark);
+    font-size: 17px;
+}
+
+
+.category-viewer{
+    background: var(--color-category);
+    margin: 10px  5px 10px 0px;
+    border-radius:10px;
+    border-style: solid;
+    padding: 2px 5px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.card .card-body .card-text{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
 
 /* =============================card style ends========================================== */
 

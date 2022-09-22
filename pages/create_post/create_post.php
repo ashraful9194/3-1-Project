@@ -11,6 +11,9 @@
      At last there is footer.-->
 <!-- if a user is logged in then show this page ,other wise promt that visitor is not logged in -->
 <?php
+  function function_alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+    }
 $current_visitor = $_SESSION['id'];
 $res = mysqli_query($dbc, "SELECT * FROM users WHERE id=$current_visitor;");
 $row = mysqli_fetch_assoc($res);
@@ -264,25 +267,34 @@ if ($res) {
 
 
     </div>
+
+    <?php 
+       if(isset($_SESSION["update_status"])){
+        if( $_SESSION["update_status"]== "success")
+        {
+            function_alert("Post successfully created.");
+        }
+        if($_SESSION["update_status"]== "failed")
+        {
+            function_alert("Something went wrong. Please try again!!!");
+        }
+       }
+    ?>
     <!--------------------------------------The whole body ends  here-------------------------------------------->
 
 
 
 
-
+<!-- ------------------------------ PROMPT SECTION not working ------------------------------------------ -->
 
 <?php include "./cpfooter.php";
-} else {
+} else {function_alert("Please Log in to continue!!!");}
 ?>
 
 
-    <!-- ------------------------------ PROMPT SECTION not working ------------------------------------------ -->
+    
 
-    <script>
-        setTimeout(() => {
-            alert("<?php echo "Please log in to continue..." ?>")
-        }, 50);
-    </script>
+  
+    
 
 
-<?php } ?>
