@@ -103,14 +103,22 @@
                     </span>
                     <h3>Analytics</h3>
                 </a>
-                <!-- messages -->
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        question_answer
-                    </span>
-                    <h3>Messages</h3>
-                    <span class="message-count">26</span>
-                </a>
+                 <!--contact messages -->
+                 <a href="#">
+                        <span class="material-icons-sharp">
+                            quickreply
+                        </span>
+                        <h3>Messages</h3>
+                        <span class="message-count">26</span>
+                    </a>
+                    <!-- messages -->
+                    <a href="#">
+                        <span class="material-icons-sharp">
+                            question_answer
+                        </span>
+                        <h3>Comments</h3>
+                        <span class="message-count">26</span>
+                    </a>
                 <!-- settings -->
                 <a href="../edit_profile.php">
                     <span class="material-icons-sharp">

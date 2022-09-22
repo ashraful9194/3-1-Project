@@ -21,19 +21,16 @@
     <?php
     // fetching for current user
     $userID = $_SESSION["id"];
-    if($_SESSION['role']==="Admin")
-    {
+    if ($_SESSION['role'] === "Admin") {
         $query = "SELECT * FROM kosai_limited.allpost where post_status='pending';";
     }
-    if($_SESSION['role']==="Contributor")
-    {
+    if ($_SESSION['role'] === "Contributor") {
         $query = "SELECT 
         post_id,
         post_date,
         post_publisher_username,
         post_publisher_id,
         post_title,
-        post_category,
         post_paragraph_1,
         post_code_1,
         post_paragraph_2,
@@ -112,14 +109,22 @@
                     </span>
                     <h3>Analytics</h3>
                 </a>
-                <!-- messages -->
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        question_answer
-                    </span>
-                    <h3>Messages</h3>
-                    <span class="message-count">26</span>
-                </a>
+                 <!--contact messages -->
+                 <a href="#">
+                        <span class="material-icons-sharp">
+                            quickreply
+                        </span>
+                        <h3>Messages</h3>
+                        <span class="message-count">26</span>
+                    </a>
+                    <!-- messages -->
+                    <a href="#">
+                        <span class="material-icons-sharp">
+                            question_answer
+                        </span>
+                        <h3>Comments</h3>
+                        <span class="message-count">26</span>
+                    </a>
                 <!-- settings -->
                 <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
@@ -163,12 +168,21 @@
                         <?php
                         if ($numRows > 0) {
 
-                            while (($row = mysqli_fetch_assoc($res))) { ?>
+                            while (($row = mysqli_fetch_assoc($res))) {
+                                $postId = $row['post_id'];
+                                $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                        ?>
 
                                 <tr>
                                     <td><?php echo $row['post_id']; ?></td>
                                     <td><?php echo $row['post_title']; ?></td>
-                                    <td><?php echo $row['post_category']; ?></td>
+                                    <td><?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                            <span class="category-viewer">
+                                                <?php echo "| ";
+                                                echo $categoryName['post_category'], " | "; ?>
+                                            </span>
+                                        <?php } ?>
+                                    </td>
                                     <td><?php echo $row['post_publisher_username']; ?></td>
                                     <!-- <td>pending</td> -->
                                     <td>
@@ -230,15 +244,15 @@
                 <div class="profile">
                     <div class="info">
                         <!-- info -->
-                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
-                        <small class="text-muted"><?php echo $row_info['role'];?></small>
+                        <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
+                        <small class="text-muted"><?php echo $row_info['role']; ?></small>
                     </div>
                     <div class="profile-photo">
                         <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
         <!-- ================================= End of right side ======================================= -->
@@ -312,4 +326,4 @@
 </body>
 
 </html>
-<?php mysqli_close($dbc);?>
+<?php mysqli_close($dbc); ?>

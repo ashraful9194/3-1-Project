@@ -115,24 +115,24 @@
                     </div>
                 </div>
                 <div class="contactForm">
-                    <form action="">
+                    <form action="./message_send_process.php" method="POST">
                         <h2>Send Message</h2>
                         <div class="inputBox">
-                            <input type="text" name="" required="required">
+                            <input type="text" name="sender_fullname" required="required">
                             <span>Full Name</span>
                         </div>
 
                         <div class="inputBox">
-                            <input type="text" name="" required="required">
+                            <input type="text" name="sender_email" required="required">
                             <span>Email</span>
                         </div>
 
                         <div class="inputBox">
-                            <textarea required="required"></textarea>
+                            <textarea required="required" name="sender_message"></textarea>
                             <span>Type your message...</span>
                         </div>
                         <div class="inputBox">
-                            <input type="submit" name="" value="Send"">
+                            <input type="submit" name="submit_button" value="send">
                         </div>
                     </form>
                 </div>
@@ -222,4 +222,21 @@
 </body>
 
 </html>
-<?php mysqli_close($dbc); ?>
+<?php mysqli_close($dbc); 
+ function function_alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+    }
+
+   if(isset($_SESSION['update_status']))
+   {
+    if($_SESSION['update_status']=="success")
+    {
+        function_alert("Message sent successfully.");
+    }
+    if($_SESSION['update_status']=="failed")
+    {
+        function_alert("Something went wrong. Plesae try again!!!");
+    }
+   }
+   unset($_SESSION['update_status']);
+?>
