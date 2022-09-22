@@ -28,13 +28,13 @@ require_once "../config.php";
 
     <!-- fetching database -->
     <?php
-    $query = "SELECT 
+
+    $res = mysqli_query($dbc, "SELECT 
     post_id,
     post_date,
     post_publisher_username,
     post_publisher_id,
     post_title,
-    post_category,
     post_paragraph_1,
     post_code_1,
     post_paragraph_2,
@@ -44,9 +44,8 @@ require_once "../config.php";
     post_status,
     role  FROM kosai_limited.allpost  join kosai_limited.users 
     ON (allpost.post_publisher_id=users.id)
-     where post_status='pending' and role='Contributor';";
-    $res = mysqli_query($dbc, $query);
-    $numRows = mysqli_num_rows($res);
+     where post_status='pending' and role='Contributor';");
+
 
 
     ?>
@@ -92,7 +91,7 @@ require_once "../config.php";
                     </span>
                     <h3>All Post</h3>
                 </a>
-               
+
                 <!-- Analytics -->
                 <a href="#">
                     <span class="material-icons-sharp">
@@ -100,14 +99,7 @@ require_once "../config.php";
                     </span>
                     <h3>Analytics</h3>
                 </a>
-                <!-- messages -->
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        question_answer
-                    </span>
-                    <h3>Messages</h3>
-                    <span class="message-count">26</span>
-                </a>
+
                 <!-- settings -->
                 <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
@@ -180,67 +172,69 @@ require_once "../config.php";
 
             <!-- ----------------------------- END OF INSIGHTS ------------------------------------- -->
 
+            <?php $numrow = mysqli_num_rows($res);
+            // echo $numrow;
+            if($numrow===0){
+            
+            ?>
+
             <div class="recent-posts">
-                <h2>My Pending Posts</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Post ID</th>
-                            <th>Post Title</th>
-                            <th>Post Catregory</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <h2>No pending Posts</h2>
+            </div>
+            <?php }else{?>
 
-                        <?php
-                        if ($numRows > 0) {
-                            $limit = 10;
-                            while (($row = mysqli_fetch_assoc($res)) && $limit > 0) { $_SESSION['role']=$row['role']; ?>
-                                
-                                <tr>
-                                    <td><?php echo $row['post_id']; ?></td>
-                                    <td><?php echo $row['post_title']; ?></td>
-                                    <td><?php echo $row['post_category']; ?></td>
-                                    <td><?php echo $row['post_status']; ?></td>
-                                   
-                                    <!-- <td>pending</td> -->
-                                    <td>
-                                        <!-- <form action="./post_review_page.php" method="GET">
+                <div class="recent-posts">
+                    <h2>My Pending Posts</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Post ID</th>
+                                <th>Post Title</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                                            <button type="button" class="btn review-button" name="review_id" value="
-                                                                                                    <?php
-                                                                                                    //$row['post_id'];
-                                                                                                    ?>
-                                                                                                    ">Review</button>
+                            <?php
+                            // if ($numRows > 0) {
+                                $limit = 10;
+                                while (($row = mysqli_fetch_assoc($res)) && $limit > 0) {
+                                    $_SESSION['role'] = $row['role']; ?>
 
-                                        </form> -->
-                                        <form action="../admin_panel/post_review_page.php" method="POST">
-                                            <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
+                                    <tr>
+                                        <td><?php echo $row['post_id']; ?></td>
+                                        <td><?php echo $row['post_title']; ?></td>
+                                        <td><?php echo $row['post_status']; ?></td>
+                                        <td>
+                                           
+                                            <form action="../admin_panel/post_review_page.php" method="POST">
+                                                <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
                                                                                                     <?php
                                                                                                     echo $row['post_id'];
-                                                                                                   
+
                                                                                                     ?>
                                                                                                     ">Review</button>
 
-                                            <script type="text/javascript">
-                                                document.getElementById("review-button").onclick = function() {
-                                                    location.href = "../admin_panel/post_review_page.php";
-                                                };
-                                            </script>
-                                        </form>
-                                    </td>
-                                </tr>
-                        <?php $limit--;
-                            }
-                        } ?>
+                                                <script type="text/javascript">
+                                                    document.getElementById("review-button").onclick = function() {
+                                                        location.href = "../admin_panel/post_review_page.php";
+                                                    };
+                                                </script>
+                                            </form>
+                                        </td>
+                                    </tr>
+                            <?php $limit--;
+                                } ?>
 
 
-                    </tbody>
-                </table>
-                <a href="../admin_panel/show_all_pending_posts.php">Show All</a>
-            </div>
+                        </tbody>
+                    </table>
+                    <a href="../admin_panel/show_all_pending_posts.php">Show All</a>
+                </div>
+
+            <?php }?>
+
         </main>
         <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
 
@@ -412,4 +406,4 @@ require_once "../config.php";
 </body>
 
 </html>
-<?php mysqli_close($dbc);?>
+<?php mysqli_close($dbc); ?>

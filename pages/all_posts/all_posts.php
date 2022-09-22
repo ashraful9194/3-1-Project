@@ -74,12 +74,28 @@
                 </span>
                 <h3>Analytics</h3>
             </a>
+            <!--contact messages -->
+            <?php
+            if ($row['role'] == "Admin") { 
+                
+                $message_count = mysqli_query($dbc,"SELECT count(*) as unread from contact_messages where message_seen_status=0");
+                $number_of_messages=mysqli_fetch_assoc($message_count);
+
+                ?>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        quickreply
+                    </span>
+                    <h3>Messages</h3>
+                    <span class="message-count"><?php echo $number_of_messages['unread'];?></span>
+                </a>
+            <?php } ?>
             <!-- messages -->
             <a href="#">
                 <span class="material-icons-sharp">
                     question_answer
                 </span>
-                <h3>Messages</h3>
+                <h3>Comments</h3>
                 <span class="message-count">26</span>
             </a>
             <!-- settings -->
@@ -134,12 +150,21 @@
                             <?php
                             if ($numRows > 0) {
                                 $limit = 20;
-                                while (($row = mysqli_fetch_assoc($res)) && $limit > 0) { ?>
+                                while (($row = mysqli_fetch_assoc($res)) && $limit > 0) {
+                                    $postId = $row['post_id'];
+                                    $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                            ?>
 
                                     <tr>
                                         <td><?php echo $row['post_id']; ?></td>
                                         <td><?php echo $row['post_title']; ?></td>
-                                        <td><?php echo $row['post_category']; ?></td>
+                                        <td> <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                                <span class="category-viewer">
+                                                    <?php echo "| ";
+                                                    echo $categoryName['post_category'], " | "; ?>
+                                                </span>
+                                            <?php } ?>
+                                        </td>
                                         <td><?php echo $row['post_publisher_username']; ?></td>
                                         <!-- <td>pending</td> -->
                                         <td>
@@ -200,12 +225,21 @@
                                 $numRows = mysqli_num_rows($res);
                                 if ($numRows > 0) {
                                     $limit = 20;
-                                    while (($row = mysqli_fetch_assoc($res)) && $limit > 0) { ?>
+                                    while (($row = mysqli_fetch_assoc($res)) && $limit > 0) {
+                                        $postId = $row['post_id'];
+                                        $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                            ?>
 
                                         <tr>
                                             <td><?php echo $row['post_id']; ?></td>
                                             <td><?php echo $row['post_title']; ?></td>
-                                            <td><?php echo $row['post_category']; ?></td>
+                                            <td><?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                                    <span class="category-viewer">
+                                                        <?php echo "| ";
+                                                        echo $categoryName['post_category'], " | "; ?>
+                                                    </span>
+                                                <?php } ?>
+                                            </td>
                                             <td><?php echo $row['post_publisher_username']; ?></td>
                                             <!-- <td>pending</td> -->
                                             <td>
@@ -249,37 +283,37 @@
 
     <!-- ================================= Starting right side ======================================= -->
 
-     <!-- connecting with database -->
-     <?php
-        $current_user = $_SESSION['id'];
-        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
-        $numRows = mysqli_num_rows($result);
-        if ($numRows == 1) {
-            $row_info = mysqli_fetch_assoc($result);
-        }
-        ?>
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
+    <!-- connecting with database -->
+    <?php
+    $current_user = $_SESSION['id'];
+    $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+    $numRows = mysqli_num_rows($result);
+    if ($numRows == 1) {
+        $row_info = mysqli_fetch_assoc($result);
+    }
+    ?>
+    <div class="right">
+        <div class="top">
+            <button id="menu-btn">
+                <span class="material-icons-sharp">menu</span>
+            </button>
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+            <div class="profile">
+                <div class="info">
+                    <!-- info -->
+                    <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
+                    <small class="text-muted"><?php echo $row_info['role']; ?></small>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <!-- info -->
-                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
-                        <small class="text-muted"><?php echo $row_info['role'];?></small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
-                    </div>
+                <div class="profile-photo">
+                    <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
                 </div>
             </div>
-            
         </div>
+
+    </div>
 
     <!-- ================================= End of right side ======================================= -->
 

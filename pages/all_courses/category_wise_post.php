@@ -15,11 +15,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./contact_us.css">
+    <link rel="stylesheet" href="./category_wise_post.css">
 
-    <!-- fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Contact Us</title>
+    <title>All Courses</title>
 </head>
 
 <body>
@@ -29,16 +27,7 @@
 
     <!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
-    <!-- <div class="container"> -->
-
-
-
-    <!-- -------------------------main body starts here-------------------------------------------- -->
-
-
-    <div class="container1">
-
-
+    <div class="container mb-3">
         <div class="nav-row">
             <div class="left-top">
                 <a href="../../index.php">
@@ -49,7 +38,7 @@
                 </a>
             </div>
             <div class="top-middle">
-                <h1>About site</h1>
+                <h1>Categories</h1>
             </div>
             <div class="top-right">
 
@@ -75,82 +64,135 @@
                 <?php } else { ?>
                     <a href="../login.php"><button type="button" class="dash-btn">Log in/ Sign up</button></a>
                 <?php } ?>
-                <!-- <div class="theme-toggler">
+                <div class="theme-toggler">
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
-                </div> -->
+                </div>
             </div>
         </div>
-        <section class="contact">
-            <div class="content">
-                <h2>Contact Us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, nostrum numquam expedita esse aspernatur corporis!
-                </p>
+
+
+        <?php
+        if (isset($_GET)) {
+            extract($_GET);
+            // echo $categorySelector;
+            if ($categorySelector == "competetive_programming") {
+                $category = "Competitive_programming";
+            }
+            if ($categorySelector == "programming_language") {
+                $category = "C_programming";
+            }
+            if ($categorySelector == "algorithm") {
+                $category = "Algorithm";
+            }
+            if ($categorySelector == "tips") {
+                $category = "Tips";
+            }
+
+        ?>
+
+            <div class="row mid-row mt-5">
+
+                <!-- fetching data from database -->
+                <?php
+                //limiting the post description of post_paragaraph_1 for echo
+                function custom_echo($x, $length)
+                {
+                    if (strlen($x) <= $length) {
+                        echo $x;
+                    } else {
+                        $y = substr($x, 0, $length) . '...';
+                        echo $y;
+                    }
+                }
+
+                $categoryWisePostId = mysqli_query($dbc, "SELECT post_id FROM `post_category_relationship` WHERE post_category= '$category' order by post_id DESC;");
+
+                $numRows = mysqli_num_rows($categoryWisePostId);
+                if ($numRows) {
+                    while ($postIdSelector = mysqli_fetch_assoc($categoryWisePostId)) {
+                        //getting post id for category
+                        $postId = $postIdSelector['post_id'];
+                        // echo $postId;
+                        $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                        $postInfoseek = mysqli_query($dbc, "SELECT post_title,post_paragraph_1 from allpost where post_id=$postId ;");
+                        $postInfo = mysqli_fetch_assoc($postInfoseek);
+                ?>
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3 d-flex justify-content-center align-items-center">
+                            <!--Bootstrap cards1-->
+                            <div class="card" >
+
+                                <img src="../assets/card sample.jpg" alt="Card one" class="card-img-top">
+
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $postInfo['post_title']; ?></h5>
+                                    <!-- showing category -->
+                                    <?php
+
+                                    ?>
+                                    <p>
+                                        <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                            <span class="category-viewer">
+                                                <?php echo $categoryName['post_category'], " "; ?>
+                                            </span>
+                                        <?php } ?>
+                                    </p>
+
+                                    <p class="card-text" style="font-weight:normal"><?php custom_echo($postInfo['post_paragraph_1'], 50); ?></p>
+                                    <form action="../show_post_for_all/show_post.php" method="POST">
+                                        <button type="submit" id="review-button" class=" review-button" name="review_id" value="
+                                                                                                    <?php
+                                                                                                    echo $postId;
+                                                                                                    ?>
+                                                                                                    ">Read</button>
+
+                                        <script type="text/javascript">
+                                            document.getElementById("review-button").onclick = function() {
+                                                location.href = "../show_post_for_all/show_post.php";
+                                            };
+                                        </script>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+
+
+
             </div>
-            <div class="container2">
-                <div class="contactInfo">
-                    <div class="box">
-                        <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                        <div class="icontext">
-                            <h3>Address</h3>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
 
-                    <div class="box">
-                        <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                        <div class="icontext">
-                            <h3>Phone</h3>
-                            <p>019XXXXXXXX</p>
-                        </div>
-                    </div>
 
-                    <div class="box">
-                        <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i>
-                        </div>
-                        <div class="icontext">
-                            <h3>Email</h3>
-                            <p>md3XXXXXXXXXXXX.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contactForm">
-                    <form action="./message_send_process.php" method="POST">
-                        <h2>Send Message</h2>
-                        <div class="inputBox">
-                            <input type="text" name="sender_fullname" required="required">
-                            <span>Full Name</span>
-                        </div>
 
-                        <div class="inputBox">
-                            <input type="text" name="sender_email" required="required">
-                            <span>Email</span>
-                        </div>
 
-                        <div class="inputBox">
-                            <textarea required="required" name="sender_message"></textarea>
-                            <span>Type your message...</span>
-                        </div>
-                        <div class="inputBox">
-                            <input type="submit" name="submit_button" value="send">
-                        </div>
-                    </form>
-                </div>
-            </div>
-         </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
-
-    
-
-
-    <!-- </div> -->
 
     <!-- ================================= FOOTER ======================================= -->
 
 
     <!--Footer 1-->
-    <div class=" footer-manual">
-        <footer class="bg-dark text-white ">
+    <div class="footer-manual">
+        <footer class="bg-dark text-white mt-5">
             <div class="row">
                 <div class="col-md-4 left">
                     <h2>Kosai Limited</h2>
@@ -206,7 +248,7 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <script src="./contact_us.js"></script>
+    <script src="./category_wise_post.js"></script>
 
 
     <!-- for setting up theme -->
@@ -222,21 +264,4 @@
 </body>
 
 </html>
-<?php mysqli_close($dbc); 
- function function_alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
-    }
-
-   if(isset($_SESSION['update_status']))
-   {
-    if($_SESSION['update_status']=="success")
-    {
-        function_alert("Message sent successfully.");
-    }
-    if($_SESSION['update_status']=="failed")
-    {
-        function_alert("Something went wrong. Plesae try again!!!");
-    }
-   }
-   unset($_SESSION['update_status']);
-?>
+<?php mysqli_close($dbc); ?>
