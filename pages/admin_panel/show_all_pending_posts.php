@@ -109,22 +109,26 @@
                     </span>
                     <h3>Analytics</h3>
                 </a>
-                 <!--contact messages -->
-                 <a href="#">
-                        <span class="material-icons-sharp">
-                            quickreply
-                        </span>
-                        <h3>Messages</h3>
-                        <span class="message-count">26</span>
-                    </a>
-                    <!-- messages -->
-                    <a href="#">
-                        <span class="material-icons-sharp">
-                            question_answer
-                        </span>
-                        <h3>Comments</h3>
-                        <span class="message-count">26</span>
-                    </a>
+                <!--contact messages -->
+                <?php
+                $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
+                $number_of_messages = mysqli_fetch_assoc($message_count);
+                ?>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        quickreply
+                    </span>
+                    <h3>Messages</h3>
+                    <span class="message-count"><?php echo $number_of_messages['unread']; ?></span>
+                </a>
+                <!-- messages -->
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        question_answer
+                    </span>
+                    <h3>Comments</h3>
+                    <span class="message-count">26</span>
+                </a>
                 <!-- settings -->
                 <a href="../edit_profile.php">
                     <span class="material-icons-sharp">

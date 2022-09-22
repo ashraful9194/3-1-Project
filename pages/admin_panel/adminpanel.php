@@ -92,13 +92,17 @@ if (isset($current_visitor)) {
                         </span>
                         <h3>Analytics</h3>
                     </a>
-                      <!--contact messages -->
-                      <a href="#">
+                    <!--contact messages -->
+                    <?php
+                    $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
+                    $number_of_messages = mysqli_fetch_assoc($message_count);
+                    ?>
+                    <a href="#">
                         <span class="material-icons-sharp">
                             quickreply
                         </span>
                         <h3>Messages</h3>
-                        <span class="message-count">26</span>
+                        <span class="message-count"><?php echo $number_of_messages['unread']; ?></span>
                     </a>
                     <!-- messages -->
                     <a href="#">
@@ -206,7 +210,7 @@ if (isset($current_visitor)) {
                                     <tr>
                                         <td><?php echo $row['post_id']; ?></td>
                                         <td><?php echo $row['post_title']; ?></td>
-                                        
+
                                         <td><?php echo $row['post_publisher_username']; ?></td>
                                         <!-- <td>pending</td> -->
                                         <td>

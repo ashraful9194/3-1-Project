@@ -11,9 +11,10 @@
      At last there is footer.-->
 <!-- if a user is logged in then show this page ,other wise promt that visitor is not logged in -->
 <?php
-  function function_alert($msg) {
+function function_alert($msg)
+{
     echo "<script type='text/javascript'>alert('$msg');</script>";
-    }
+}
 $current_visitor = $_SESSION['id'];
 $res = mysqli_query($dbc, "SELECT * FROM users WHERE id=$current_visitor;");
 $row = mysqli_fetch_assoc($res);
@@ -87,22 +88,29 @@ if ($res) {
                     </span>
                     <h3>Analytics</h3>
                 </a>
-                 <!--contact messages -->
-                 <a href="#">
-                        <span class="material-icons-sharp">
-                            quickreply
-                        </span>
-                        <h3>Messages</h3>
-                        <span class="message-count">26</span>
-                    </a>
-                    <!-- messages -->
-                    <a href="#">
-                        <span class="material-icons-sharp">
-                            question_answer
-                        </span>
-                        <h3>Comments</h3>
-                        <span class="message-count">26</span>
-                    </a>
+                <!--contact messages -->
+                <?php
+            if ($row['role'] == "Admin") { 
+                
+                $message_count = mysqli_query($dbc,"SELECT count(*) as unread from contact_messages where message_seen_status=0");
+                $number_of_messages=mysqli_fetch_assoc($message_count);
+
+                ?>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        quickreply
+                    </span>
+                    <h3>Messages</h3>
+                    <span class="message-count"><?php echo $number_of_messages['unread'];?></span>
+                </a>
+                <!-- messages -->
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        question_answer
+                    </span>
+                    <h3>Comments</h3>
+                    <span class="message-count">26</span>
+                </a>
                 <!-- settings -->
                 <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
@@ -242,8 +250,8 @@ if ($res) {
         <?php
         $current_user = $_SESSION['id'];
         $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
-        $numRows = mysqli_num_rows($result);
-        if ($numRows == 1) {
+        $numRowss = mysqli_num_rows($result);
+        if ($numRowss == 1) {
             $row_info = mysqli_fetch_assoc($result);
         }
         ?>
@@ -276,34 +284,26 @@ if ($res) {
 
     </div>
 
-    <?php 
-       if(isset($_SESSION["update_status"])){
-        if( $_SESSION["update_status"]== "success")
-        {
+    <?php
+    if (isset($_SESSION["update_status"])) {
+        if ($_SESSION["update_status"] == "success") {
             function_alert("Post successfully created.");
         }
-        if($_SESSION["update_status"]== "failed")
-        {
+        if ($_SESSION["update_status"] == "failed") {
             function_alert("Something went wrong. Please try again!!!");
         }
-       }
-       unset($_SESSION["update_status"]);
+    }
+    unset($_SESSION["update_status"]);
     ?>
     <!--------------------------------------The whole body ends  here-------------------------------------------->
 
 
 
 
-<!-- ------------------------------ PROMPT SECTION not working ------------------------------------------ -->
+    <!-- ------------------------------ PROMPT SECTION not working ------------------------------------------ -->
 
 <?php include "./cpfooter.php";
-} else {function_alert("Please Log in to continue!!!");}
+} else {
+    function_alert("Please Log in to continue!!!");
+}
 ?>
-
-
-    
-
-  
-    
-
-
