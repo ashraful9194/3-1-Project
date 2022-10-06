@@ -16,7 +16,6 @@
     --color-primary-variant:#111e88;
     --color-dark-variant:#677483;
     --color-background:#f6f6f9;
-    --color-review-btn-background:#ffbb55;
 
 
     --card-border-radius: 2rem;
@@ -41,9 +40,8 @@
     --color-dark: #edeffd;
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0,0,0,0.4);
-    --color-review-btn-background:#677483;
     --box-shadow: 0 2rem 3rem var(--color-light);
-    --color-info-light: #2b2b2d;
+    --color-info-light:#313336;
 }
 
 /* ====================================================================================================== */
@@ -199,21 +197,7 @@ aside .close{
 }
 
 
-/* ============review buttun style================ */
-.review-button {
-  
-    border: none;
-    color: var(--color-dark);
-    background: var(--color-review-btn-background);
-    padding: 5px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: .5rem;
-  }
+
 /* ================= Sidebar ================ */
 
 aside .sidebar{
@@ -318,6 +302,17 @@ main .form-card >div:hover{
     box-shadow: none;
   
 }
+
+.reply-section textarea{
+    width: 98%;
+    background-color: var(--color-info-light);
+    color: var(--color-dark);
+   
+}
+
+
+
+
 /* .submit-btn{
     align-self: center;   
 } */
@@ -329,50 +324,6 @@ main .form-card >div:hover{
     color: var(--color-white);
     font-size: 2rem;
 } */
-
-main .recent-posts{
-    margin-top: 2rem;
-}
-main .recent-posts h2{
-    margin-bottom: .8rem;
-}
-main .recent-posts table{
-    background: var(--color-white);
-    width: 100%;
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
-    text-align: center;
-    box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
-}
-
-main .recent-posts table:hover{
-    box-shadow: none;
-}
-
-main table thead th{
-    padding-top: 1rem;
-    padding-right: 1rem;
-}
-
-main table tbody td{
-    padding-right: 1rem;
-    height: 2.8rem;
-    border-bottom: 1px solid var(--color-light);
-    color: var(--color-dark-variant)
-}
-main table tbody tr:last-child td{
-    border: none;
-    padding-bottom: 1rem;
-}
-
-main .recent-posts a{
-    text-align: center;
-    display: block;
-    margin: 1rem auto;
-    color: var(--color-primary);
-}
-
 
 
 /* ============================== RIGHT TOP ========================================= */
@@ -430,6 +381,13 @@ main .recent-posts a{
      left:678px; 
      top:2px; 
 }
+.submit-btn-2{
+    position:relative;
+     left:515px; 
+     top:2px; 
+}
+
+
 
 /* ====================================== FOOTER ====================================================== */
 
@@ -465,6 +423,7 @@ footer .row .col-md-4 h2{
 
 @media screen and (max-width: 1200px){
     .container{
+        
      /* background: red; */
      width: 94%;
      grid-template-columns: 7rem auto 23rem;
@@ -493,45 +452,22 @@ footer .row .col-md-4 h2{
         left: 400px;
         
     }
-    main .recent-posts{
-        width: 94%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 2rem 0 0 4.8rem;
-        padding-left: 110px;
-    
+    .submit-btn-2{
+        position:relative;
+        left: 237px;
         
-        
-     }
-     main .recent-posts a{
-        padding-right: 12rem;
-     }
-    
-     main .recent-posts table{
-        width: 65vw;
-        position: relative;
-        
-     }
-     main table thead tr th:nth-child(3), main table thead tr th:first-child{
-        display: none;
-     }
-    
-     main table tbody tr td:nth-child(3), main table tbody tr td:first-child{
-        display: none;
-     }
-     /* fix it after inserting 20 row to table */
-     .footer-manual{ 
-         margin-top: 230px;
-     }
-    
-
+    }
+    /* fix it after inserting 20 row to table */
+ .footer-manual{ 
+    margin-top: 230px;
 }
 
+}
 
 /* =================================== MEDIA QUERIES MOBILE,SMALL TABLETS ============================================= */
 @media screen and (max-width: 768px){
     .container{
+        /* background: #111e88; */
         
         width: 100%; 
         grid-template-columns: 1fr; 
@@ -630,13 +566,9 @@ footer .row .col-md-4 h2{
         position:relative;
             left: 300px;
     }
-    main .recent-posts{  
-        padding-left: 0px;
-    
-     }
-    
-     main .recent-posts a{
-        padding-right: 3rem;
-     }
+    .submit-btn-2{
+        position:relative;
+            left: 137px;
+    }
 
 }
