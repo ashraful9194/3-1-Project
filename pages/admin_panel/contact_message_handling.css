@@ -373,6 +373,98 @@ main .recent-posts a{
     color: var(--color-primary);
 }
 
+.popup h2 , .popup .from-box h3, .popup .reply-box h3{
+    color: var(--color-dark);
+}
+
+
+
+.popup{
+    width: 400px;
+    background: var(--color-white);
+    border-radius: 15px;
+    position: absolute;
+    left: 50%;
+    top: -50%;
+    transform: translate(-50%,-50%) scale(.1);
+    text-align: left;
+    padding: 10px 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform .5s, top.5s;
+}
+.open-popup{
+    top: 50%;
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(1);
+    
+}
+.popup .from-box{
+    width: 300px;
+    margin: 5px;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid grey;
+    align-items: center;
+    
+}
+.reply-box{
+    margin: 5px  0px  10px  0px ;
+    height: 0px;
+    visibility: hidden;
+}
+
+.visible-reply-box{
+    height: auto;
+    visibility: visible;
+}
+.popup-reply{
+    visibility: visible;
+    background-color: var(--color-white);
+
+}
+.popup-reply-on-reply{
+    width: 0px;
+    visibility: hidden;
+}
+.popup-submit{
+    width: 0px;
+    visibility: hidden;
+
+}
+.popup-submit-on-reply{
+    width: auto;
+    visibility: visible;
+    background-color: var(--color-white);
+}
+.popup-close{
+    visibility: visible;
+    align-self: flex-end;
+    background-color: var(--color-white);
+
+}
+.button-group{
+    display: flex;
+    gap: 5px;
+    background-color: var(--color-white);
+}
+.popup-icons{
+    background-color: var(--color-white);
+    font-size: 20px;
+    color: var(--color-dark);
+}
+.reply-text-area{
+    background-color: 	var(--color-info-light);
+    text-align: left;
+    color: var(--color-dark);
+}
+
+.bluractive{
+    filter: blur(7px);
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+}
+
 
 
 /* ============================== RIGHT TOP ========================================= */
@@ -520,6 +612,9 @@ footer .row .col-md-4 h2{
      main table tbody tr td:nth-child(3), main table tbody tr td:first-child{
         display: none;
      }
+
+
+   
      /* fix it after inserting 20 row to table */
      .footer-manual{ 
          margin-top: 230px;
