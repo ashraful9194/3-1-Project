@@ -77,7 +77,7 @@
                     <div class="thefront">
                         <div class="card-row">
                             <div class="column1">
-                                <h2>Yorosukune onegaisimasu</h2>
+                                <h2>Yoroshiku ne</h2>
                                 <p>hey there folk, if you are willing to become a competitive programmer,
                                     want to learn language and don't know where to start, then congratulations!
                                     you already have taken a step to your dreams.

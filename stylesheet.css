@@ -52,5 +52,66 @@
       padding: 2px 5px;
       font-size: 11px;
   }
+/* =========================search bar=============================================== */
+
+
+.search-bar {
+    /* background-color: aqua; */
+    /* width: 300px; */
+  
+  }
+  .search-bar form{
+   
+  }
+  .search-bar button{
+     
+
+  }
+  .search-bar button:hover{
+   
+}
+.search-bar button span{
+   
+    
+}
+  .search-bar input[type=text] {
+
+    
+  }
+  
+ 
+
+
+
+
+/* ====================================== FOOTER ====================================================== */
+
+footer{
+    display: block;
+    text-align: center;
+    padding: 25px 50px 30px;
+    
+   
+}
+
+footer .row .col-md-4 h2{
+    color: #fd7e14;
+}
+
+.svg{
+    height: 48px;
+    width: 48px;
+    display: inline-block;
+}
+
+.svg{
+    transition: all 300ms ease;
+}
+
+.svg:hover{
+    cursor: pointer;
+    margin-bottom: .8rem;
+    font-size: 3rem;
+}
 
   

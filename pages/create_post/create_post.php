@@ -297,13 +297,11 @@ if ($res) {
     ?>
     <!--------------------------------------The whole body ends  here-------------------------------------------->
 
-
-
-
+   
     <!-- ------------------------------ PROMPT SECTION not working ------------------------------------------ -->
 
 <?php include "./cpfooter.php";
 } else {
     function_alert("Please Log in to continue!!!");
-}
+}}
 ?>
