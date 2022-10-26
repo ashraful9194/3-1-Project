@@ -20,9 +20,9 @@ try {
 
 
   <title>Kosai Limited</title>
-     <!-- material CDN -->
+  <!-- material CDN -->
 
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./stylesheet.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -45,7 +45,7 @@ try {
           <b>Kosai Limited
         </h2>
       </a>
-      
+
 
 
       <button type="button" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle Navbar">
@@ -122,14 +122,10 @@ try {
       <div class="search-bar">
         <form action="./pages/search_managment/search_result.php" method="POST">
           <input type="text" class="" id="search_string" name="search_string" placeholder="Search keywords or category...">
-          <button type="submit" class="" id="submit_search" name="submit_search"><span class="material-icons-sharp">
+          <button type="submit" class="search-btn" id="submit_search" name="submit_search"><span class="material-icons-sharp">
               search
-            </span></button>
-          <script type="text/javascript">
-            document.getElementById("review-submit_search").onclick = function() {
-              location.href = "./pages/search_managment/search_result.php";
-            };
-          </script>
+            </span>
+          </button>
         </form>
       </div>
     </div>

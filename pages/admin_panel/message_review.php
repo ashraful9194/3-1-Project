@@ -60,6 +60,13 @@
                     </div>
                 </div>
                 <div class="sidebar">
+                    <!-- Search box -->
+                    <a href="../search_managment/search_result.php" class="">
+                        <span class="material-icons-sharp">
+                            search
+                        </span>
+                        <h3>Search</h3>
+                    </a>
                     <!-- Dashboard -->
                     <a href="<?php
                                 if ($_SESSION['role'] == "Admin") {

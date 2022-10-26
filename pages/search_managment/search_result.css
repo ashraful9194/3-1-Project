@@ -515,7 +515,9 @@ footer .row .col-md-4 h2{
     }
 
  
-  
+    .topnav input[type=text] {
+        width: 50%;
+    }
 
     @keyframes showMenu{
         to{

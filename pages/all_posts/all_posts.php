@@ -24,6 +24,13 @@
             </div>
         </div>
         <div class="sidebar">
+            <!-- Search box -->
+            <a href="../search_managment/search_result.php" class="">
+                        <span class="material-icons-sharp">
+                            search
+                        </span>
+                        <h3>Search</h3>
+                    </a>
             <!-- Dashboard -->
             <a href="<?php
                         $query2 = "SELECT role FROM kosai_limited.users where (id=$userID);";
@@ -56,6 +63,13 @@
                     </span>
                 </span>
                 <h3>All Post</h3>
+            </a> 
+            <!-- Analytics -->
+            <a href="#">
+                <span class="material-icons-sharp">
+                    insights
+                </span>
+                <h3>Analytics</h3>
             </a>
             <!-- Users -->
             <?php
@@ -66,14 +80,8 @@
                     </span>
                     <h3>Users</h3>
                 </a>
-            <?php } ?>
-            <!-- Analytics -->
-            <a href="#">
-                <span class="material-icons-sharp">
-                    insights
-                </span>
-                <h3>Analytics</h3>
-            </a>
+            
+           
             <!--contact messages -->
             <?php
             if ($row['role'] == "Admin") { 
@@ -97,7 +105,7 @@
                 </span>
                 <h3>Comments</h3>
                 <span class="message-count">26</span>
-            </a>
+            </a><?php } ?>
             <!-- settings -->
             <a href="../edit_profile.php">
                 <span class="material-icons-sharp">

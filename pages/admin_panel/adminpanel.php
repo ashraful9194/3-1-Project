@@ -55,6 +55,13 @@ if (isset($current_visitor)) {
                     </div>
                 </div>
                 <div class="sidebar">
+                    <!-- Search box -->
+                    <a href="../search_managment/search_result.php" class="">
+                        <span class="material-icons-sharp">
+                            search
+                        </span>
+                        <h3>Search</h3>
+                    </a>
                     <!-- Dashboard -->
                     <a href="./adminpanel.php" class="active">
                         <span class="material-icons-sharp">
@@ -133,6 +140,7 @@ if (isset($current_visitor)) {
             <!-- ================================= MAIN BODY ======================================= -->
             <main>
                 <h1>Dashboard</h1>
+
                 <div class="date">
                     <input type="date">
                 </div>

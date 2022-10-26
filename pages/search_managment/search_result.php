@@ -2,7 +2,9 @@
 require_once "../config.php";
 //$_POST['submit_search']="";
 //$_POST['search_string']="";
-$search = null;
+if (!isset($search)) {
+    $search = null;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,22 +32,25 @@ $search = null;
 
     <!-- fetching database  -->
     <!-- a problem is here that here only fetching is done but not cheking if the user is valid or not -->
-   
+
     <!-- ----------------------------- THE WHOLE BODY --------------------------------------------- -->
 
     <div class="container">
         <!-- --------------------- ASIDE -------------------------------------------- -->
 
         <aside id="aside-menu" class="">
-            <?php //$current_visitor = $_SESSION['id'];
+            <a href="../../index.php" class="">
+                <div class="logo">
+                    <img src="../../assets_home/home-logo.png" alt="Kosai Limited logo">
+                    <h2>Kosai <span style="color:#0a98f7">Limited</span></h2>
+                </div>
+            </a>
+            <?php if(isset($_SESSION['id'])){
+                $current_visitor = $_SESSION['id'];
+            }
             if (isset($current_visitor)) { ?>
                 <div class="top">
-                    <a href="../../index.php">
-                        <div class="logo">
-                            <img src="../../assets_home/home-logo.png" alt="Kosai Limited logo">
-                            <h2>Kosai <span style="color:#0a98f7">Limited</span></h2>
-                        </div>
-                    </a>
+
                     <div class="close" id="close-btn">
                         <span class="material-icons-sharp">
                             close
@@ -145,82 +150,83 @@ $search = null;
             </div>
 
             <h1>Search result for "<?php echo $search; ?>"</h1>
-            
+
 
             <?php
-    if (isset($_POST['submit_search'])) {
-    extract($_POST);
-    $search = $_POST['search_string'];
-    // echo $search;
-    $query = "SELECT allpost.post_id,allpost.post_title,post_category_relationship.post_category FROM allpost natural join post_category_relationship 
+            if (isset($_POST['submit_search'])) {
+                extract($_POST);
+                $search = $_POST['search_string'];
+                // echo $search;
+                $query = "SELECT allpost.post_id,allpost.post_title,post_category_relationship.post_category FROM allpost natural join post_category_relationship 
      where(post_title like '%$search%' or post_category like '%$search%');";
-    $res = mysqli_query($dbc, $query);
-    $numRows = mysqli_num_rows($res);
+                $res = mysqli_query($dbc, $query);
+                $numRows = mysqli_num_rows($res);
 
-    ?>
+            ?>
 
-            <!-- ----------------------------- END OF INSIGHTS ------------------------------------- -->
+                <!-- ----------------------------- END OF INSIGHTS ------------------------------------- -->
 
-            <div class="recent-posts">
+                <div class="recent-posts">
 
-                <table>
-                    <thead>
-                        <tr>
+                    <table>
+                        <thead>
+                            <tr>
 
-                            <th>Post Title</th>
-                            <th>Post Catregory</th>
-                            <!-- <th>Publisher</th> -->
-                            <!-- <th>Status</th> -->
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                                <th>Post Title</th>
+                                <th>Post Catregory</th>
+                                <!-- <th>Publisher</th> -->
+                                <!-- <th>Status</th> -->
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        <?php
-                        if ($numRows > 0) {
-                            $limit = 10;
-                            while (($row = mysqli_fetch_assoc($res))) {
-                                $postId = $row['post_id'];
-                                $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
-                        ?>
+                            <?php
+                            if ($numRows > 0) {
+                                $limit = 10;
+                                while (($row = mysqli_fetch_assoc($res))) {
+                                    $postId = $row['post_id'];
+                                    $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$postId");
+                            ?>
 
-                                <tr>
+                                    <tr>
 
-                                    <td><?php echo $row['post_title']; ?></td>
-                                    <td> <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
-                                            <span class="category-viewer">
-                                                <?php echo "| ";
-                                                echo $categoryName['post_category'], " | "; ?>
-                                            </span>
-                                        <?php } ?>
-                                    </td>
+                                        <td><?php echo $row['post_title']; ?></td>
+                                        <td> <?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                                <span class="category-viewer">
+                                                    <?php echo "| ";
+                                                    echo $categoryName['post_category'], " | "; ?>
+                                                </span>
+                                            <?php } ?>
+                                        </td>
 
-                                    <td>
+                                        <td>
 
-                                        <form action="../show_post_for_all/show_post.php" method="POST">
-                                            <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
+                                            <form action="../show_post_for_all/show_post.php" method="POST">
+                                                <button type="submit" id="review-button" class="btn review-button" name="review_id" value="
                                                                                                     <?php
                                                                                                     echo $row['post_id'];
                                                                                                     ?>
                                                                                                     ">Review</button>
 
-                                            <script type="text/javascript">
-                                                document.getElementById("review-button").onclick = function() {
-                                                    location.href = "../show_post_for_all/show_post.php";
-                                                };
-                                            </script>
-                                        </form>
-                                    </td>
-                                </tr>
+                                                <script type="text/javascript">
+                                                    document.getElementById("review-button").onclick = function() {
+                                                        location.href = "../show_post_for_all/show_post.php";
+                                                    };
+                                                </script>
+                                            </form>
+                                        </td>
+                                    </tr>
                         <?php $limit--;
+                                }
                             }
-                        }} ?>
+                        } ?>
 
 
-                    </tbody>
-                </table>
-                <!-- <a href="./show_all_pending_posts.php">Show All</a> -->
-            </div>
+                        </tbody>
+                    </table>
+                    <!-- <a href="./show_all_pending_posts.php">Show All</a> -->
+                </div>
         </main>
         <!-- ---------------------------- END OF MAIN ------------------------------------------- -->
 

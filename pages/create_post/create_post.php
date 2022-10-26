@@ -11,13 +11,14 @@
      At last there is footer.-->
 <!-- if a user is logged in then show this page ,other wise promt that visitor is not logged in -->
 <?php
-function function_alert($msg)
-{
-    echo "<script type='text/javascript'>alert('$msg');</script>";
-}
+ function function_alert($msg) {
+             echo "<script type='text/javascript'>alert('$msg');</script>";
+         }
+if(isset($_SESSION['id'])){
 $current_visitor = $_SESSION['id'];
+// // echo $current_visitor;
 $res = mysqli_query($dbc, "SELECT * FROM users WHERE id=$current_visitor;");
-$row = mysqli_fetch_assoc($res);
+$row = mysqli_fetch_assoc($res);}
 
 //if the visitor is registered
 if ($res) {
@@ -40,6 +41,13 @@ if ($res) {
                 </div>
             </div>
             <div class="sidebar">
+                <!-- Search box -->
+                <a href="../search_managment/search_result.php" class="">
+                        <span class="material-icons-sharp">
+                            search
+                        </span>
+                        <h3>Search</h3>
+                    </a>
                 <!-- Dashboard -->
 
                 <a href=" <?php
@@ -71,6 +79,13 @@ if ($res) {
                     </span>
                     <h3>All Post</h3>
                 </a>
+                 <!-- Analytics -->
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Analytics</h3>
+                </a>
                 <!-- Users -->
                 <?php
                 if ($row['role'] == "Admin") { ?>
@@ -80,14 +95,8 @@ if ($res) {
                         </span>
                         <h3>Users</h3>
                     </a>
-                <?php } ?>
-                <!-- Analytics -->
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        insights
-                    </span>
-                    <h3>Analytics</h3>
-                </a>
+               
+               <?php }?>
                 <!--contact messages -->
                 <?php
             if ($row['role'] == "Admin") { 
@@ -110,7 +119,7 @@ if ($res) {
                     </span>
                     <h3>Comments</h3>
                     <span class="message-count">26</span>
-                </a>
+                </a> <?php } ?>
                 <!-- settings -->
                 <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
@@ -302,6 +311,7 @@ if ($res) {
 
 <?php include "./cpfooter.php";
 } else {
-    function_alert("Please Log in to continue!!!");
-}}
+     function_alert("Please Log in to continue!!!");
+    // echo '<h2>Something went wrong</h2>';
+}
 ?>
