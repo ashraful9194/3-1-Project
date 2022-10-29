@@ -104,12 +104,12 @@
                         </a>
                     <?php } ?>
                     <!-- Analytics -->
-                    <a href="#">
+                    <!-- <a href="#">
                         <span class="material-icons-sharp">
                             insights
                         </span>
                         <h3>Analytics</h3>
-                    </a>
+                    </a> -->
                     <!--contact messages -->
                     <?php
                     $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");

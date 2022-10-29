@@ -65,12 +65,12 @@
                 <h3>All Post</h3>
             </a> 
             <!-- Analytics -->
-            <a href="#">
+            <!-- <a href="#">
                 <span class="material-icons-sharp">
                     insights
                 </span>
                 <h3>Analytics</h3>
-            </a>
+            </a> -->
             <!-- Users -->
             <?php
             if ($row['role'] == "Admin") { ?>
@@ -90,7 +90,7 @@
                 $number_of_messages=mysqli_fetch_assoc($message_count);
 
                 ?>
-                <a href="#">
+                <a href="../admin_panel/contact_message_handling.php">
                     <span class="material-icons-sharp">
                         quickreply
                     </span>

@@ -104,18 +104,18 @@
                     <h3>Users</h3>
                 </a>
                 <!-- Analytics -->
-                <a href="#">
+                <!-- <a href="#">
                     <span class="material-icons-sharp">
                         insights
                     </span>
                     <h3>Analytics</h3>
-                </a>
+                </a> -->
                  <!--contact messages -->
                  <?php
                 $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
                 $number_of_messages = mysqli_fetch_assoc($message_count);
                 ?>
-                <a href="#">
+                <a href="./contact_message_handling.php">
                     <span class="material-icons-sharp">
                         quickreply
                     </span>

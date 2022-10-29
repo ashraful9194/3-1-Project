@@ -2,6 +2,21 @@
 require_once "../config.php";
 $current_visitor = $_SESSION['id'];
 if (isset($current_visitor)) {
+$query1="SELECT  count(*) as post_per_hour FROM    allpost WHERE   post_date > DATE_SUB(CURDATE(), INTERVAL 1 HOUR);";
+$res1 = mysqli_query($dbc,$query1);
+$post_per_hour=   (mysqli_fetch_assoc($res1));
+$hour= $post_per_hour['post_per_hour']."%";
+
+$query2="SELECT  count(*) as post_per_day FROM    allpost WHERE   post_date > DATE_SUB(CURDATE(), INTERVAL 1 DAY);";
+$res2 = mysqli_query($dbc,$query2);
+$post_per_day=   (mysqli_fetch_assoc($res2));
+$day= $post_per_day['post_per_day']."%";
+
+$query3="SELECT  count(*) as post_per_week FROM    allpost WHERE   post_date > DATE_SUB(CURDATE(), INTERVAL 7 DAY);";
+$res3 = mysqli_query($dbc,$query3);
+$post_per_week=  (mysqli_fetch_assoc($res3));
+$week= $post_per_week['post_per_week']."%";
+
 ?>
     <!doctype html>
     <html lang="en">
@@ -20,12 +35,110 @@ if (isset($current_visitor)) {
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="./adminstyle.css">
+        <style>
+            :root{
+                --color-background:#f6f6f9;
+                --color-dark:#363949;
+            }
+            .dark-theme-variables{
+             --color-background: #181a1e;
+             --color-dark: #edeffd;}
+            
+        .skill h1 {
+            text-align: center;
+        }
+        .skill h3 {
+            margin: 5px;
+        }
+        .skill {
+            text-transform: uppercase;
+            width: 100%;
+            height: auto;
+            margin: 10px auto;
+            background-color: var(--color-background);
+            color: var(--color-dark);
+            padding: 20px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            border-radius: 20px;
+        }
+        .skill .bar {
+            /* padding: 10px; */
+            background: #353b48;
+            display: block;
+            height: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all .3s cubic-bezier(.25, .8, .25, 1);
+        }
+        .skill .bar:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        .skill .bar  span {
+            height: 20px;
+            float: left;
+            background: linear-gradient(135deg, rgba(236, 0, 140, 1)0%, rgba(252, 103, 103, 1)100%);
+        }
+        .skill h3{
+            margin-top: 10px;
+        }
+
+     
+        .hour{
+            color: var(--color-dark);
+            display: flex;
+            justify-content:center ;
+            width: <?php echo $hour;?>;
+            animation: hour 2s;
+        }
+        .day{
+            color: var(--color-dark);
+            display: flex;
+            justify-content:center ;
+            width: <?php echo $day;?>;
+            animation: day 2s;
+        }
+        .week{
+            color: var(--color-dark);
+            display: flex;
+            justify-content:center ;
+            width:<?php echo $week?>;
+            animation: week 2s;
+        }
+  
+        @keyframes hour {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: <?php echo $hour;?>;
+            }
+        }
+        @keyframes day {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: <?php echo $day; ?>;
+            }
+        }
+        @keyframes week {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width:<?php echo $week;?>;
+            }
+        }
+        </style>
 
         <title>Administration</title>
     </head>
 
     <body>
 
+    
 
         <!-- fetching database  -->
         <!-- a problem is here that here only fetching is done but not cheking if the user is valid or not -->
@@ -93,12 +206,12 @@ if (isset($current_visitor)) {
                         <h3>Users</h3>
                     </a>
                     <!-- Analytics -->
-                    <a href="#">
+                    <!-- <a href="#">
                         <span class="material-icons-sharp">
                             insights
                         </span>
                         <h3>Analytics</h3>
-                    </a>
+                    </a> -->
                     <!--contact messages -->
                     <?php
                     $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
@@ -144,8 +257,28 @@ if (isset($current_visitor)) {
                 <div class="date">
                     <input type="date">
                 </div>
-                <div class="insights">
-                    <div class="card1 res-card">
+                <div class="skill-body">
+
+                <!-- <div class="skill-body"> -->
+                    <div class="skill">
+                        <h1>Insights</h1>
+                        
+                       
+                            <h3>Posts per hour</h3>
+                            <span class="bar"><span class="hour"><?php echo $post_per_hour['post_per_hour'];?></span></span>
+                            <h3>Posts per day</h3>
+                            <span class="bar"><span class="day"><?php echo $post_per_day['post_per_day'];?></span></span>
+                            <h3>Posts per week</h3>
+                            <span class="bar"><span class="week"><?php echo $post_per_week['post_per_week'];?></span></span>
+                      
+                        
+
+                    </div>
+                <!-- </div> -->
+               
+
+
+                    <!-- <div class="card1 res-card">
                         <span class="material-icons-sharp">
                             analytics
                         </span>
@@ -157,9 +290,9 @@ if (isset($current_visitor)) {
 
                         </div>
                         <small class="text-muted">Last 24 Hour</small>
-                    </div>
+                    </div> -->
 
-                    <div class="card2 res-card">
+                    <!-- <div class="card2 res-card">
                         <span class="material-icons-sharp">
                             analytics
                         </span>
@@ -185,7 +318,7 @@ if (isset($current_visitor)) {
 
                         </div>
                         <small class="text-muted">Last 24 Hour</small>
-                    </div>
+                    </div> -->
 
 
                 </div>

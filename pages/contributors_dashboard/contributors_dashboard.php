@@ -1,6 +1,8 @@
 <?php
 require_once "../config.php";
-//$current_visitor=$_SESSION['id'];
+if(isset($_SESSION['id'])){
+    $current_user = $_SESSION['id'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,7 +46,7 @@ require_once "../config.php";
     post_status,
     role  FROM kosai_limited.allpost  join kosai_limited.users 
     ON (allpost.post_publisher_id=users.id)
-     where post_status='pending' and role='Contributor';");
+     where (post_status='pending' AND post_publisher_id=$current_user) and role='Contributor';");
 
 
 
@@ -100,12 +102,12 @@ require_once "../config.php";
                 </a>
 
                 <!-- Analytics -->
-                <a href="#">
+                <!-- <a href="#">
                     <span class="material-icons-sharp">
                         insights
                     </span>
                     <h3>Analytics</h3>
-                </a>
+                </a> -->
 
                 <!-- settings -->
                 <a href="../edit_profile.php">

@@ -105,12 +105,12 @@
                         </a>
                     <?php } ?>
                     <!-- Analytics -->
-                    <a href="#">
+                    <!-- <a href="#">
                         <span class="material-icons-sharp">
                             insights
                         </span>
                         <h3>Analytics</h3>
-                    </a>
+                    </a> -->
                      <!-- all users -->
                      <?php if ($_SESSION['role'] === "Admin") { ?>
                         <a href="./all_users.php">
