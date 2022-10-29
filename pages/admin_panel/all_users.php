@@ -60,6 +60,13 @@
                 </div>
             </div>
             <div class="sidebar">
+                <!-- Search box -->
+                <a href="../search_managment/search_result.php" class="">
+                        <span class="material-icons-sharp">
+                            search
+                        </span>
+                        <h3>Search</h3>
+                    </a>
                 <!-- Dashboard -->
                 <a href="<?php
                             $query2 = "SELECT role FROM kosai_limited.users where (id=$userID);";
@@ -97,18 +104,18 @@
                     <h3>Users</h3>
                 </a>
                 <!-- Analytics -->
-                <a href="#">
+                <!-- <a href="#">
                     <span class="material-icons-sharp">
                         insights
                     </span>
                     <h3>Analytics</h3>
-                </a>
+                </a> -->
                  <!--contact messages -->
                  <?php
                 $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
                 $number_of_messages = mysqli_fetch_assoc($message_count);
                 ?>
-                <a href="#">
+                <a href="./contact_message_handling.php">
                     <span class="material-icons-sharp">
                         quickreply
                     </span>

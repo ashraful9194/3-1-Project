@@ -24,6 +24,13 @@
             </div>
         </div>
         <div class="sidebar">
+            <!-- Search box -->
+            <a href="../search_managment/search_result.php" class="">
+                        <span class="material-icons-sharp">
+                            search
+                        </span>
+                        <h3>Search</h3>
+                    </a>
             <?php if (isset($_SESSION['id'])) { ?>
                 <!-- Dashboard -->
                 <a href="<?php
@@ -58,31 +65,41 @@
                     </span>
                     <h3>All Post</h3>
                 </a>
-                <!-- Users -->
-                <?php
-                if ($rolefetch['role'] == "Admin") { ?>
-                    <a href="../admin_panel/all_users.php">
-                        <span class="material-icons-sharp">
-                            person
-                        </span>
-                        <h3>Users</h3>
-                    </a>
-                <?php } ?>
-                <!-- Analytics -->
-                <a href="#">
+                 <!-- Analytics -->
+                <!-- <a href="#">
                     <span class="material-icons-sharp">
                         insights
                     </span>
                     <h3>Analytics</h3>
-                </a>
-                <!-- messages -->
+                </a> -->
+                <!-- all users -->
+                <?php if ($_SESSION['role'] === "Admin") { ?>
+                        <a href="./all_users.php">
+                            <span class="material-icons-sharp">
+                                person
+                            </span>
+                            <h3>Users</h3>
+                        </a>
+                    <!--contact messages -->
+                    <?php
+                $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
+                $number_of_messages = mysqli_fetch_assoc($message_count);
+                ?>
                 <a href="#">
                     <span class="material-icons-sharp">
-                        question_answer
+                        quickreply
                     </span>
                     <h3>Messages</h3>
-                    <span class="message-count">26</span>
+                    <span class="message-count"><?php echo $number_of_messages['unread']; ?></span>
                 </a>
+                    <!-- messages -->
+                    <a href="#">
+                        <span class="material-icons-sharp">
+                            question_answer
+                        </span>
+                        <h3>Comments</h3>
+                        <span class="message-count">26</span>
+                    </a> <?php } ?>
                 <!-- settings -->
                 <a href="../edit_profile.php">
                     <span class="material-icons-sharp">
@@ -214,5 +231,10 @@
 
 </div>
 <!--------------------------------------The whole body ends  here-------------------------------------------->
+<!-- -------------------------------------comment section -------------------------------- -->
+
+
+<!-- -------------------------------------comment section -------------------------------- -->
+
 
 <?php include "./show_post_footer.php" ?>

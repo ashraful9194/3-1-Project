@@ -57,6 +57,13 @@
                     </div>
                 </div>
                 <div class="sidebar">
+                    <!-- Search box -->
+                    <a href="../search_managment/search_result.php" class="">
+                        <span class="material-icons-sharp">
+                            search
+                        </span>
+                        <h3>Search</h3>
+                    </a>
                     <!-- Dashboard -->
                     <a href="<?php
                                 if ($row2['role'] == "Admin")
@@ -98,20 +105,40 @@
                         </a>
                     <?php } ?>
                     <!-- Analytics -->
-                    <a href="#">
+                    <!-- <a href="#">
                         <span class="material-icons-sharp">
                             insights
                         </span>
                         <h3>Analytics</h3>
-                    </a>
+                    </a> -->
+                     <!-- all users -->
+                     <?php if ($_SESSION['role'] === "Admin") { ?>
+                        <a href="./all_users.php">
+                            <span class="material-icons-sharp">
+                                person
+                            </span>
+                            <h3>Users</h3>
+                        </a>
+                    <!--contact messages -->
+                    <?php
+                $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
+                $number_of_messages = mysqli_fetch_assoc($message_count);
+                ?>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        quickreply
+                    </span>
+                    <h3>Messages</h3>
+                    <span class="message-count"><?php echo $number_of_messages['unread']; ?></span>
+                </a>
                     <!-- messages -->
                     <a href="#">
                         <span class="material-icons-sharp">
                             question_answer
                         </span>
-                        <h3>Messages</h3>
+                        <h3>Comments</h3>
                         <span class="message-count">26</span>
-                    </a>
+                    </a> <?php } ?>
                     <!-- settings -->
                     <a href="../edit_profile.php">
                         <span class="material-icons-sharp">
@@ -146,7 +173,7 @@
             post_paragraph3
             post_code3  
          -->
-
+                <?php $categories = mysqli_query($dbc, "SELECT post_category FROM `post_category_relationship` WHERE post_id=$reviewID"); ?>
                 <div class="form-card card-body d-flex flex-column">
                     <div class="card1 res-card">
 
@@ -166,7 +193,12 @@
                                 </div>
                                 <!-- category -->
                                 <div class="row mb-3 category">
-                                    <h3><?php echo $row['post_category']; ?></h3>
+                                    <h3><?php while ($categoryName = mysqli_fetch_assoc($categories)) { ?>
+                                            <span class="category-viewer">
+                                                <?php echo $categoryName['post_category'], " "; ?>
+                                            </span>
+                                        <?php } ?>
+                                    </h3>
                                 </div>
                                 <!-- Paragraph 1 -->
                                 <div class="row mb-3 paragraph1">
@@ -218,36 +250,36 @@
             <!-- ================================= Starting right side ======================================= -->
 
             <!-- connecting with database -->
-        <?php
-        $current_user = $_SESSION['id'];
-        $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
-        $numRows = mysqli_num_rows($result);
-        if ($numRows == 1) {
-            $row_info = mysqli_fetch_assoc($result);
-        }
-        ?>
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <!-- info -->
-                        <p>Hey, <b><?php echo $row_info['fname'];?></b></p>
-                        <small class="text-muted"><?php echo $row_info['role'];?></small>
+            <?php
+            $current_user = $_SESSION['id'];
+            $result = mysqli_query($dbc, "SELECT fname,role from users WHERE id=$current_user");
+            $numRows = mysqli_num_rows($result);
+            if ($numRows == 1) {
+                $row_info = mysqli_fetch_assoc($result);
+            }
+            ?>
+            <div class="right">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">menu</span>
+                    </button>
+                    <div class="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
                     </div>
-                    <div class="profile-photo">
-                        <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                    <div class="profile">
+                        <div class="info">
+                            <!-- info -->
+                            <p>Hey, <b><?php echo $row_info['fname']; ?></b></p>
+                            <small class="text-muted"><?php echo $row_info['role']; ?></small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="../../assets_home/card sample.jpg" style="width: 2.8rem; height:2.8rem ;border-radius:50%;">
+                        </div>
                     </div>
                 </div>
+
             </div>
-            
-        </div>
 
             <!-- ================================= End of right side ======================================= -->
 
@@ -320,4 +352,4 @@
 </body>
 
 </html>
-<?php mysqli_close($dbc);?>
+<?php mysqli_close($dbc); ?>
