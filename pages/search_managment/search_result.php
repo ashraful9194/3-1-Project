@@ -47,6 +47,7 @@ if (!isset($search)) {
             </a>
             <?php if(isset($_SESSION['id'])){
                 $current_visitor = $_SESSION['id'];
+                //echo $_SESSION['role'];
             }
             if (isset($current_visitor)) { ?>
                 <div class="top">
@@ -59,19 +60,28 @@ if (!isset($search)) {
                 </div>
                 <div class="sidebar">
                     <!-- Dashboard -->
-                    <a href="./adminpanel.php" class="active">
+                    <?php //if($_SESSION['role']="Admin")
+                    //{//echo "../admin_panel/adminpanel.php";}
+                    //else if($_SESSION['role']!="Contributor")
+                    //{//echo "../contributors_dashboard/contributors_dashboard.php";}
+                    //else
+                    //{//echo "../learners_dashboard/leraners_dashboard.php";}?>
+                    <a href="" class="active">
                         <span class="material-icons-sharp">
                             dashboard
                         </span>
                         <h3>Dashboard</h3>
                     </a>
+                    <?php if($_SESSION['role']!="Learner"){?>
                     <!-- Create post -->
                     <a href="../create_post/create_post.php">
                         <span class="material-icons-sharp">
                             draw
                         </span>
                         <h3>Create Post</h3>
-                    </a>
+                    </a><?php }?>
+
+                    <?php if($_SESSION['role']!="Learner" && $_SESSION['role']!="Contributor"){?>
                     <!-- all post -->
                     <a href="../all_posts/all_posts.php" class="">
                         <span class="material-icons-sharp">
@@ -81,6 +91,7 @@ if (!isset($search)) {
                         </span>
                         <h3>All Post</h3>
                     </a>
+
                     <!-- Users -->
                     <a href="./all_users.php">
                         <span class="material-icons-sharp">
@@ -95,6 +106,9 @@ if (!isset($search)) {
                         </span>
                         <h3>Analytics</h3>
                     </a>
+                    <?php }?>
+
+                    <?php if($_SESSION['role']!="Learner" && $_SESSION['role']!="Contributor"){?>
                     <!--contact messages -->
                     <?php
                     $message_count = mysqli_query($dbc, "SELECT count(*) as unread from contact_messages where message_seen_status=0");
@@ -115,6 +129,7 @@ if (!isset($search)) {
                         <h3>Comments</h3>
                         <span class="message-count">26</span>
                     </a>
+                    <?php }?>
                     <!-- settings -->
                     <a href="../edit_profile.php">
                         <span class="material-icons-sharp">
